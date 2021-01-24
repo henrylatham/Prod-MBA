@@ -1,0 +1,12 @@
+@mixin corner-radius {
+  border-radius: $corner-radius;
+}
+
+@mixin card-image-corner-radius {
+  border-top-left-radius: $corner-radius;
+  border-top-right-radius: $corner-radius;
+}
+
+@mixin circular-radius {
+  border-radius: 100px;
+}

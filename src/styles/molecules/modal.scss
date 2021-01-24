@@ -1,0 +1,65 @@
+@mixin modal-container {
+  @include row;
+  @include transition-in-out;
+  align-items: center;
+
+  background-color: $modal-background;
+  bottom: 0;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+@mixin overlay-container {
+  @include col;
+  @include transition-in-out;
+  align-items: center;
+
+  background-color: $white;
+  bottom: 0;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+%modal-base {
+  @include col;
+  @include transition-in-out;
+  max-width: 420px;
+}
+
+@mixin confirmation-modal {
+  @extend %modal-base;
+
+  &__title {
+    @include h4;
+    @include padding(top, 4);
+    @include padding(bottom, 2);
+    @include padding(left right, 3);
+  }
+
+  &__text {
+    @include padding(bottom, 3);
+    @include padding(left right, 3);
+    @include text;
+    text-align: center;
+  }
+
+  &__btnContainer {
+    @include border-top;
+    @include flex;
+    @include padding(top bottom, 0);
+    justify-content: space-around;
+    width: 100%;
+
+    .btnContainer:first-child button {
+      color: $inactive-grey;
+    }
+  }
+}

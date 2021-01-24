@@ -1,0 +1,34 @@
+@import '../utils/scale';
+
+$space-scales: -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$space-scale-factor: 1.618; // golden rule
+
+@mixin _inset($type, $dirs, $step) {
+  $dirs: if($dirs == all, top right bottom left, $dirs);
+
+  // validation
+  @each $dir in $dirs {
+    @if index(top right bottom left, $dir) == null {
+      @warn 'supplied first argument contains invalid element `#{$dir}`';
+    }
+  }
+
+  @if index(join($space-scales, reset), $step) == null {
+    @warn 'supplied second argument `#{$step}` is not supported for `step`';
+  }
+
+  // calculate rem value
+  $value: if($step == reset, 0, scale($step, $space-scale-factor));
+
+  @each $dir in $dirs {
+    #{$type}-#{$dir}: $value;
+  }
+}
+
+@mixin padding($dir, $step) {
+  @include _inset(padding, $dir, $step);
+}
+
+@mixin margin($dir, $step) {
+  @include _inset(margin, $dir, $step);
+}

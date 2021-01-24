@@ -1,0 +1,132 @@
+// Buttons
+// Translate y , ease-in-out , fadein+delay
+
+// Dashboard cards
+// fadeInUp + delay for each child
+
+@mixin transition-in-out {
+  transition: all 0.15s ease-in-out;
+}
+
+@mixin transition-in {
+  transition: all 0.3s ease-in;
+}
+
+@mixin transition-out {
+  transition: all 0.3s ease-out;
+}
+
+//
+//   Keyframes
+//
+
+@keyframes scaleUp {
+  0% {
+    height: 80%;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// View Transitions
+
+%animate-slow {
+  animation-duration: 0.6s;
+  transition-timing-function: ease-out;
+  // animation-fill-mode: both;
+}
+
+%animate-fast {
+  animation-duration: 0.3s;
+}
+
+@mixin scale-up {
+  @extend %animate-fast;
+
+  animation-name: scaleUp;
+}
+
+// An element that fades in
+@mixin fade-in {
+  @extend %animate-fast;
+
+  animation-name: fadeIn;
+}
+
+// An element that fades in
+@mixin fade-out {
+  @extend %animate-slow;
+
+  animation-name: fadeOut;
+}
+
+// An element that fades in and slides up
+@mixin fade-in-up {
+  @extend %animate-fast;
+
+  animation-name: fadeInUp;
+}
+
+// An element that fades in and slides from the right
+@mixin fade-in-right {
+  @extend %animate-fast;
+
+  animation-name: fadeInRight;
+}
+
+@mixin long-delay {
+  animation-delay: 2s;
+}
+
+@mixin delay {
+  animation-delay: 0.3s;
+}
+
+@mixin delay-child {
+  animation-delay: 0.05s;
+}

@@ -1,0 +1,88 @@
+@import '../../../styles/main';
+
+.footer {
+  @include background-dark;
+  @include padding(left right, 1);
+  @include padding(top, 4);
+  @include padding(bottom, 5);
+  @include col;
+
+  @media (min-width: $screen-sm-min) {
+    @include padding(top, 4);
+    @include padding(bottom, 4);
+    @include padding(left right, 3);
+    @include row;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    @include col;
+    align-items: flex-end;
+    max-width: 288px;
+
+    &_imglogo {
+      @include padding(top, 3);
+      @include padding(bottom, 0);
+      max-width: 32px;
+
+      @media (min-width: $screen-sm-min) {
+        @include padding(top, 3);
+        max-width: 48px;
+      }
+    }
+
+    &_book {
+      @include col;
+      @include padding(top, 5);
+      align-items: flex-end;
+
+      @media (min-width: $screen-sm-min) {
+        @include padding(top, 2);
+      }
+    }
+
+    &_bookimg {
+      @include padding(bottom, 2);
+      max-width: 100px;
+    }
+
+    p {
+      @include small;
+      color: $white;
+      max-width: 200px;
+      text-align: right;
+    }
+  }
+
+  &__list {
+    @include padding(top bottom, 2);
+    list-style: none;
+    text-align: left;
+    width: 70%;
+
+    @media (min-width: $screen-sm-min) {
+      text-align: center;
+    }
+
+    &_item {
+      @include padding(left, 2);
+      @include padding(top bottom, 2);
+      @include link;
+      text-align: left;
+    }
+
+    .active {
+      color: $white;
+    }
+  }
+
+  a {
+    @include opacity(2);
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      @include opacity(1);
+    }
+  }
+}

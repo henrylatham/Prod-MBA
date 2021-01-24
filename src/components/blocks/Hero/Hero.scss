@@ -1,0 +1,82 @@
+@import '../../../styles/main';
+
+.hero {
+  @include background-image;
+  @include col;
+  @include padding(top, 6);
+  @include padding(left right, reset);
+  @include padding(bottom, 4);
+  position: relative;
+  height: 300px;
+
+  @media (min-width: $screen-sm-min) {
+    @include padding(bottom, 5);
+  }
+
+  &__featuredBlocks {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    bottom: -102px;
+    justify-content: center;
+
+    div {
+      padding: 105px 50px;
+      background-color: $white;
+      width: 100%;
+      margin: 0 12px;
+      max-width: 210px;
+      text-align: center;
+      font-size: 16px;
+      // height: 204px;
+    }
+  }
+
+  &__header {
+    @include col;
+    color: $white;
+    max-width: 720px;
+
+    @media (min-width: $screen-sm-min) {
+      @include center-block(horizontal);
+    }
+
+    h1,
+    p {
+      color: $white;
+    }
+
+    h1 {
+      @include padding(all, 0);
+      @include padding(top, reset);
+    }
+
+    p {
+      @include padding(top bottom, 2);
+      @include padding(left right, 0);
+      font-size: 16px;
+      text-align: center;
+
+      @media (min-width: $screen-sm-min) {
+        @include padding(top, 0);
+        @include padding(bottom, 4);
+      }
+    }
+  }
+
+  &__small {
+    @include small;
+    @include padding(top, 1);
+    @include padding(bottom, 3);
+    color: $secondary;
+  }
+}
+
+iframe {
+  @include margin(bottom, 5);
+  border-bottom: 3200px solid $white;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

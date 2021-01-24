@@ -1,0 +1,161 @@
+@import '../utils/scale';
+
+$size-scales: -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$size-scale-factor: 1.618;
+
+@mixin size($style, $step, $size) {
+  $width-height-scale-or-reset: if(
+    $step == 'reset',
+    auto,
+    scale($step, $size-scale-factor)
+  );
+  $min-max-width-height-scale-or-reset: if(
+    $step == 'reset',
+    none,
+    scale($step, $size-scale-factor)
+  );
+
+  @if ($size == 'xs') {
+    @if ($style == 'width') {
+      width: $width-height-scale-or-reset;
+    } @else if $style == 'min-width' {
+      min-width: $min-max-width-height-scale-or-reset;
+    } @else if $style == 'max-width' {
+      max-width: $min-max-width-height-scale-or-reset;
+    } @else if $style == 'height' {
+      height: $width-height-scale-or-reset;
+    } @else if $style == 'min-height' {
+      min-height: $min-max-width-height-scale-or-reset;
+    } @else if $style == 'max-height' {
+      max-height: $min-max-width-height-scale-or-reset;
+    }
+  } @else if $size == 'xs-only' {
+    @media #{$breakpoint-xs-only} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  } @else if $size == 'sm' {
+    @media #{$breakpoint-sm-up} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  } @else if $size == 'sm-only' {
+    @media #{$breakpoint-sm-only} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  } @else if $size == 'md' {
+    @media #{$breakpoint-md-up} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  } @else if $size == 'md-only' {
+    @media #{$breakpoint-md-only} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  } @else if $size == 'lg' {
+    @media #{$breakpoint-lg-up} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  } @else if $size == 'lg-only' {
+    @media #{$breakpoint-lg-only} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  } @else if $size == 'xl' {
+    @media #{$breakpoint-xl-up} {
+      @if ($style == 'width') {
+        width: $width-height-scale-or-reset;
+      } @else if $style == 'min-width' {
+        min-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-width' {
+        max-width: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'height' {
+        height: $width-height-scale-or-reset;
+      } @else if $style == 'min-height' {
+        min-height: $min-max-width-height-scale-or-reset;
+      } @else if $style == 'max-height' {
+        max-height: $min-max-width-height-scale-or-reset;
+      }
+    }
+  }
+}

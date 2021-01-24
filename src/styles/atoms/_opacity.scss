@@ -1,0 +1,11 @@
+// usage: @include opacity(4); = .25%
+
+@mixin opacity($step) {
+  opacity: 1 / $step;
+}
+
+@each $i in $opacity-scales {
+  .o#{$i} {
+    @include opacity($i);
+  }
+}

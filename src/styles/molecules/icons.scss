@@ -1,0 +1,36 @@
+i {
+  @include padding(all, 0);
+  color: $dark;
+}
+
+// Sizes
+
+@mixin md-16 {
+  font-size: 16px;
+}
+
+@mixin md-24 {
+  font-size: 24px;
+}
+
+@mixin md-36 {
+  font-size: 36px;
+}
+
+// Colour
+
+@mixin md-disabled {
+  @include padding(all, reset);
+  @include margin(all, reset);
+  color: $inactive-grey;
+  cursor: not-allowed;
+}
+
+// Button
+@mixin md-button {
+  @include cursor-pointer;
+  @include padding(all, 1);
+  @include margin(left right, 1);
+
+  color: $primary;
+}

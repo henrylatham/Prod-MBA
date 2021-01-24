@@ -1,0 +1,39 @@
+@import '../../../styles/main';
+
+.featured {
+  @include background-light;
+  @include padding(top bottom, 4);
+  @include padding(left right, reset);
+  @include col;
+
+  @media (min-width: $screen-sm-min) {
+    @include padding(left right, 3);
+    @include padding(top bottom, 5);
+  }
+
+  &__header {
+    @include caption-center;
+    @include padding(bottom, 3);
+  }
+
+  &__logos {
+    @include row;
+    @include margin(left, 2);
+    @include padding(left right, 0);
+    justify-content: space-around;
+    overflow-x: scroll;
+
+    @media (min-width: $screen-xs-min) {
+      @include margin(left, reset);
+    }
+
+    @media (min-width: $screen-sm-min) {
+      @include margin(left right, 6);
+      @include padding(left right, 3);
+    }
+
+    &_img {
+      max-height: 48px;
+    }
+  }
+}

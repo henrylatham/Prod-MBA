@@ -1,0 +1,180 @@
+%text-base {
+  @include padding(all, reset);
+  @include margin(all, reset);
+  color: $dark;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+}
+
+%header-text {
+  @extend %text-base;
+  @include padding(bottom, 0);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 120%;
+  text-align: center;
+}
+
+@mixin h1 {
+  @extend %header-text;
+  font-size: 38px;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 46px;
+  }
+}
+
+h1 {
+  @include h1;
+}
+
+@mixin h2 {
+  @extend %header-text;
+  font-size: 32px;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 46px;
+  }
+}
+
+h2 {
+  @include h2;
+}
+
+@mixin h3 {
+  @extend %header-text;
+  font-size: 24px;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 36px;
+  }
+}
+
+h3 {
+  @include h3;
+}
+
+@mixin h4 {
+  @extend %header-text;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+  }
+}
+
+h4 {
+  @include h4;
+}
+
+@mixin h5 {
+  @extend %header-text;
+  font-family: 'Karla', sans-serif;
+  font-size: 17px;
+}
+
+h5 {
+  @include h5;
+}
+
+@mixin text {
+  @extend %text-base;
+  // NOTE @include opacity(2);
+
+  color: $grey;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@mixin small {
+  @extend %header-text;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+p,
+li {
+  @include text;
+  color: $grey;
+
+  .small {
+    @include small;
+  }
+}
+
+@mixin link {
+  @extend %header-text;
+  color: $primary;
+  font-size: 11px;
+}
+
+a {
+  @include link;
+}
+
+@mixin error-text {
+  @extend %header-text;
+  color: $error-color;
+  font-size: 11px;
+}
+
+// p.error {
+//   @include error-text;
+// }
+
+@mixin cite {
+  @include row;
+  @extend %text-base;
+  @include padding(top bottom, 2);
+  @include margin(top bottom, 0);
+  @include margin(left right, 2);
+  border-top: 1px solid $border-grey;
+  color: $grey;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+
+  // &::before,
+  // &::after {
+  //   display: none;
+  // }
+}
+
+q {
+  @include cite;
+}
+
+%caption {
+  @extend %text-base;
+  color: $inactive-grey;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
+
+@mixin caption-center {
+  @extend %caption;
+  text-align: center;
+}
+
+@mixin caption-left {
+  @extend %caption;
+  text-align: left;
+}
+
+label {
+  @include caption-center;
+
+  .left {
+    @include caption-left;
+  }
+}

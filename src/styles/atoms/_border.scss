@@ -1,0 +1,58 @@
+@import './corner-radius';
+
+%border-base {
+  border-style: solid;
+  border-width: 2px;
+}
+
+@mixin border-input {
+  @extend %border-base;
+  border-color: $secondary;
+}
+
+@mixin border-input-focus {
+  @extend %border-base;
+  border-color: transparentize($dark, 0.98);
+}
+
+@mixin border-button {
+  @extend %border-base;
+  @include circular-radius;
+  border-color: $primary;
+}
+
+@mixin border-button-dark {
+  @extend %border-base;
+  @include circular-radius;
+  border-color: $dark;
+}
+
+@mixin border-success {
+  @extend %border-base;
+  @include circular-radius;
+  border-color: $success-color;
+}
+
+@mixin border-card {
+  @extend %border-base;
+  @include corner-radius;
+  border-color: $light-grey;
+}
+
+@mixin border-white {
+  @extend %border-base;
+  @include corner-radius;
+  border-color: $white;
+}
+
+@mixin border-bottom {
+  border-bottom: 2px solid $light-grey;
+}
+
+@mixin border-top {
+  border-top: 2px solid $light-grey;
+}
+
+@mixin border-bottom-list {
+  border-bottom: 1px solid $light-grey;
+}

@@ -1,0 +1,74 @@
+%tooltip {
+  .container {
+    @include col;
+
+    padding: 24px 16px 0;
+  }
+
+  .list {
+    @include col;
+
+    margin-top: 16px;
+  }
+
+  li {
+    align-items: center;
+    display: flex;
+  }
+
+  .header {
+    @include h4;
+
+    padding: 0;
+  }
+
+  .text {
+    @include text;
+
+    max-width: 288px;
+    padding: 0 0 16px;
+  }
+
+  .icon {
+    @include icon-button;
+  }
+
+  .button {
+    @include tertiary-button;
+
+    margin: 16px 0 0;
+    padding-left: 0;
+    text-align: left;
+  }
+}
+
+@mixin tooltip {
+  @extend %tooltip;
+}
+
+@mixin settings-tooltip {
+  @extend %tooltip;
+
+  .header {
+    margin-left: 24px;
+    margin-top: 24px;
+  }
+
+  .row {
+    @include row;
+
+    padding: 8px 0;
+
+    &:hover {
+      @include opacity(1.2);
+
+      > .button {
+        color: $primary;
+      }
+    }
+
+    .button {
+      margin: 0 16px;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import '../../../styles/main';
+
+.productHero {
+  @include col;
+  @include padding(top, 2);
+  background-color: #fff;
+
+  &__header {
+    @include col;
+    color: $white;
+    max-width: 720px;
+    text-align: center;
+
+    @media (min-width: $screen-sm-min) {
+      @include center-block(horizontal);
+    }
+
+    h1 {
+      @include padding(bottom, 4);
+      @include padding(top, reset);
+    }
+
+    p {
+      @include padding(left right, 0);
+      text-align: center;
+
+      @media (min-width: $screen-sm-min) {
+        @include padding(top, 0);
+      }
+    }
+  }
+  &__logo {
+    @include padding(left right top, 2);
+    max-width: 50px; // default logo width: 140px;
+
+    @media (min-width: $screen-sm-min) {
+      @include padding(left right top, 3);
+      max-width: 100px; // default logo width: 140px;
+    }
+  }
+}
+
+iframe {
+  @include margin(bottom, 5);
+  border-bottom: 3200px solid $white;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

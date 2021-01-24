@@ -1,0 +1,17 @@
+@mixin center-block($dir: both) {
+  display: block;
+  position: relative;
+
+  @if $dir == both {
+    margin: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+  } @else if $dir == horizontal {
+    margin: auto auto auto 50%;
+    transform: translate(-50%, 0);
+  } @else if $dir == vertical {
+    margin: 50% auto auto;
+    transform: translate(0, -50%);
+  } @else {
+    @warn 'not supported dir: `#{$dir}`';
+  }
+}

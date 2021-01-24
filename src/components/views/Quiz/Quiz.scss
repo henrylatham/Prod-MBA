@@ -1,0 +1,50 @@
+@import '../../../styles/main';
+
+.quizQuestionsWrapper {
+	margin-top: 253px;
+	width: 70%;
+	// padding: 187px 150px 100px 150px;
+	background-color: $white;
+	margin: 254px auto 140px;
+	max-width: 1187px;
+
+	.statusBar {
+		width: 100%;
+		background-color: rgba(246, 199, 67, 0.3);
+		height: 8px;
+		position: relative;
+		.progress {
+			position: absolute;
+			height: 8px;
+			background-color: rgba(246, 199, 67, 1);
+		}
+	}
+	.questions {
+		padding: 187px 150px 100px 150px;
+		text-align: center;
+		p {
+			text-align: center;
+			color: #000;
+			margin-bottom: 34px;
+		}
+
+		span {
+			font-size: 11px;
+			line-height: 16px;
+			vertical-align: text-top;
+		}
+
+		input {
+    	margin-bottom: 63px;
+		}
+		
+		input[type="radio"] {
+			min-width: 48px;
+    	display: inline-block;
+		}
+
+		.inactive {
+			opacity: 0.5;
+		}
+	}
+}

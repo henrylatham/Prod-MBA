@@ -1,0 +1,37 @@
+@mixin card-elevation {
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.05);
+}
+
+@mixin modal-elevation {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+@mixin modal-elevation-hover {
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+}
+
+// Primary Button
+
+@mixin button-primary-elevation-flat {
+  box-shadow: 0 4px 8px transparentize($secondary, 0.7);
+}
+
+@mixin button-primary-elevation-raised {
+  box-shadow: 0 6px 12px transparentize($secondary, 0.8);
+}
+
+// Secondary Button
+
+@mixin button-secondary-elevation-flat {
+  box-shadow: 0 4px 8px transparentize($primary, 0.7);
+}
+
+@mixin button-secondary-elevation-raised {
+  box-shadow: 0 6px 12px transparentize($primary, 0.7);
+}
+
+// Secondary Button
+
+@mixin icon-elevation-flat {
+  box-shadow: 0 2px 4px transparentize($grey, 0.9);
+}

@@ -1,0 +1,20 @@
+@import '../../../styles/main';
+
+.header {
+  &__logo {
+    @include padding(all, 2);
+    @include opacity(1);
+    max-width: 32px; // default logo width: 140px;
+    position: fixed;
+    top: 0;
+
+    @media (min-width: $screen-sm-min) {
+      @include padding(all, 3);
+      max-width: 48px; // default logo width: 140px;
+    }
+
+    &:hover {
+      @include opacity(1.2);
+    }
+  }
+}

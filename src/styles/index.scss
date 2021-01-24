@@ -1,0 +1,16 @@
+@import 'variables';
+
+html,
+body {
+  background-color: $white;
+  display: flex;
+  margin: 0;
+}
+
+::selection {
+  background: transparentize($primary, 0.7);
+}
+
+::-moz-selection {
+  background: transparentize($primary, 0.7);
+}

@@ -1,0 +1,44 @@
+// Images
+$background-image: url('../../assets/images/backgroundHomeHeader.jpg');
+$logo: url('../../../assets/img/logoColor.png');
+
+// Elevation
+$phone-elevation: rgba(0, 0, 0, 0.1);
+
+// Alignment
+//$typo-text-align-directions: left, right, center, justify, initial, inherit;
+
+// Font Style
+//$type-styles: italic, underline, uppercase, bold;
+
+//
+// ## Grid
+//
+
+// Breakpoints
+$screen-xs-min: 320px !default;
+$screen-sm-min: 768px !default;
+$screen-md-min: 1024px !default;
+$screen-lg-min: 1200px !default;
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
+
+// COLUMN SPACING
+$grid-columns: 12; // total columns (no gutter)
+$col: 100% / $grid-columns; // single column width (percentage)
+$column: $col;
+
+//
+// ## Misc
+//
+
+// Corner Radius
+$corner-radius: 100px;
+
+// Opacity Scale
+$opacity-scales: 1, 2, 3, 4;
+
+// Padding Scale
+$padding-scales: 1, 2, 3, 4, 5, 6, 8, 10;

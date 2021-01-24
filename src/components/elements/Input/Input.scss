@@ -1,0 +1,14 @@
+@import '../../../styles/main';
+
+.container {
+  @include col;
+  max-width: 288px;
+}
+
+.input {
+  @extend %input;
+
+  &__label {
+    @include input-label;
+  }
+}

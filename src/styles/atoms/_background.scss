@@ -1,0 +1,43 @@
+@import './transition';
+
+%background-base {
+  @include transition-in-out;
+  background-size: cover;
+}
+
+@mixin background-image {
+  @extend %background-base;
+  background-attachment: fixed;
+  background-image: $background-image;
+  background-position: center left;
+}
+
+@mixin background-white {
+  @extend %background-base;
+  background-color: $white;
+}
+
+@mixin background-very-light {
+  @extend %background-base;
+  background-color: $very-light-grey;
+}
+
+@mixin background-light {
+  @extend %background-base;
+  background-color: $light-grey;
+}
+
+@mixin background-light-fade {
+  @extend %background-base;
+  background: linear-gradient(180deg, $white 0%, $light-grey 100%);
+}
+
+@mixin background-dark {
+  @extend %background-base;
+  background-color: $dark;
+}
+
+@mixin background-primary {
+  @extend %background-base;
+  background-color: $primary;
+}

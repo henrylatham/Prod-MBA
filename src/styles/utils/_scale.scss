@@ -1,0 +1,17 @@
+// function to scale in steps based on the supplied factor
+@function scale($sc, $factor) {
+  $val: 8px;
+
+  @if $sc < 0 {
+    $factor: 1 / $factor;
+    $sc: -$sc;
+  }
+
+  $i: 0;
+  @while $i < $sc {
+    $val: $val * $factor;
+    $i: $i + 1;
+  }
+
+  @return $val;
+}

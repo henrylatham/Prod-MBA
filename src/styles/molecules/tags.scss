@@ -1,0 +1,23 @@
+%tag-base {
+  @include small;
+  @include cursor-pointer;
+
+  margin: 4px;
+  padding: 4px 16px;
+  text-align: center;
+}
+
+@mixin tag-inactive {
+  @extend %tag-base;
+  @include opacity(3);
+  @include border-input;
+}
+
+@mixin tag-active {
+  @extend %tag-base;
+  @include opacity(1);
+  @include border-button;
+
+  background-color: $primary;
+  color: $white;
+}

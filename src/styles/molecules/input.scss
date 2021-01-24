@@ -1,0 +1,41 @@
+%input {
+  @extend %text-base;
+  @include background-light;
+  @include border-input;
+  @include col;
+  @include corner-radius;
+  @include cursor-pointer;
+  @include padding(top bottom, 1);
+  @include padding(left right, 2);
+  margin: 4px auto;
+  min-width: 242px;
+
+  &:focus {
+    @include border-input-focus;
+    caret-color: $primary;
+    opacity: 1;
+    outline: $white none 2px;
+  }
+
+  ::placeholder {
+    color: $light-grey;
+  }
+}
+
+// Remove?
+@mixin input-text {
+  @extend %input;
+}
+
+input {
+  @extend %input;
+}
+
+// Variations
+
+@mixin input-label {
+  p {
+    @include caption-left;
+    padding-left: 24px;
+  }
+}

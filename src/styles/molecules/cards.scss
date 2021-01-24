@@ -1,0 +1,47 @@
+%card {
+  @include corner-radius;
+  @include cursor-pointer;
+  @include border-card;
+  @include padding(all, 2);
+  @include transition-in;
+  @include col;
+  align-items: flex-start;
+  background-color: $white;
+
+  // Add fixed shadow for tablet/mobile
+  @media (max-width: $screen-sm-min) {
+    @include card-elevation;
+  }
+
+  &:hover {
+    @include card-elevation;
+    @include border-white;
+    @include transition-out;
+  }
+}
+
+@mixin card-base {
+  @extend %card;
+}
+
+// Card: Content Row
+@mixin card-collection {
+  @extend %card;
+  justify-content: space-between;
+  max-width: 240px;
+  min-height: 180px;
+  min-width: 240px;
+}
+
+@mixin card-modal {
+  @extend %card;
+  @include margin(all, 2);
+  @include padding(all, 3);
+  @include modal-elevation;
+  border: 0;
+
+  &:hover {
+    @include modal-elevation-hover;
+    border: 0;
+  }
+}
