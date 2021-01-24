@@ -1,3 +1,5 @@
+// @TODO - Henry Define Quiestions and Questions sections
+
 export const QuestionsDataset = {
   productStrategy: {
     questions: [
@@ -51,6 +53,7 @@ export const TITLES = {
   influencer: "The Influencer",
   customerInsight: "The Influencer",
   allRounder: "The All Rounder",
+  student: "The Student",
 }
 
 export const QuestionsDatasetOrder = ['productStrategy', 'execution', 'influencer', 'customerInsight'];

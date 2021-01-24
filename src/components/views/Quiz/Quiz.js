@@ -14,11 +14,12 @@ export default class Quiz extends Component {
       questionsConstructor[key] = {};
       resultsConstructor[key] = 0;
     });
-    console.debug('>> questionsConstructor: ', questionsConstructor);
-    console.debug('>> resultsConstructor: ', resultsConstructor);
     super();
     this.state = {
+      // @TODO - Henry - change this state (true / false) for fast (quiz / general) questions switching
+      //               - Now is set to general questions - enter email and location to see dummy data output (Comment added above dummy data so you can change params)
       testStep: true,
+      // End TODO
       currentSection: QuestionsDatasetOrder[0],
       answers: questionsConstructor,
       results: resultsConstructor,
@@ -31,8 +32,6 @@ export default class Quiz extends Component {
   }
 
   onChangeValue = (questionNo, e) => {
-    console.debug('>>> questionNo: ', questionNo);
-    console.debug('>>> VAL: ', e.target.value);
     this.setState({
       answers: {
         ...this.state.answers,
@@ -48,18 +47,13 @@ export default class Quiz extends Component {
     const { answers, currentSection } = this.state;
     let sectionResult = 0;
     map(answers[currentSection], (answerPoints) => {
-      console.debug('>>> answerPoints: ', answerPoints);
       sectionResult = sectionResult + answerPoints;
     })
 
-    console.debug('>>> sectionResult: ', sectionResult);
-
     const currentSectionIndex = findIndex(QuestionsDatasetOrder, (o) => o == currentSection) + 1;
 
-    console.debug('>>> currentSectionIndex: ', currentSectionIndex);
     let canGoNext = false;
     if (currentSectionIndex < QuestionsDatasetOrder.length) {
-      console.debug('>>> canGoNext');
       canGoNext = true;
     }
 
@@ -67,21 +61,13 @@ export default class Quiz extends Component {
       ...this.state.results,
       [currentSection]: sectionResult,
     };
-    console.debug('>>> results: ', results);
-    console.debug('>>> NEXT section: ', currentSectionIndex, currentSectionIndex + 1, canGoNext);
-
-
-    console.debug('>>> NN: ', QuestionsDatasetOrder[currentSectionIndex], QuestionsDatasetOrder[currentSectionIndex + 1]);
 
     this.setState({
       results,
       currentSection: canGoNext ? (QuestionsDatasetOrder[currentSectionIndex]) : QuestionsDatasetOrder[currentSectionIndex - 1],
     });
 
-    console.debug('>>> NEW STATE: ', this.state)
-
     if (!canGoNext) {
-      console.debug('>>> FINAL CALC')
       // It is Final
       this.calculateFinalResults(results);
     }
@@ -90,6 +76,7 @@ export default class Quiz extends Component {
   // @TODO - comment out
   // calculateFinalResults = (results) => {
   calculateFinalResults = () => {
+    // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
     const results = {
       customerInsight: 10,
       execution: 20,
@@ -114,42 +101,24 @@ export default class Quiz extends Component {
       console.debug('>>> RR: ', key, newLoopResults);
       map(newLoopResults, result2 => {
         if (Math.abs(result - result2) < DiffMargin) {
-          console.debug('>>> SET all rounder: ', result, result2, result - result2, Math.abs(result - result2));
           allRounderDiff = true;
         }
       })
     });
 
-    console.debug('>>> RESULTS: ', {
-      total,
-      highestScore,
-      highestResult,
-      allRounderDiff,
-      state: this.state,
-    })
-
-    const isStrategist = (total >= TotalOutcomeLimit) && (highestResult === 'productStrategy') ? 'strategist' : null;
-    const isExecutioner = (total >= TotalOutcomeLimit) && (highestResult === 'execution') ? 'executioner' : null
+    const isStrategist = (total >= TotalOutcomeLimit) && (highestResult === 'productStrategy') ? 'productStrategy' : null;
+    const isExecutioner = (total >= TotalOutcomeLimit) && (highestResult === 'execution') ? 'execution' : null
     const isInfluencer = (total >= TotalOutcomeLimit) && (highestResult === 'influencer') ? 'influencer' : null
-    const isVisionary = (total >= TotalOutcomeLimit) && (highestResult === 'customerInsight') ? 'visionary' : null
+    const isVisionary = (total >= TotalOutcomeLimit) && (highestResult === 'customerInsight') ? 'customerInsight' : null
     const isAllRounder = (total >= TotalOutcomeLimit) && allRounderDiff ? 'allRounder' : null;
     const isStudent = total < TotalOutcomeLimit ? 'student' : null; // Total below 64 or below
 
-    console.debug('>>> TYPE: ', {
-      isStrategist,
-      isExecutioner,
-      isInfluencer,
-      isVisionary,
-      isAllRounder,
-      isStudent,
-    })
-
     const outcome = isAllRounder || isStrategist || isExecutioner || isInfluencer || isVisionary || isStudent;
-    console.debug('>>> outcome: ', outcome);
 
     const finalData = {
       type: outcome,
       score: total,
+      overal: results,
     };
 
     this.setState({ finalData });
@@ -159,17 +128,11 @@ export default class Quiz extends Component {
   submitResults = () => {
     const { userData } = this.state;
     const finalData = this.calculateFinalResults();
-    // score: 100
-    // type: influencer
-    console.debug('>>> finalData: ', finalData);
-    console.debug('>>> userData: ', userData);
     const uniqParam = window.btoa(`${JSON.stringify(finalData)}-${JSON.stringify(userData)}-1`);
-    console.debug('>>> uniqParam: ', uniqParam);
     this.props.history.push(`/product-type/${uniqParam}`)
   };
 
   onInputChange = (type, e) => {
-    console.debug('>>> CHANGE: ', {type, e})
     this.setState({
       userData: {
         ...this.state.userData,
@@ -181,21 +144,12 @@ export default class Quiz extends Component {
   render() {
     const { currentSection, answers, testStep, userData } = this.state;
     const dataset = QuestionsDataset[currentSection];
-    console.debug('>>> dataset: ', {dataset, currentSection});
     const numberOfSections = QuestionsDatasetOrder.length;
 
     const currentSectionIndex = findIndex(QuestionsDatasetOrder, (o) => o === currentSection) + 1;
-    console.debug('>>> currentSectionIndex: ', currentSectionIndex);
     const progress = `${(currentSectionIndex / numberOfSections) * 100}%`;
 
-    console.debug('>>> Progress: ', progress);
-
-    console.debug('>>> ANS: ', this.state.answers, this.state.results);
-
     const buttonLabel = currentSectionIndex === QuestionsDatasetOrder.length ? 'Finish Quiz' : 'Next';
-
-    console.debug('>>> AA 1: ', dataset.questions.length);
-    console.debug('>>> AA 2: ', size(answers[currentSection]));
     const isButtonDisabled = dataset.questions.length !== size(answers[currentSection]);
 
     return (

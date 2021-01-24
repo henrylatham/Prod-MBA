@@ -20,11 +20,6 @@ export default class ProductHero extends Component<Props> {
       scoreType,
     } = this.props;
 
-    console.debug('>>> yo: ', scoreType)
-    console.debug('>>> TTT: ', TITLES[scoreType])
-
-    console.debug('>>> viewType: ', viewType)
-
     return (
       <div className="productHero">
         <div className="productHero__header">
