@@ -20,14 +20,22 @@
     bottom: -102px;
     justify-content: center;
 
-    div {
-      padding: 105px 50px;
+    @media (max-width: $screen-sm-min) {
+      display: none;
+    }
+
+    &_block {
+      @include card-base;
+      @include corner-radius;
+      @include card-elevation;
       background-color: $white;
-      width: 100%;
+      font-size: 16px;
       margin: 0 12px;
       max-width: 210px;
+      padding: 105px 50px;
+      cursor: default;
       text-align: center;
-      font-size: 16px;
+      width: 100%;
       // height: 204px;
     }
   }

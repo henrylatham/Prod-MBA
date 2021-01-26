@@ -21,14 +21,10 @@ export const Test = (
       <Switch>
         <Route path="/home" exact component={Quiz} />
         <Route path="/product-type/:typeId" exact component={ProductType} />
-
       </Switch>
     </PageLayout>
   </Router>
 );
 
-ReactDOM.render(
-  Test,
-  document.getElementById('root')
-);
+ReactDOM.render(Test, document.getElementById('root'));
 serviceWorker.unregister();

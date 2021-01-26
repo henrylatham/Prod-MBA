@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { includes, camelCase } from 'lodash';
 import { Button } from '../../elements';
 import { Header, ProductHero, Featured, Footer } from '../../blocks';
-import { TITLES } from '../../views/Quiz/Questions';
+import { TITLES, TYPEIMAGES } from '../../views/Quiz/Questions';
 import TypesCopy from './TypesCopy';
 import './ProductType.scss';
 
@@ -12,7 +12,14 @@ export default class ProductType extends Component {
 
     // Get URL params
     const urlParams = this.props.match.params.typeId;
-    const knownTypes = ['product-strategy', 'execution', 'influencer', 'customer-insight', 'all-rounder', 'student'];
+    const knownTypes = [
+      'product-strategy',
+      'execution',
+      'influencer',
+      'customer-insight',
+      'all-rounder',
+      'student',
+    ];
     const isKnownDefaultRoute = includes(knownTypes, urlParams);
 
     let mode = 0;
@@ -41,11 +48,12 @@ export default class ProductType extends Component {
 
     return (
       <div className="homePageWrapper">
-        <Header light />
+        <Header dark />
         <ProductHero
           viewType={mode}
           scoreType={scoreType}
           title={TITLES[scoreType]}
+          typeImage={TYPEIMAGES[scoreType]}
           subtitle="Your Product Type is:"
         />
         <div className="productContent">
@@ -53,26 +61,30 @@ export default class ProductType extends Component {
             <TypesCopy type={scoreType} typeResult={typeResult} />
           </div>
           <div className="right">
-          {mode === 1 ? ( // User TIPs
-            <Fragment>
-              <div className='graph'>
-                Graph
+            {mode === 1 ? ( // User TIPs
+              <Fragment>
+                <div className="graph">Graph</div>
+                <div className="tipsBlock">
+                  <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                  <p className="description">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet.{' '}
+                  </p>
+                </div>
+              </Fragment>
+            ) : (
+              // Default Route TIP
+              <div className="newUser">
+                <h3 className="title">New here?</h3>
+                <Button
+                  label="Take the test"
+                  onClick={() => history.push('/home')}
+                />
               </div>
-              <div className='tipsBlock'>
-                <p className='label'>{`Tip for "${TITLES[scoreType]}"`}</p>
-                <p className='description'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-              </div>
-            </Fragment>
-          ) : ( // Default Route TIP
-            <div className='newUser'>
-              <h3 className='title'>New here?</h3>
-              <Button
-                label='Take the test'
-                onClick={() => history.push('/home')}
-              />
-            </div>
-          )}
-
+            )}
           </div>
         </div>
         <Footer page="PRODUCT_TYPE" />

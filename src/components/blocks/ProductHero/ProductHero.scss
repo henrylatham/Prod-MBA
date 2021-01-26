@@ -16,7 +16,7 @@
     }
 
     h1 {
-      @include padding(bottom, 4);
+      @include padding(bottom, 5);
       @include padding(top, reset);
     }
 
@@ -31,11 +31,11 @@
   }
   &__logo {
     @include padding(left right top, 2);
-    max-width: 50px; // default logo width: 140px;
+    max-width: 300px; // default logo width: 140px;
 
     @media (min-width: $screen-sm-min) {
       @include padding(left right top, 3);
-      max-width: 100px; // default logo width: 140px;
+      max-width: 400px; // default logo width: 140px;
     }
   }
 }

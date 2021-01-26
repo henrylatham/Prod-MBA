@@ -9,21 +9,18 @@ type Props = {
 
 export default class Hero extends Component<Props> {
   render() {
-    const {
-      title,
-      subtitle,
-    } = this.props;
+    const { title, subtitle } = this.props;
 
     return (
-      <div className='hero'>
-        <div className='hero__header'>
+      <div className="hero">
+        <div className="hero__header">
           <h1>{title}</h1>
           <p>{subtitle}</p>
         </div>
-        <div className='hero__featuredBlocks'>
-          <div>One</div>
-          <div>Two</div>
-          <div>Three</div>
+        <div className="hero__featuredBlocks">
+          <div className="hero__featuredBlocks_block">One</div>
+          <div className="hero__featuredBlocks_block">Two</div>
+          <div className="hero__featuredBlocks_block">Three</div>
         </div>
       </div>
     );
