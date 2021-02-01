@@ -84,7 +84,7 @@ export default class ProductType extends Component {
               <h3 className='title'>New here?</h3>
               <Button
                 label='Take the test'
-                onClick={() => history.push('/home')}
+                onClick={this.takeQuiz}
               />
             </div>
           )}
