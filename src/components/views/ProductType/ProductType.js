@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { includes, camelCase } from 'lodash';
+import { includes, camelCase, kebabCase } from 'lodash';
 import { Button } from '../../elements';
 import { Header, ProductHero, Featured, Footer } from '../../blocks';
 import { TITLES } from '../../views/Quiz/Questions';
@@ -7,6 +7,14 @@ import TypesCopy from './TypesCopy';
 import './ProductType.scss';
 
 export default class ProductType extends Component {
+  takeQuiz = () => {
+    return this.props.history.push('/home');
+  };
+
+  handleGoTo = (strategy) => {
+    this.props.history.push(`/product-type/${kebabCase(strategy)}`);
+  };
+
   render() {
     const { history } = this.props;
 
@@ -18,8 +26,11 @@ export default class ProductType extends Component {
     let mode = 0;
     let typeResult = 0;
     let scoreType = '';
+
+    const personalPage = urlParams && !isKnownDefaultRoute;
+
     // Check if rote has user hash or is default product route
-    if (urlParams && !isKnownDefaultRoute) {
+    if (personalPage) {
       // User route
       const decodedUrlParams = atob(urlParams);
       const data = decodedUrlParams.split('-');
@@ -41,7 +52,12 @@ export default class ProductType extends Component {
 
     return (
       <div className="homePageWrapper">
-        <Header light />
+        <Header
+          light
+          onDefaultClick={this.takeQuiz}
+          onGoTo={this.handleGoTo}
+          showQuiz={!personalPage}
+        />
         <ProductHero
           viewType={mode}
           scoreType={scoreType}
@@ -53,7 +69,7 @@ export default class ProductType extends Component {
             <TypesCopy type={scoreType} typeResult={typeResult} />
           </div>
           <div className="right">
-          {mode === 1 ? ( // User TIPs
+          {(mode === 1 || personalPage) ? ( // User TIPs
             <Fragment>
               <div className='graph'>
                 Graph

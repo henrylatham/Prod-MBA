@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { find, map, findIndex, size, omit } from 'lodash';
+import { find, map, findIndex, size, omit, kebabCase } from 'lodash';
 import { Header, Hero, Featured, Footer } from '../../blocks';
 import { Button, Input } from '../../elements';
 import './Quiz.scss';
@@ -15,6 +15,7 @@ export default class Quiz extends Component {
       resultsConstructor[key] = 0;
     });
     super();
+    this.quizRef = React.createRef()
     this.state = {
       // @TODO - Henry - change this state (true / false) for fast (quiz / general) questions switching
       //               - Now is set to general questions - enter email and location to see dummy data output (Comment added above dummy data so you can change params)
@@ -98,7 +99,6 @@ export default class Quiz extends Component {
 
       // compare each with others to get possible "All Rounder"
       const newLoopResults = omit(results, key);
-      console.debug('>>> RR: ', key, newLoopResults);
       map(newLoopResults, result2 => {
         if (Math.abs(result - result2) < DiffMargin) {
           allRounderDiff = true;
@@ -141,6 +141,14 @@ export default class Quiz extends Component {
     });
   }
 
+  scrollIntoView = () => {
+    return this.quizRef.current.scrollIntoView()
+  }
+
+  handleGoTo = (strategy) => {
+    this.props.history.push(`/product-type/${kebabCase(strategy)}`);
+  }
+
   render() {
     const { currentSection, answers, testStep, userData } = this.state;
     const dataset = QuestionsDataset[currentSection];
@@ -154,12 +162,17 @@ export default class Quiz extends Component {
 
     return (
       <div className='quizWrapper'>
-        <Header light />
+        <Header
+          light
+          onDefaultClick={this.scrollIntoView}
+          onGoTo={this.handleGoTo}
+          showQuiz
+        />
         <Hero
           title='Product Skills Test'
           subtitle='Assess your product skills to learn how to level-up your product career'
         />
-        <div className='quizQuestionsWrapper'>
+        <div className='quizQuestionsWrapper' ref={this.quizRef}>
           <div className='statusBar'>
             <div className='progress' style={{ width: progress }} />
           </div>
