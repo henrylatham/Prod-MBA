@@ -8,7 +8,7 @@ import './ProductType.scss';
 
 export default class ProductType extends Component {
   takeQuiz = () => {
-    return this.props.history.push('/home');
+    return this.props.history.push('/home/take');
   };
 
   handleGoTo = (strategy) => {

@@ -19,7 +19,9 @@ export const Test = (
   <Router history={history}>
     <PageLayout>
       <Switch>
+        <Route path="/" exact component={Quiz} />
         <Route path="/home" exact component={Quiz} />
+        <Route path="/home/:take" exact component={Quiz} />
         <Route path="/product-type/:typeId" exact component={ProductType} />
 
       </Switch>

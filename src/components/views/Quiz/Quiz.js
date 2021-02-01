@@ -32,6 +32,13 @@ export default class Quiz extends Component {
     };
   }
 
+  componentDidMount() {
+    const isTake = this.props.match.params.take;
+    if (isTake) {
+      this.scrollIntoView();
+    }
+  }
+
   onChangeValue = (questionNo, e) => {
     this.setState({
       answers: {
@@ -142,7 +149,7 @@ export default class Quiz extends Component {
   }
 
   scrollIntoView = () => {
-    return this.quizRef.current.scrollIntoView()
+    return this.quizRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   handleGoTo = (strategy) => {
