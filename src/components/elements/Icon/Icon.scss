@@ -1,0 +1,19 @@
+@import '../../../styles/main';
+
+.icon-container {
+  .button {
+    @include md-button;
+  }
+
+  .inactive16 {
+    @include md-16;
+  }
+
+  .inactive24 {
+    @include md-24;
+  }
+
+  .disabled {
+    @include md-disabled;
+  }
+}
