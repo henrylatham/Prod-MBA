@@ -9,6 +9,7 @@
 //      "execution"       => http://localhost:3000/product-type/execution
 
 import React, { Component } from 'react';
+import './TypesCopy.scss';
 
 const Copy = {
   productStrategy: {
@@ -310,7 +311,7 @@ export default class TypesCopy extends Component {
     return (
       <>
         <div className="intro">
-          <h3>Intro</h3>
+          <h2>Intro</h2>
           <div>{copy.intro}</div>
         </div>
         <div className="description">

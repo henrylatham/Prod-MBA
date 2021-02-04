@@ -21,10 +21,7 @@ export default class Quiz extends Component {
     super();
     this.quizRef = React.createRef();
     this.state = {
-      // @TODO - Henry - change this state (true / false) for fast (quiz / general) questions switching
-      //               - Now is set to general questions - enter email and location to see dummy data output (Comment added above dummy data so you can change params)
       testStep: true,
-      // End TODO
       currentSection: QuestionsDatasetOrder[0],
       answers: questionsConstructor,
       results: resultsConstructor,
@@ -94,8 +91,8 @@ export default class Quiz extends Component {
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
     const results = {
       customerInsight: 10,
-      execution: 20,
-      influencer: 40,
+      execution: 10,
+      influencer: 10,
       productStrategy: 30,
     };
 

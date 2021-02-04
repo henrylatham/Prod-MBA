@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
 import { Button } from '../../elements';
 import { Header, ProductHero, Featured, Footer } from '../../blocks';
-import { TITLES } from '../Quiz/Questions';
+import { TITLES, TYPEIMAGES } from '../../views/Quiz/Questions';
 import TypesCopy from './TypesCopy';
 import TipCopy from './TipCopy';
 import './ProductType.scss';
@@ -70,6 +70,7 @@ export default class ProductType extends Component {
           viewType={mode}
           scoreType={scoreType}
           title={TITLES[scoreType]}
+          typeImage={TYPEIMAGES[scoreType]}
           subtitle="Your Product Type is:"
         />
         <div className="productContent">
