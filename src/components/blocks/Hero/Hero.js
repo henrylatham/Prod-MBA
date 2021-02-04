@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import './Hero.scss';
-import influencer from '../../../assets/images/type_influencer.png';
-import strategist from '../../../assets/images/type_strategist.png';
-import allRounder from '../../../assets/images/type_all_rounder.png';
+import influencer from '../../../assets/images/hero/type_influencer.png';
+import strategist from '../../../assets/images/hero/type_strategist.png';
+import allRounder from '../../../assets/images/hero/type_all_rounder.png';
 
 type Props = {
   title: string,
