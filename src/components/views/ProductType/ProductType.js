@@ -2,8 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
 import { Button } from '../../elements';
 import { Header, ProductHero, Featured, Footer } from '../../blocks';
-import { TITLES } from '../../views/Quiz/Questions';
+import { TITLES } from '../Quiz/Questions';
 import TypesCopy from './TypesCopy';
+import TipCopy from './TipCopy';
 import './ProductType.scss';
 
 export default class ProductType extends Component {
@@ -11,7 +12,7 @@ export default class ProductType extends Component {
     return this.props.history.push('/home/take');
   };
 
-  handleGoTo = (strategy) => {
+  handleGoTo = strategy => {
     this.props.history.push(`/product-type/${kebabCase(strategy)}`);
   };
 
@@ -20,7 +21,14 @@ export default class ProductType extends Component {
 
     // Get URL params
     const urlParams = this.props.match.params.typeId;
-    const knownTypes = ['product-strategy', 'execution', 'influencer', 'customer-insight', 'all-rounder', 'student'];
+    const knownTypes = [
+      'product-strategy',
+      'execution',
+      'influencer',
+      'customer-insight',
+      'all-rounder',
+      'student',
+    ];
     const isKnownDefaultRoute = includes(knownTypes, urlParams);
 
     let mode = 0;
@@ -69,26 +77,21 @@ export default class ProductType extends Component {
             <TypesCopy type={scoreType} typeResult={typeResult} />
           </div>
           <div className="right">
-          {(mode === 1 || personalPage) ? ( // User TIPs
-            <Fragment>
-              <div className='graph'>
-                Graph
+            {mode === 1 || personalPage ? ( // User TIPs
+              <Fragment>
+                <div className="graph">Graph</div>
+                <div className="tipsBlock">
+                  <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                  <TipCopy type={scoreType} typeResult={typeResult} />
+                </div>
+              </Fragment>
+            ) : (
+              // Default Route TIP
+              <div className="newUser">
+                <h3 className="title">New here?</h3>
+                <Button label="Take the test" onClick={this.takeQuiz} />
               </div>
-              <div className='tipsBlock'>
-                <p className='label'>{`Tip for "${TITLES[scoreType]}"`}</p>
-                <p className='description'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-              </div>
-            </Fragment>
-          ) : ( // Default Route TIP
-            <div className='newUser'>
-              <h3 className='title'>New here?</h3>
-              <Button
-                label='Take the test'
-                onClick={this.takeQuiz}
-              />
-            </div>
-          )}
-
+            )}
           </div>
         </div>
         <Footer page="PRODUCT_TYPE" />
