@@ -4,6 +4,7 @@ import { Button } from '../../elements';
 import { Header, ProductHero, Featured, Footer } from '../../blocks';
 import { TITLES, TYPEIMAGES } from '../../views/Quiz/Questions';
 import TypesCopy from './TypesCopy';
+import TipCopy from './TipCopy';
 import './ProductType.scss';
 
 export default class ProductType extends Component {
@@ -82,13 +83,7 @@ export default class ProductType extends Component {
                 <div className="graph">Graph</div>
                 <div className="tipsBlock">
                   <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
-                  <p className="description">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor sit amet.{' '}
-                  </p>
+                  <TipCopy type={scoreType} typeResult={typeResult} />
                 </div>
               </Fragment>
             ) : (

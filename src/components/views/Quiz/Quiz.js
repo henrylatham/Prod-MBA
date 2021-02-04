@@ -192,7 +192,7 @@ export default class Quiz extends Component {
 
     const buttonLabel =
       currentSectionIndex === QuestionsDatasetOrder.length
-        ? 'Finish Quiz'
+        ? 'Finish & View Product Type'
         : 'Next';
     const isButtonDisabled =
       dataset.questions.length !== size(answers[currentSection]);
