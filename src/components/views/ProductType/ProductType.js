@@ -35,7 +35,7 @@ export default class ProductType extends Component {
     const isKnownDefaultRoute = includes(KNOWN_TYPES, urlParams);
     const personalPage = urlParams && !isKnownDefaultRoute;
     if (personalPage) {
-      setTimeout(() => this.setState({ isModalOpen: true }), 1000);
+      setTimeout(() => this.setState({ isModalOpen: true }), 4000);
     }
   }
 
