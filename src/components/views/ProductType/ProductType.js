@@ -1,12 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
 import { Button, Modal } from '../../elements';
-import {
-  Header,
-  ProductHero,
-  Footer,
-  RadarChart,
-} from '../../blocks';
+import { Mixpanel } from '../../../Mixpanel';
+import { Header, ProductHero, Footer, RadarChart } from '../../blocks';
 import { TITLES, TYPEIMAGES } from '../../views/Quiz/Questions';
 import TypesCopy from './TypesCopy';
 import TipCopy from './TipCopy';
@@ -36,6 +32,8 @@ export default class ProductType extends Component {
     if (personalPage) {
       setTimeout(() => this.setState({ isModalOpen: true }), 4000);
     }
+
+    Mixpanel.track(`Test / ${urlParams} / ${this.state.isModalOpen}`);
   }
 
   takeQuiz = () => {
@@ -50,8 +48,8 @@ export default class ProductType extends Component {
     this.setState({ isModalOpen: false });
   };
 
-  handleDeclineEmailSend = (e) => {
-    e.preventDefault()
+  handleDeclineEmailSend = e => {
+    e.preventDefault();
     this.setState({ isModalOpen: false });
   };
 

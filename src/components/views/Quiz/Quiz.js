@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { map, findIndex, size, omit, kebabCase } from 'lodash';
 import { Header, Hero } from '../../blocks';
 import { Button, Input } from '../../elements';
+import { Mixpanel } from '../../../Mixpanel';
 import './Quiz.scss';
 import {
   QuestionsDataset,
@@ -34,6 +35,8 @@ export default class Quiz extends Component {
   }
 
   componentDidMount() {
+    Mixpanel.track(`Test / Home`);
+
     const isTake = this.props.match.params.take;
     if (isTake) {
       this.scrollIntoView();
