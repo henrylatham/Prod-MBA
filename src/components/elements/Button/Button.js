@@ -25,8 +25,9 @@ export default class Button extends Component<Props> {
       quarternary,
       disabled,
       classOverride,
+      type,
     } = this.props;
-    const buttonType = secondary || tertiary || quarternary || 'primary';
+    const buttonType = type || 'primary';
 
     return (
       <div onClick={onClick} className="btnContainer" role="presentation">

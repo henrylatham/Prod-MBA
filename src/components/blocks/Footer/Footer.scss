@@ -12,7 +12,11 @@
     @include padding(bottom, 4);
     @include padding(left right, 3);
     @include row;
-    justify-content: space-between;
+    justify-content: center;
+  }
+
+  .share {
+    margin: 0 10px;
   }
 
   &__logo {

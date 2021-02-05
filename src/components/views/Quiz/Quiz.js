@@ -88,7 +88,7 @@ export default class Quiz extends Component {
     const results = {
       customerInsight: 10,
       execution: 20,
-      influencer: 40,
+      influencer: 35,
       productStrategy: 30,
     }
 

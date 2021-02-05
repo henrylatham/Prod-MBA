@@ -1,5 +1,4 @@
 %card {
-  @include corner-radius;
   @include cursor-pointer;
   @include border-card;
   @include padding(all, 2);
@@ -13,11 +12,6 @@
     @include card-elevation;
   }
 
-  &:hover {
-    @include card-elevation;
-    @include border-white;
-    @include transition-out;
-  }
 }
 
 @mixin card-base {

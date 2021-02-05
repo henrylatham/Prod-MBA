@@ -80,9 +80,9 @@
 @mixin tertiary-button {
   @extend %button;
   background-color: inherit;
-  border: 0;
+  border: 2px solid $grey;
   box-shadow: none;
-  color: $primary;
+  color: $grey;
 
   &:hover {
     @include opacity(1.2);

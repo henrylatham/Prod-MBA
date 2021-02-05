@@ -1,0 +1,42 @@
+@import '../../../styles/main';
+
+// backgroundContainer
+.modalBg {
+  @include modal-container;
+  &.hidden {
+  	display: none;
+  }
+}
+
+.modal {
+  @include confirmation-modal;
+  .cardModal {
+  	border-radius: 6px;
+  	.modal__text {
+  		color: $grey;
+  		margin: auto;
+  	}
+  	.modal__title {
+  		margin: auto;
+  	}
+  	.modale_image_block {
+  		height: 100px;
+  		width: 70%;
+  		margin: 20px auto;
+  		background-color: $light-grey;
+  	}
+  	._activeCampaign-fields {
+  		visibility: hidden;
+  	}
+  }
+  ._button-wrapper {
+  	display: flex;
+  	justify-content: center;
+  	button {
+  		margin: 0 10px;
+  	}
+  }
+  form {
+  	width: 100%;
+  }
+}

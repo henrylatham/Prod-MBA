@@ -51,7 +51,7 @@ export const TITLES = {
   productStrategy: "The Strategist",
   execution: "The Executioner",
   influencer: "The Influencer",
-  customerInsight: "The Influencer",
+  customerInsight: "The Visionary",
   allRounder: "The All Rounder",
   student: "The Student",
 }

@@ -1,0 +1,35 @@
+@import '../../../styles/main';
+
+.card {
+  @include margin(all, 0);
+}
+
+.cardDefault {
+  @include card-base;
+  min-height: 80px;
+}
+
+.cardActive {
+  @include card-base;
+  @include card-elevation;
+  @include border-white;
+  @include transition-out;
+  min-height: 80px;
+}
+
+.cardModal {
+  @include card-modal;
+  @include padding(all, reset);
+  min-height: 140px;
+}
+
+.cardDisabled {
+  @include card-base;
+  cursor: not-allowed;
+  min-height: 80px;
+
+  &:hover {
+    @include border-card;
+    box-shadow: initial;
+  }
+}

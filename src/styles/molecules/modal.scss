@@ -31,7 +31,7 @@
 %modal-base {
   @include col;
   @include transition-in-out;
-  max-width: 420px;
+  max-width: 500px;
 }
 
 @mixin confirmation-modal {
@@ -57,9 +57,5 @@
     @include padding(top bottom, 0);
     justify-content: space-around;
     width: 100%;
-
-    .btnContainer:first-child button {
-      color: $inactive-grey;
-    }
   }
 }

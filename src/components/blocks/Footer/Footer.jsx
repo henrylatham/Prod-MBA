@@ -1,53 +1,65 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../../assets/images/logoWhite.svg';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  EmailShareButton,
+  EmailIcon,
+} from 'react-share';
 
 import './Footer.scss';
 
 class Footer extends Component {
   render() {
-    const home = this.props.page === 'HOME' ? 'active' : 'inactive';
-    // const about = this.props.page === 'ABOUT' ? 'active' : 'inactive';
-    // const courses = this.props.page === 'COURSES' ? 'active' : 'inactive';
-    const blog = this.props.page === 'BLOG' ? 'active' : 'inactive';
-    // let privacy = this.props.page === 'PRIVACY POLICY' ? 'active' :'inactive'
-    const terms =
-      this.props.page === 'TERMS & CONDITIONS' ? 'active' : 'inactive';
+    const { title } = this.props;
+    const shareUrl = window.location.href;
+    const quote = `Skill Assessment - ${title}`;
     return (
       <div className="footer">
-        <div className="`footer__list`">
-          <div className="footer__list_item">
-            <Link to="/home" className={home}>
-              Home
-            </Link>
-          </div>
-          <div className="footer__list_item">
-            <Link to="/about" className={terms}>
-              About
-            </Link>
-          </div>
-          <div className="footer__list_item">
-            <a
-              className={blog}
-              href="https://productmastery.substack.com/"
-              onClick={this.goToBlog}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Blog
-            </a>
-          </div>
-          <div className="footer__list_item">
-            <Link to="/legal" className={terms}>
-              Terms of Service
-            </Link>
-          </div>
+
+        <div className="FacebookWrapper share">
+          <FacebookShareButton
+            url={shareUrl}
+            quote={quote}
+            className="facebookShare"
+          >
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
         </div>
 
-        <div className="footer__logo">
-          <Link to="/home" className="footer__logo_img">
-            <img alt="logo" src={Logo} className="footer__logo_imglogo" />
-          </Link>
+        <div className="LinkedinWrapper share">
+          <LinkedinShareButton
+            url={shareUrl}
+            className="LinkedinShare"
+          >
+            <LinkedinIcon size={32} round />
+          </LinkedinShareButton>
+        </div>
+
+        <div className="WhatsappWrapper share">
+          <WhatsappShareButton
+            url={shareUrl}
+            title={quote}
+            separator=":: "
+            className="WhatsappShare"
+          >
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+        </div>
+
+        <div className="emailWrapper share">
+          <EmailShareButton
+            url={shareUrl}
+            subject={title}
+            body="body"
+            className="emailShare"
+          >
+            <EmailIcon size={32} round />
+          </EmailShareButton>
         </div>
       </div>
     );
