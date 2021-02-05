@@ -19,7 +19,7 @@ export default class ProductHero extends Component<Props> {
     return (
       <div className="productHero">
         <div className="productHero__header">
-          <img alt="logo" src={typeImage} className="productHero__logo" />
+          <img alt="img" src={typeImage} className="productHero__img" />
           {viewType === 1 && <p>{subtitle}</p>}
           <h1>{title}</h1>
         </div>

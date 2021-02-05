@@ -1,13 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
 import { Button } from '../../elements';
-import { Header, ProductHero, Featured, Footer } from '../../blocks';
-import { TITLES, TYPEIMAGES } from '../../views/Quiz/Questions';
+import { Header, ProductHero, Footer } from '../../blocks';
+import { TITLES, TYPEIMAGES } from '../Quiz/Questions';
+import { Mixpanel } from '../../../Mixpanel';
 import TypesCopy from './TypesCopy';
 import TipCopy from './TipCopy';
+import influencer from '../../../assets/images/graph_example.png';
 import './ProductType.scss';
 
 export default class ProductType extends Component {
+  componentDidMount(scoreType) {
+    // Mixpanel.track(`Skills / Type / ${TITLES[scoreType]}`);
+  }
+
   takeQuiz = () => {
     return this.props.history.push('/home/take');
   };
@@ -88,9 +94,24 @@ export default class ProductType extends Component {
               </Fragment>
             ) : (
               // Default Route TIP
-              <div className="newUser">
-                <h3 className="title">New here?</h3>
-                <Button label="Take the test" onClick={this.takeQuiz} />
+              <div>
+                <div className="newUser">
+                  <img
+                    alt="influencer"
+                    src={influencer}
+                    className="newUser_img"
+                  />
+                  <h3 className="newUser_title">New here?</h3>
+                  <p>
+                    Assess your own product skills & unlock unique tips to
+                    improve upon:
+                  </p>
+                  <Button label="Start Test" onClick={this.takeQuiz} />
+                </div>
+                <div className="tipsBlock">
+                  <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                  <TipCopy type={scoreType} typeResult={typeResult} />
+                </div>
               </div>
             )}
           </div>

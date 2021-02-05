@@ -23,8 +23,11 @@
     width: fit-content;
     position: absolute;
     z-index: 1;
+    right: 0px;
 
-    right: 20px;
+    @media (min-width: $screen-sm-min) {
+      right: 20px;
+    }
 
     .icon-container {
       padding-top: 2px;
@@ -33,10 +36,14 @@
     .tertiary,
     .btn {
       opacity: 1;
+
+      @media (max-width: $screen-sm-min) {
+        font-size: 10px;
+      }
     }
 
     .btn {
-      margin: 15px 5px;
+      margin: 16px 8px;
       /* Override mixin */
       &:hover {
         transform: none;
@@ -49,11 +56,15 @@
         @include padding(top, 1);
         display: none;
         position: absolute;
-        bottom: -220px;
         width: 100%;
         left: 0;
         border-radius: 15px;
         display: block;
+        min-width: 180px;
+
+        @media (min-width: $screen-sm-min) {
+          min-width: 240px;
+        }
 
         .menuItem {
           background-color: #fff;
@@ -78,10 +89,13 @@
       &.test {
         &:hover {
           background-color: $primary;
+          margin-right: 10px;
         }
       }
 
       &.personalities {
+        @include padding(left right, 0);
+
         .menuItems {
           display: none;
         }
