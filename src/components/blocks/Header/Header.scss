@@ -2,15 +2,16 @@
 
 .header {
   &__logo {
-    @include padding(all, 2);
+    @include padding(all, 1);
     @include opacity(1);
-    max-width: 32px; // default logo width: 140px;
-    position: fixed;
+    max-width: 80px; // default logo width: 140px;
+    position: absolute;
     top: 0;
+    z-index: 1;
 
     @media (min-width: $screen-sm-min) {
-      @include padding(all, 3);
-      max-width: 48px; // default logo width: 140px;
+      @include padding(all, 2);
+      max-width: 98px; // default logo width: 140px;
     }
 
     &:hover {
@@ -22,37 +23,61 @@
     width: fit-content;
     position: absolute;
     z-index: 1;
+
     right: 20px;
+
+    .icon-container {
+      padding-top: 2px;
+    }
+
+    .tertiary,
+    .btn {
+      opacity: 1;
+    }
+
     .btn {
       margin: 15px 5px;
       /* Override mixin */
       &:hover {
-       transform: none; 
+        transform: none;
       }
       min-height: 48px;
       position: relative;
+
       .menuItems {
+        @include modal-elevation;
+        @include padding(top, 1);
         display: none;
         position: absolute;
         bottom: -220px;
-        z-index: 999;
         width: 100%;
         left: 0;
         border-radius: 15px;
         display: block;
+
         .menuItem {
           background-color: #fff;
           height: 30px;
           color: #000;
           padding: 20px;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+
           &:hover {
             color: $secondary;
           }
         }
 
         .break {
-         height: 10px;
-         background-color: transparent; 
+          height: 10px;
+          background-color: transparent;
+        }
+      }
+
+      &.test {
+        &:hover {
+          background-color: $primary;
         }
       }
 
@@ -61,6 +86,8 @@
           display: none;
         }
         &:hover {
+          color: $secondary;
+
           .menuItems {
             display: block;
           }

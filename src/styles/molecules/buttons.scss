@@ -1,7 +1,7 @@
 %button {
   @extend %text-base;
   @include button-primary-elevation-flat;
-  @include corner-radius; // @include circular-radius;
+  @include circular-radius; // @include circular-radius;
   @include cursor-pointer;
   @include padding(left right, 2);
   @include padding(top bottom, 0);

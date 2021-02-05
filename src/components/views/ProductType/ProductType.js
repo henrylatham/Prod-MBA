@@ -1,19 +1,33 @@
 import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
 import { Button, Modal } from '../../elements';
-import { Header, ProductHero, Featured, Footer, RadarChart } from '../../blocks';
-import { TITLES } from '../../views/Quiz/Questions';
+import {
+  Header,
+  ProductHero,
+  Featured,
+  Footer,
+  RadarChart,
+} from '../../blocks';
+import { TITLES, TYPEIMAGES } from '../../views/Quiz/Questions';
 import TypesCopy from './TypesCopy';
+import TipCopy from './TipCopy';
 import './ProductType.scss';
 
-const KNOWN_TYPES = ['product-strategy', 'execution', 'influencer', 'customer-insight', 'all-rounder', 'student'];
+const KNOWN_TYPES = [
+  'product-strategy',
+  'execution',
+  'influencer',
+  'customer-insight',
+  'all-rounder',
+  'student',
+];
 
 export default class ProductType extends Component {
   constructor() {
     super();
     this.state = {
       isModalOpen: false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -29,18 +43,20 @@ export default class ProductType extends Component {
     return this.props.history.push('/home/take');
   };
 
-  handleGoTo = (strategy) => {
+  handleGoTo = strategy => {
+    console.debug('>>> handleGoTo');
     this.props.history.push(`/product-type/${kebabCase(strategy)}`);
   };
 
   handleAcceptEmailSend = () => {
+    console.debug('>>> handleAcceptEmailSend');
     this.setState({ isModalOpen: false });
   };
 
   handleDeclineEmailSend = () => {
+    console.debug('>>> handleDeclineEmailSend');
     this.setState({ isModalOpen: false });
   };
-
 
   render() {
     const { history } = this.props;
@@ -58,11 +74,18 @@ export default class ProductType extends Component {
 
     const personalPage = urlParams && !isKnownDefaultRoute;
 
+    console.debug('>>> personalPage: ', {
+      urlParams,
+      isKnownDefaultRoute,
+    });
+
     // Check if rote has user hash or is default product route
     if (personalPage) {
       // User route
       const decodedUrlParams = atob(urlParams);
-      const data = decodedUrlParams.split('-');
+      console.debug('>>>>> decodedUrlParams: ', decodedUrlParams);
+      const data = decodedUrlParams.split('$-$');
+      console.debug('>>> DATA: ', data);
       // Parse
       scoreData = JSON.parse(data[0]);
       userData = JSON.parse(data[1]);
@@ -91,6 +114,7 @@ export default class ProductType extends Component {
           viewType={mode}
           scoreType={scoreType}
           title={TITLES[scoreType]}
+          typeImage={TYPEIMAGES[scoreType]}
           subtitle="Your Product Type is:"
         />
         <div className="productContent">
@@ -98,24 +122,21 @@ export default class ProductType extends Component {
             <TypesCopy type={scoreType} typeResult={typeResult} />
           </div>
           <div className="right">
-          {(mode === 1 || personalPage) ? ( // User TIPs
-            <Fragment>
-              <RadarChart scoreData={scoreData} />
-              <div className='tipsBlock'>
-                <p className='label'>{`Tip for "${TITLES[scoreType]}"`}</p>
-                <p className='description'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+            {mode === 1 || personalPage ? ( // User TIPs
+              <Fragment>
+                <RadarChart scoreData={scoreData} />
+                <div className="tipsBlock">
+                  <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                  <TipCopy type={scoreType} typeResult={typeResult} />
+                </div>
+              </Fragment>
+            ) : (
+              // Default Route TIP
+              <div className="newUser">
+                <h3 className="title">New here?</h3>
+                <Button label="Take the test" onClick={this.takeQuiz} />
               </div>
-            </Fragment>
-          ) : ( // Default Route TIP
-            <div className='newUser'>
-              <h3 className='title'>New here?</h3>
-              <Button
-                label='Take the test'
-                onClick={this.takeQuiz}
-              />
-            </div>
-          )}
-
+            )}
           </div>
         </div>
         <Footer page="PRODUCT_TYPE" title={scoreType} />
