@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { find, map, findIndex, size, omit, kebabCase } from 'lodash';
-import { Header, Hero, Featured, Footer } from '../../blocks';
+import { map, findIndex, size, omit, kebabCase } from 'lodash';
+import { Header, Hero } from '../../blocks';
 import { Button, Input } from '../../elements';
 import './Quiz.scss';
 import {
@@ -21,7 +21,7 @@ export default class Quiz extends Component {
     super();
     this.quizRef = React.createRef();
     this.state = {
-      testStep: true,
+      generalStep: false,
       currentSection: QuestionsDatasetOrder[0],
       answers: questionsConstructor,
       results: resultsConstructor,
@@ -60,7 +60,7 @@ export default class Quiz extends Component {
     });
 
     const currentSectionIndex =
-      findIndex(QuestionsDatasetOrder, o => o == currentSection) + 1;
+      findIndex(QuestionsDatasetOrder, o => o === currentSection) + 1;
 
     let canGoNext = false;
     if (currentSectionIndex < QuestionsDatasetOrder.length) {
@@ -86,15 +86,15 @@ export default class Quiz extends Component {
   };
 
   // @TODO - comment out
-  // calculateFinalResults = (results) => {
   calculateFinalResults = () => {
+    const { results } = this.state;
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
-    const results = {
-      customerInsight: 10,
-      execution: 10,
-      influencer: 10,
-      productStrategy: 30,
-    };
+    // const results = {
+    //   customerInsight: 10,
+    //   execution: 10,
+    //   influencer: 10,
+    //   productStrategy: 30,
+    // };
 
     let total = 0;
     let allRounderDiff = false;
@@ -151,7 +151,10 @@ export default class Quiz extends Component {
       overal: results,
     };
 
-    this.setState({ finalData });
+    this.setState({
+      finalData,
+      generalStep: true,
+    });
     return finalData;
   };
 
@@ -182,7 +185,7 @@ export default class Quiz extends Component {
   };
 
   render() {
-    const { currentSection, answers, testStep, userData } = this.state;
+    const { currentSection, answers, generalStep, userData } = this.state;
     const dataset = QuestionsDataset[currentSection];
     const numberOfSections = QuestionsDatasetOrder.length;
 
@@ -214,9 +217,8 @@ export default class Quiz extends Component {
             <div className="progress" style={{ width: progress }} />
           </div>
           <div className="questions" key={`${currentSection}`}>
-            {testStep && (
+            {generalStep && (
               <div>
-                <p>test step</p>
                 <Input
                   className="general"
                   label="Where are you based?"
@@ -233,7 +235,7 @@ export default class Quiz extends Component {
                 />
               </div>
             )}
-            {!testStep &&
+            {!generalStep &&
               map(dataset.questions, (question, key) => (
                 <div
                   className="question"
@@ -270,7 +272,7 @@ export default class Quiz extends Component {
                   <span>Disagree</span>
                 </div>
               ))}
-            {testStep ? (
+            {generalStep ? (
               <Button
                 label="Finish"
                 disabled={!userData.location || !userData.email}

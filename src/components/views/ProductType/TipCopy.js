@@ -69,7 +69,7 @@ const Copy = {
 
 export default class TipCopy extends Component {
   render() {
-    const { type, typeResult } = this.props;
+    const { type } = this.props;
     const copy = Copy[type];
     return (
       <>

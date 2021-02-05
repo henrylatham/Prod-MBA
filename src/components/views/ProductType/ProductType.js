@@ -4,7 +4,6 @@ import { Button, Modal } from '../../elements';
 import {
   Header,
   ProductHero,
-  Featured,
   Footer,
   RadarChart,
 } from '../../blocks';
@@ -44,22 +43,19 @@ export default class ProductType extends Component {
   };
 
   handleGoTo = strategy => {
-    console.debug('>>> handleGoTo');
     this.props.history.push(`/product-type/${kebabCase(strategy)}`);
   };
 
   handleAcceptEmailSend = () => {
-    console.debug('>>> handleAcceptEmailSend');
     this.setState({ isModalOpen: false });
   };
 
-  handleDeclineEmailSend = () => {
-    console.debug('>>> handleDeclineEmailSend');
+  handleDeclineEmailSend = (e) => {
+    e.preventDefault()
     this.setState({ isModalOpen: false });
   };
 
   render() {
-    const { history } = this.props;
     const { isModalOpen } = this.state;
 
     // Get URL params
@@ -71,28 +67,18 @@ export default class ProductType extends Component {
     let scoreType = '';
     let scoreData = [];
     let userData = {};
-
     const personalPage = urlParams && !isKnownDefaultRoute;
-
-    console.debug('>>> personalPage: ', {
-      urlParams,
-      isKnownDefaultRoute,
-    });
-
     // Check if rote has user hash or is default product route
     if (personalPage) {
       // User route
       const decodedUrlParams = atob(urlParams);
-      console.debug('>>>>> decodedUrlParams: ', decodedUrlParams);
       const data = decodedUrlParams.split('$-$');
-      console.debug('>>> DATA: ', data);
       // Parse
       scoreData = JSON.parse(data[0]);
       userData = JSON.parse(data[1]);
       mode = parseInt(data[2]); // 0 - view, 1 - personal (score) view
       // Isolated data
-      const { type, score, overal } = scoreData;
-      const { email, location } = userData;
+      const { overal } = scoreData;
       scoreType = scoreData.type;
       typeResult = overal ? overal[scoreType] : 0;
     } else {

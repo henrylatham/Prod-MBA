@@ -20,9 +20,6 @@ export default class Button extends Component<Props> {
     const {
       onClick,
       label,
-      secondary,
-      tertiary,
-      quarternary,
       disabled,
       classOverride,
       type,

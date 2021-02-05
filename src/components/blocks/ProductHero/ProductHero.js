@@ -1,20 +1,17 @@
 // @flow
 import React, { Component } from 'react';
 import './ProductHero.scss';
-// import Influencer from '../../../assets/images/type_influencer.png';
-import { TITLES, TYPEIMAGES } from '../../../components/views/Quiz/Questions';
 
 type Props = {
   title: string,
   subtitle: string,
   typeImage: string,
   mode: number,
-  scoreType: string,
 };
 
 export default class ProductHero extends Component<Props> {
   render() {
-    const { title, subtitle, typeImage, viewType, scoreType } = this.props;
+    const { title, subtitle, typeImage, viewType } = this.props;
 
     return (
       <div className="productHero">

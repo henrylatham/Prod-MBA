@@ -2,31 +2,16 @@ import React, { Component } from 'react';
 import { map, startCase } from 'lodash';
 import { Radar } from '@reactchartjs/react-chart.js';
 
-// const data = {
-//   labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
-//   datasets: [
-//     {
-//       label: '# of Votes',
-//       data: [2, 9, 3, 5, 2, 3],
-//       backgroundColor: 'rgba(255, 99, 132, 0.2)',
-//       borderColor: 'rgba(255, 99, 132, 1)',
-//       borderWidth: 1,
-//     },
-//   ],
-// }
-
 export default class RadarChart extends Component<any> {
   render() {
     const { scoreData } = this.props;
 
     const labels = [];
     const scores = [];
-    const scoreParams = map(scoreData.overal, (score, type) => {
+    map(scoreData.overal, (score, type) => {
       labels.push(startCase(type));
       scores.push(score);
     })
-
-    // console.debug('>>> Score Data: ', {scoreData,labels,data});
 
     const data = {
       labels,

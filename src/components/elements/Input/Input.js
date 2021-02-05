@@ -24,8 +24,10 @@ export default class Input extends Component<Props> {
       className,
     } = this.props;
 
+    const classes = `container ${className}`;
+
     return (
-      <div className="container" className={className}>
+      <div className={classes}>
         <label htmlFor={htmlFor} className="input__label">
           <p>{label}</p>
           <div className="input__row">

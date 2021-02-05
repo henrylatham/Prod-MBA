@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { map, size } from 'lodash';
 import { Icon } from '../../elements';
 import { TITLES } from '../../views/Quiz/Questions';
-import LogoLight from '../../../assets/images/logoWhite.svg';
-import LogoDark from '../../../assets/images/logoDark.svg';
 
 import './Header.scss';
 
@@ -17,7 +14,7 @@ export default class Header extends Component {
   };
 
   render() {
-    const { light, dark, showQuiz } = this.props;
+    const { showQuiz } = this.props;
 
     const noOfItems = size(TITLES);
     const position = noOfItems * 40 + noOfItems * 30;

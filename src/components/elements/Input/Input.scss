@@ -3,6 +3,7 @@
 .container {
   @include col;
   max-width: 288px;
+  margin: auto;
 }
 
 .input {
