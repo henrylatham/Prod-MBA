@@ -9,30 +9,44 @@ type Props = {
   onDecline: Function,
 };
 
+const termsUrl = 'https://prod.mba/legal';
+
 export default class Modal extends Component<Props> {
   constructor() {
     super();
     this.state = {
       isOpen: true,
-    }
+    };
   }
-  onClick = (e) => {
+  onClick = e => {
     this.props.onAccept();
-  }
+  };
   render() {
-    const { onDecline, productType, title, description, isOpen, email } = this.props;
-    const ACTIVE_CAMPAIGN_FORM_ACTION_URL = 'https://productmastery.activehosted.com/proc.php?';
+    const {
+      onDecline,
+      productType,
+      img,
+      title,
+      description,
+      isOpen,
+      email,
+    } = this.props;
+    const ACTIVE_CAMPAIGN_FORM_ACTION_URL =
+      'https://productmastery.activehosted.com/proc.php?';
+
+    const formId = 1;
+
     let classes = 'modalBg';
     if (!isOpen) {
-      classes = 'modalBg hidden'
-    };
+      classes = 'modalBg hidden';
+    }
 
     return (
       <div className={classes}>
         <div className="modal">
           <Card cardModal="cardModal">
+            <img src={img} className="modale_image_block" />
             <div className="modal__title">{title}</div>
-            <div className='modale_image_block'/>
             <div className="modal__text">{description}</div>
             <div className="modal__btnContainer">
               <form
@@ -41,10 +55,10 @@ export default class Modal extends Component<Props> {
                 id="_form_newsletter_"
                 className="activeCampaign__form"
                 noValidate
-                target='hiddenFrame'
+                target="hiddenFrame"
               >
-                <input type="hidden" name="u" value={productType} />
-                <input type="hidden" name="f" value={productType} />
+                <input type="hidden" name="u" value={formId} />
+                <input type="hidden" name="f" value={formId} />
                 <input type="hidden" name="s" />
                 <input type="hidden" name="c" value="0" />
                 <input type="hidden" name="m" value="0" />
@@ -57,26 +71,37 @@ export default class Modal extends Component<Props> {
                         type="text"
                         name="email"
                         placeholder="Enter email"
-                        value={email}
+                        required
+                        // value={email}
                       />
                     </div>
                   </div>
                   <div className="_button-wrapper">
                     <Button
-                      id="_form_newsletter_submit"
-                      className="_submit"
-                      key='confirmButton'
-                      type='primary'
-                      label='Sure!'
-                      onClick={this.onClick.bind(this)}
-                    />
-                    <Button
-                      key='cancelButton'
-                      type='tertiary'
-                      label='No Thanks'
+                      key="cancelButton"
+                      type="tertiary"
+                      label="No Thanks"
                       onClick={onDecline}
                     />
+                    <Button
+                      id="_form_newsletter_submit"
+                      className="_submit"
+                      key="confirmButton"
+                      type="primary"
+                      label="Yes, please!"
+                      onClick={this.onClick.bind(this)}
+                    />
                   </div>
+                  <p className="modal__terms">
+                    By registering for our email series, you agree to our{' '}
+                    <a
+                      href={termsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Terms & Conditions
+                    </a>
+                  </p>
                   <div className="_clear-element"></div>
                 </div>
                 <div classNames="_form-thank-you"></div>
@@ -84,7 +109,14 @@ export default class Modal extends Component<Props> {
             </div>
           </Card>
         </div>
-        <iframe title="Form Helper" name="hiddenFrame" width="0" height="0" border="0" style={{ display: "none" }}></iframe>
+        <iframe
+          title="Form Helper"
+          name="hiddenFrame"
+          width="0"
+          height="0"
+          border="0"
+          style={{ display: 'none' }}
+        ></iframe>
       </div>
     );
   }

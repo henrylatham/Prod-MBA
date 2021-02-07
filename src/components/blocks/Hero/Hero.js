@@ -27,8 +27,10 @@ export default class Hero extends Component<Props> {
               src={influencer}
               className="hero__featuredBlocks_img"
             />
-            <h5>Complete the test</h5>
-            <p>Answer honestly to get an accurate assessment</p>
+            <div className="hero__featuredBlocks_text">
+              <h5>Complete the test</h5>
+              <p>Answer honestly to get an accurate assessment</p>
+            </div>
           </div>
           <div className="hero__featuredBlocks_container">
             <img
@@ -36,8 +38,10 @@ export default class Hero extends Component<Props> {
               src={allRounder}
               className="hero__featuredBlocks_img"
             />
-            <h5>View Results</h5>
-            <p>Learn your product type, as well as strengths & weaknesses</p>
+            <div className="hero__featuredBlocks_text">
+              <h5>View Results</h5>
+              <p>Learn your product type, as well as strengths & weaknesses</p>
+            </div>
           </div>
           <div className="hero__featuredBlocks_container">
             <img
@@ -45,10 +49,12 @@ export default class Hero extends Component<Props> {
               src={strategist}
               className="hero__featuredBlocks_img"
             />
-            <h5>Unlock Your Potential</h5>
-            <p>
-              Grow into the product leader you want to be with our career tips
-            </p>
+            <div className="hero__featuredBlocks_text">
+              <h5>Unlock Your Potential</h5>
+              <p>
+                Grow into the product leader you want to be with our career tips
+              </p>
+            </div>
           </div>
         </div>
       </div>

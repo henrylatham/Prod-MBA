@@ -11,12 +11,21 @@
     @include padding(top, 4);
     @include padding(bottom, 4);
     @include padding(left right, 3);
-    @include row;
     justify-content: center;
   }
 
+  h3 {
+    color: $white;
+  }
+
   .share {
-    margin: 0 10px;
+    @include row;
+    max-width: 400px;
+    margin: 32px auto;
+
+    &__icons {
+      margin: 0 10px;
+    }
   }
 
   &__logo {

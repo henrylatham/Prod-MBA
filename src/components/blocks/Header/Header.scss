@@ -62,7 +62,7 @@
         display: none;
         position: absolute;
         width: 100%;
-        left: 0;
+        left: -64px;
         border-radius: 15px;
         display: block;
         min-width: 180px;
@@ -99,7 +99,9 @@
       }
 
       &.personalities {
-        @include padding(left right, 0);
+        @include padding(left, 0);
+        @include padding(right, reset);
+        @include margin(right, reset);
 
         .menuItems {
           display: none;
