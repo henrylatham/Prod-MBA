@@ -2,41 +2,71 @@
 
 // backgroundContainer
 .modalBg {
-  @include modal-container;
+  @include overlay-container;
+  background-color: #00000054;
   &.hidden {
-  	display: none;
+    display: none;
   }
 }
 
 .modal {
   @include confirmation-modal;
   .cardModal {
-  	border-radius: 6px;
-  	.modal__text {
-  		color: $grey;
-  		margin: auto;
-  	}
-  	.modal__title {
-  		margin: auto;
-  	}
-  	.modale_image_block {
-  		height: 100px;
-  		width: 70%;
-  		margin: 20px auto;
-  		background-color: $light-grey;
-  	}
-  	._activeCampaign-fields {
-  		visibility: hidden;
-  	}
+    border-radius: 6px;
+
+    .modal__text {
+      color: $grey;
+      margin: auto;
+    }
+    .modal__title {
+      margin: auto;
+      padding-top: 0;
+    }
+    .modale_image_block {
+      margin: 16px auto 24px;
+      background-color: #f7f7f7;
+      height: 100%;
+      width: 70%;
+      margin: 20px auto;
+      background-color: $light-grey;
+    }
+    ._activeCampaign-fields {
+      // visibility: hidden;
+    }
   }
+
+  &__terms {
+    @include border-top;
+    @include padding(top bottom, 2);
+    font-size: 10px;
+    max-width: 80%;
+    margin: 0 auto;
+
+    a {
+      letter-spacing: 0;
+      font-size: 10px;
+    }
+  }
+
+  &__btnContainer {
+    border: none;
+  }
+
   ._button-wrapper {
-  	display: flex;
-  	justify-content: center;
-  	button {
-  		margin: 0 10px;
-  	}
+    @include margin(top, 3);
+    @include margin(bottom, 2);
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0 10px;
+    }
+
+    .tertiary {
+      border: none;
+    }
   }
   form {
-  	width: 100%;
+    width: 100%;
   }
 }

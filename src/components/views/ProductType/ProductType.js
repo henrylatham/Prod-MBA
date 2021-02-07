@@ -3,9 +3,11 @@ import { includes, camelCase, kebabCase } from 'lodash';
 import { Button, Modal } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
 import { Header, ProductHero, Footer, RadarChart } from '../../blocks';
-import { TITLES, TYPEIMAGES } from '../../views/Quiz/Questions';
+import { TITLES, TYPEIMAGES } from '../Quiz/Questions';
 import TypesCopy from './TypesCopy';
 import TipCopy from './TipCopy';
+import graphExample from '../../../assets/images/graph_example.png';
+import modalImg from '../../../assets/images/modal_img.png';
 import './ProductType.scss';
 
 const KNOWN_TYPES = [
@@ -33,7 +35,7 @@ export default class ProductType extends Component {
       setTimeout(() => this.setState({ isModalOpen: true }), 4000);
     }
 
-    Mixpanel.track(`Test / ${urlParams} / ${this.state.isModalOpen}`);
+    Mixpanel.track(`1.Skills / ${urlParams} / ${this.state.isModalOpen}`);
   }
 
   takeQuiz = () => {
@@ -86,6 +88,8 @@ export default class ProductType extends Component {
       scoreType = camelCase(urlParams); // e.g. allRounder
     }
 
+    const modalTitle = `Want tips for ${TITLES[scoreType]}?`;
+
     return (
       <div className="homePageWrapper">
         <Header
@@ -116,21 +120,37 @@ export default class ProductType extends Component {
               </Fragment>
             ) : (
               // Default Route TIP
-              <div className="newUser">
-                <h3 className="title">New here?</h3>
-                <Button label="Take the test" onClick={this.takeQuiz} />
+              <div>
+                <div className="newUser">
+                  <img
+                    alt="influencer"
+                    src={graphExample}
+                    className="newUser_img"
+                  />
+                  <h3 className="newUser_title">New here?</h3>
+                  <p>
+                    Assess your own product skills & unlock unique tips to
+                    improve upon:
+                  </p>
+                  <Button label="Start Test" onClick={this.takeQuiz} />
+                </div>
+                <div className="tipsBlock">
+                  <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                  <TipCopy type={scoreType} typeResult={typeResult} />
+                </div>
               </div>
             )}
           </div>
         </div>
-        <Footer page="PRODUCT_TYPE" title={scoreType} />
+        <Footer page="PRODUCT_TYPE" title={TITLES[scoreType]} />
         <div className="modalWrapper">
           <Modal
-            title="Copy of your results?"
-            description="Would you like a copy of your results emailed to you?"
+            img={modalImg}
+            title={modalTitle}
+            description="Join our free 7-day mini MBA to level-up your product skills:"
             onAccept={this.handleAcceptEmailSend.bind(this)}
             onDecline={this.handleDeclineEmailSend.bind(this)}
-            productType={scoreType}
+            // productType={scoreType}
             isOpen={isModalOpen}
             email={userData.email}
           />

@@ -23,7 +23,7 @@ export default class Header extends Component {
       <div className="header">
         <div className="menu">
           <div className="tertiary btn personalities">
-            Personality Types
+            Product Types
             <Icon
               className="dropdownIcon"
               icon="arrow_drop_down"
@@ -44,7 +44,7 @@ export default class Header extends Component {
               className="primary btn test"
               onClick={this.onDefaultClick.bind(this)}
             >
-              Take The test
+              Start Test
             </div>
           )}
         </div>

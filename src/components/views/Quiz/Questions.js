@@ -12,11 +12,11 @@ export const QuestionsDataset = {
     questions: [
       'My decisions result in significant strategic impact within organisations I work with',
       'I am an expert at balancing user and business needs',
-      'I understand why trends are occuoring in my product data and what they mean',
+      'I understand why trends are occurring in my product data and what they mean',
       'I deliver features that achieve the wider business goals',
       'I have been a key contributor to product visions',
       'Every feature I deliver moves my team closer to our strategic goals',
-      'My roadmap aligns the companies strategic goals',
+      "My roadmap aligns the company's strategic goals",
     ],
   },
   execution: {
@@ -26,14 +26,14 @@ export const QuestionsDataset = {
       'I know how to launch a new product or feature for maximum success',
       'I have achieved an optimal balance when delivering products across time, quality & performance',
       'I can break a complex feature down into easily actionable iterations',
-      'I have achieved product market fit',
+      'I have achieved Product-Market Fit',
       "I'm able to quickly adapt to new tools to help me do my job better",
     ],
   },
   influencer: {
     questions: [
       'People I have managed would say I inspire them',
-      'I can confidently deliver performance reports on my product to c-suite/investors',
+      'I can confidently deliver performance reports on my product to C-suite/investors',
       "I'm confident managing difficult stakeholder relationships",
       'My leadership enables my team to perform their best',
       'I know who to talk to & how to get things done at my organisation',
@@ -44,7 +44,7 @@ export const QuestionsDataset = {
   customerInsight: {
     questions: [
       "I'm comfortable finding meaningful insights in complex data",
-      'I know how to get to the root of a users problem and translate that into a great solution',
+      "I know how to get to the root of a user's problem and translate that into a great solution",
       'I know precisely what my customers want.',
       'I can translate data into an actionable product feature improvement',
       'I use a wide range of tools & methods to talk to my users',

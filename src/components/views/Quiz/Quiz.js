@@ -35,7 +35,7 @@ export default class Quiz extends Component {
   }
 
   componentDidMount() {
-    Mixpanel.track(`Test / Home`);
+    Mixpanel.track(`1.Skills / Home`);
 
     const isTake = this.props.match.params.take;
     if (isTake) {
@@ -199,7 +199,7 @@ export default class Quiz extends Component {
     const buttonLabel =
       currentSectionIndex === QuestionsDatasetOrder.length
         ? 'Finish & View Product Type'
-        : 'Next';
+        : 'Next Section';
     const isButtonDisabled =
       dataset.questions.length !== size(answers[currentSection]);
 
@@ -246,38 +246,40 @@ export default class Quiz extends Component {
                   onChange={this.onChangeValue.bind(this, key)}
                 >
                   <p>{question}</p>
-                  <span>Agree</span>
-                  <input
-                    /* disabled */ type="radio"
-                    value="1"
-                    name={`${currentSection}-Q${key + 1}`}
-                  />
-                  <input
-                    type="radio"
-                    value="2"
-                    name={`${currentSection}-Q${key + 1}`}
-                  />
-                  <input
-                    type="radio"
-                    value="3"
-                    name={`${currentSection}-Q${key + 1}`}
-                  />
-                  <input
-                    type="radio"
-                    value="4"
-                    name={`${currentSection}-Q${key + 1}`}
-                  />
-                  <input
-                    type="radio"
-                    value="5"
-                    name={`${currentSection}-Q${key + 1}`}
-                  />
-                  <span>Disagree</span>
+                  <div className="question_answer">
+                    <span>Agree</span>
+                    <input
+                      /* disabled */ type="radio"
+                      value="1"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <input
+                      type="radio"
+                      value="2"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <input
+                      type="radio"
+                      value="3"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <input
+                      type="radio"
+                      value="4"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <input
+                      type="radio"
+                      value="5"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <span>Disag.</span>
+                  </div>
                 </div>
               ))}
             {generalStep ? (
               <Button
-                label="Finish"
+                label="Calculate Results"
                 disabled={!userData.location || !userData.email}
                 onClick={this.submitResults}
               />
