@@ -19,7 +19,7 @@ const KNOWN_TYPES = [
   'student',
 ];
 
-export default class ProductType extends Component {
+export default class ProductType extends Component<any> {
   constructor() {
     super();
     this.state = {
@@ -76,7 +76,7 @@ export default class ProductType extends Component {
       // Parse
       scoreData = JSON.parse(data[0]);
       userData = JSON.parse(data[1]);
-      mode = parseInt(data[2]); // 0 - view, 1 - personal (score) view
+      mode = parseInt(data[2], 10); // 0 - view, 1 - personal (score) view
       // Isolated data
       const { overal } = scoreData;
       scoreType = scoreData.type;

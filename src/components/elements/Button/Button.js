@@ -8,11 +8,9 @@ import './Button.scss';
 type Props = {
   onClick: Function,
   label: string,
-  secondary?: boolean,
-  tertiary?: boolean,
-  quarternary?: boolean,
   disabled?: boolean,
   classOverride: string,
+  type?: string,
 };
 
 export default class Button extends Component<Props> {

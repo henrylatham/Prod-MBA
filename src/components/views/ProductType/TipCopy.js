@@ -1,3 +1,4 @@
+/* eslint react/no-unescaped-entities: 0 */  // --> OFF
 import React, { Component } from 'react';
 
 const Copy = {
@@ -67,7 +68,7 @@ const Copy = {
   },
 };
 
-export default class TipCopy extends Component {
+export default class TipCopy extends Component<any> {
   render() {
     const { type } = this.props;
     const copy = Copy[type];

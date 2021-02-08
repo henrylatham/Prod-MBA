@@ -11,7 +11,7 @@ import {
   DiffMargin,
 } from './Questions';
 
-export default class Quiz extends Component {
+export default class Quiz extends Component<any> {
   constructor() {
     const questionsConstructor = {};
     const resultsConstructor = {};
@@ -26,7 +26,6 @@ export default class Quiz extends Component {
       currentSection: QuestionsDatasetOrder[0],
       answers: questionsConstructor,
       results: resultsConstructor,
-      finalData: {},
       userData: {
         email: null,
         location: null,
@@ -49,7 +48,7 @@ export default class Quiz extends Component {
         ...this.state.answers,
         [this.state.currentSection]: {
           ...this.state.answers[this.state.currentSection],
-          [`Q-${questionNo}`]: parseInt(e.target.value),
+          [`Q-${questionNo}`]: parseInt(e.target.value, 10),
         },
       },
     });
@@ -59,7 +58,7 @@ export default class Quiz extends Component {
     const { answers, currentSection } = this.state;
     let sectionResult = 0;
     map(answers[currentSection], answerPoints => {
-      sectionResult = sectionResult + answerPoints;
+      sectionResult += answerPoints;
     });
 
     const currentSectionIndex =
@@ -104,7 +103,7 @@ export default class Quiz extends Component {
     let highestScore = 0;
     let highestResult = null;
     map(results, (result, key) => {
-      total = total + result;
+      total += result;
       // Get highest score and map result as key. e.g. productStrategy
       if (result > highestScore) {
         highestScore = result;
@@ -154,10 +153,7 @@ export default class Quiz extends Component {
       overal: results,
     };
 
-    this.setState({
-      finalData,
-      generalStep: true,
-    });
+    this.setState({ generalStep: true });
     return finalData;
   };
 
