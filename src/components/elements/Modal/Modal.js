@@ -2,11 +2,12 @@
 import React, { Component } from 'react';
 import './Modal.scss';
 
-import { Card, Button } from '../';
+import { Card, Button } from '..';
 
 type Props = {
   onAccept: Function,
   onDecline: Function,
+  isOpen: boolean,
 };
 
 const termsUrl = 'https://prod.mba/legal';
@@ -22,15 +23,7 @@ export default class Modal extends Component<Props> {
     this.props.onAccept();
   };
   render() {
-    const {
-      onDecline,
-      productType,
-      img,
-      title,
-      description,
-      isOpen,
-      email,
-    } = this.props;
+    const { onDecline, img, title, description, isOpen } = this.props;
     const ACTIVE_CAMPAIGN_FORM_ACTION_URL =
       'https://productmastery.activehosted.com/proc.php?';
 
@@ -45,7 +38,7 @@ export default class Modal extends Component<Props> {
       <div className={classes}>
         <div className="modal">
           <Card cardModal="cardModal">
-            <img src={img} className="modale_image_block" />
+            <img src={img} alt="Product types" className="modale_image_block" />
             <div className="modal__title">{title}</div>
             <div className="modal__text">{description}</div>
             <div className="modal__btnContainer">
