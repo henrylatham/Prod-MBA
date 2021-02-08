@@ -40,6 +40,7 @@ export default class Quiz extends Component<any> {
     const isTake = this.props.match.params.take;
     if (isTake) {
       this.scrollIntoView();
+      Mixpanel.track(`1.Skills / Take Quiz`);
     }
   }
 
@@ -68,6 +69,8 @@ export default class Quiz extends Component<any> {
     let canGoNext = false;
     if (currentSectionIndex < QuestionsDatasetOrder.length) {
       canGoNext = true;
+      this.scrollIntoView();
+      Mixpanel.track(`1.Skills / Next Section`);
     }
 
     const results = {
@@ -90,7 +93,7 @@ export default class Quiz extends Component<any> {
   };
 
   // @TODO - comment out
-  calculateFinalResults = (results) => {
+  calculateFinalResults = results => {
     // const { results } = this.state;
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
     // const results = {
@@ -159,12 +162,13 @@ export default class Quiz extends Component<any> {
     return finalData;
   };
 
-  submitResults = (finalData) => {
+  submitResults = finalData => {
     const { userData } = this.state;
     const uniqParam = window.btoa(
       `${JSON.stringify(finalData)}$-$${JSON.stringify(userData)}$-$1`
     );
     this.props.history.push(`/product-type/${uniqParam}`);
+    this.scrollIntoView();
   };
 
   onInputChange = (type, e) => {
@@ -185,7 +189,13 @@ export default class Quiz extends Component<any> {
   };
 
   render() {
-    const { currentSection, answers, generalStep, userData, isGeneralEnabled } = this.state;
+    const {
+      currentSection,
+      answers,
+      generalStep,
+      userData,
+      isGeneralEnabled,
+    } = this.state;
     const dataset = QuestionsDataset[currentSection];
     const numberOfSections = QuestionsDatasetOrder.length;
 
@@ -217,7 +227,7 @@ export default class Quiz extends Component<any> {
             <div className="progress" style={{ width: progress }} />
           </div>
           <div className="questions" key={`${currentSection}`}>
-            {(generalStep && isGeneralEnabled) && (
+            {generalStep && isGeneralEnabled && (
               <div>
                 <Input
                   className="general"
@@ -247,17 +257,7 @@ export default class Quiz extends Component<any> {
                     <span>Agree</span>
                     <input
                       /* disabled */ type="radio"
-                      value="1"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="2"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="3"
+                      value="5"
                       name={`${currentSection}-Q${key + 1}`}
                     />
                     <input
@@ -267,14 +267,24 @@ export default class Quiz extends Component<any> {
                     />
                     <input
                       type="radio"
-                      value="5"
+                      value="3"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <input
+                      type="radio"
+                      value="2"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <input
+                      type="radio"
+                      value="1"
                       name={`${currentSection}-Q${key + 1}`}
                     />
                     <span>Disag.</span>
                   </div>
                 </div>
               ))}
-            {(generalStep && isGeneralEnabled) ? (
+            {generalStep && isGeneralEnabled ? (
               <Button
                 label="Calculate Results"
                 disabled={!userData.location || !userData.email}

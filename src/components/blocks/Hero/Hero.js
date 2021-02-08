@@ -24,7 +24,7 @@ export default class Hero extends Component<Props> {
           <div className="hero__featuredBlocks_container">
             <img
               alt="influencer"
-              src={influencer}
+              src={strategist}
               className="hero__featuredBlocks_img"
             />
             <div className="hero__featuredBlocks_text">
@@ -46,7 +46,7 @@ export default class Hero extends Component<Props> {
           <div className="hero__featuredBlocks_container">
             <img
               alt="influencer"
-              src={strategist}
+              src={influencer}
               className="hero__featuredBlocks_img"
             />
             <div className="hero__featuredBlocks_text">

@@ -22,19 +22,25 @@ const KNOWN_TYPES = [
 export default class ProductType extends Component<any> {
   constructor() {
     super();
+    this.typeRef = React.createRef();
     this.state = {
       isModalOpen: false,
       isEmailSent: false,
     };
   }
 
+  scrollIntoView = () => {
+    return this.typeRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   componentDidMount() {
     const urlParams = this.props.match.params.typeId;
     const isKnownDefaultRoute = includes(KNOWN_TYPES, urlParams);
     const personalPage = urlParams && !isKnownDefaultRoute;
     if (personalPage) {
-      setTimeout(() => this.setState({ isModalOpen: true }), 4000);
+      setTimeout(() => this.setState({ isModalOpen: true }), 9000);
     }
+    this.scrollIntoView();
 
     Mixpanel.track(`1.Skills / ${urlParams} / ${this.state.isModalOpen}`);
   }
@@ -45,10 +51,12 @@ export default class ProductType extends Component<any> {
 
   handleGoTo = strategy => {
     this.props.history.push(`/product-type/${kebabCase(strategy)}`);
+    this.scrollIntoView();
   };
 
   handleAcceptEmailSend = () => {
     this.setState({ isEmailSent: true });
+    Mixpanel.track(`1.Skills / Signup`);
   };
 
   handleCloseEmailModal = e => {
@@ -92,70 +100,73 @@ export default class ProductType extends Component<any> {
     const modalTitle = `Want tips for ${TITLES[scoreType]}?`;
 
     return (
-      <div className="homePageWrapper">
-        <Header
-          light
-          onDefaultClick={this.takeQuiz}
-          onGoTo={this.handleGoTo}
-          showQuiz={!personalPage}
-        />
-        <ProductHero
-          viewType={mode}
-          scoreType={scoreType}
-          title={TITLES[scoreType]}
-          typeImage={TYPEIMAGES[scoreType]}
-          subtitle="Your Product Type is:"
-        />
-        <div className="productContent">
-          <div className="left">
-            <TypesCopy type={scoreType} typeResult={typeResult} />
-          </div>
-          <div className="right">
-            {mode === 1 || personalPage ? ( // User TIPs
-              <Fragment>
-                <RadarChart scoreData={scoreData} />
-                <div className="tipsBlock">
-                  <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
-                  <TipCopy type={scoreType} typeResult={typeResult} />
-                </div>
-              </Fragment>
-            ) : (
-              // Default Route TIP
-              <div>
-                <div className="newUser">
-                  <img
-                    alt="influencer"
-                    src={graphExample}
-                    className="newUser_img"
-                  />
-                  <h3 className="newUser_title">New here?</h3>
-                  <p>
-                    Assess your own product skills & unlock unique tips to
-                    improve upon:
-                  </p>
-                  <Button label="Start Test" onClick={this.takeQuiz} />
-                </div>
-                <div className="tipsBlock">
-                  <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
-                  <TipCopy type={scoreType} typeResult={typeResult} />
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        <Footer page="PRODUCT_TYPE" title={TITLES[scoreType]} />
-        <div className="modalWrapper">
-          <Modal
-            img={modalImg}
-            title={modalTitle}
-            description="Join our free 7-day mini MBA to level-up your product skills:"
-            onAccept={this.handleAcceptEmailSend.bind(this)}
-            onClose={this.handleCloseEmailModal.bind(this)}
-            // productType={scoreType}
-            isOpen={isModalOpen}
-            isEmailSent={isEmailSent}
-            email={userData.email}
+      <div>
+        <div ref={this.typeRef}></div>
+        <div className="homePageWrapper">
+          <Header
+            light
+            onDefaultClick={this.takeQuiz}
+            onGoTo={this.handleGoTo}
+            showQuiz={!personalPage}
           />
+          <ProductHero
+            viewType={mode}
+            scoreType={scoreType}
+            title={TITLES[scoreType]}
+            typeImage={TYPEIMAGES[scoreType]}
+            subtitle="Your Product Type is:"
+          />
+          <div className="productContent">
+            <div className="left">
+              <TypesCopy type={scoreType} typeResult={typeResult} />
+            </div>
+            <div className="right">
+              {mode === 1 || personalPage ? ( // User TIPs
+                <Fragment>
+                  <RadarChart scoreData={scoreData} />
+                  <div className="tipsBlock">
+                    <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                    <TipCopy type={scoreType} typeResult={typeResult} />
+                  </div>
+                </Fragment>
+              ) : (
+                // Default Route TIP
+                <div>
+                  <div className="newUser">
+                    <img
+                      alt="influencer"
+                      src={graphExample}
+                      className="newUser_img"
+                    />
+                    <h3 className="newUser_title">New here?</h3>
+                    <p>
+                      Assess your own product skills & unlock unique tips to
+                      improve upon:
+                    </p>
+                    <Button label="Start Test" onClick={this.takeQuiz} />
+                  </div>
+                  <div className="tipsBlock">
+                    <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                    <TipCopy type={scoreType} typeResult={typeResult} />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          <Footer page="PRODUCT_TYPE" title={TITLES[scoreType]} />
+          <div className="modalWrapper">
+            <Modal
+              img={modalImg}
+              title={modalTitle}
+              description="Join our free 7-day mini MBA to level-up your product skills:"
+              onAccept={this.handleAcceptEmailSend.bind(this)}
+              onClose={this.handleCloseEmailModal.bind(this)}
+              // productType={scoreType}
+              isOpen={isModalOpen}
+              isEmailSent={isEmailSent}
+              email={userData.email}
+            />
+          </div>
         </div>
       </div>
     );

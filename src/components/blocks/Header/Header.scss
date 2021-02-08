@@ -59,6 +59,7 @@
       .menuItems {
         @include modal-elevation;
         @include padding(top, 1);
+        background-color: $white;
         display: none;
         position: absolute;
         width: 100%;

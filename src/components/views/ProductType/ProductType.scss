@@ -1,6 +1,8 @@
 @import '../../../styles/main';
 
 .productContent {
+  @include padding(top, 3);
+  @include padding(bottom, 3);
   @include col;
   min-height: 500px;
 
@@ -16,14 +18,12 @@
 
   .left,
   .right {
-    width: 50%;
     @include col;
     padding: 80px 60px;
     text-align: center;
 
     @media (max-width: $screen-sm-min) {
       @include col;
-      width: 100%;
       padding: 40px 16px 32px;
     }
   }
@@ -34,6 +34,7 @@
     .intro,
     .description {
       margin-bottom: 65px;
+
       h3 {
         font-size: 19px;
         text-align: left;
@@ -41,6 +42,14 @@
       p {
         font-size: 16px;
         margin-top: 15px;
+      }
+    }
+    .description {
+      margin-bottom: 0px;
+      padding-bottom: 0;
+
+      @media (min-width: $screen-sm-min) {
+        margin-bottom: 65px;
       }
     }
   }
@@ -51,8 +60,10 @@
     }
 
     canvas {
+      width: 100% !important;
+      height: 100% !important;
       @include padding(top, 4);
-      @include padding(bottom, 3);
+      @include padding(bottom, 4);
 
       @media (min-width: $screen-md-min) {
         @include padding(top, 2);
@@ -60,8 +71,6 @@
     }
 
     .graph {
-      height: 200px;
-      width: 200px;
       border: 1px solid #000;
       border-radius: 100%;
       margin: auto auto 100px;
