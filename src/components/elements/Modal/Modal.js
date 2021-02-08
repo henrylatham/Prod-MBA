@@ -57,8 +57,8 @@ export default class Modal extends Component<any> {
                     <div className="_field-wrapper">
                       {isEmailSent && (
                         <p className="successMessage">
-                          You're registered! Check your inbox for Day 1 of our
-                          Mini MBA
+                          You{"'"}re registered! Check your inbox for Day 1 of
+                          our Mini MBA
                         </p>
                       )}
                       <input
