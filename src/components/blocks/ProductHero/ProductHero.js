@@ -6,7 +6,7 @@ type Props = {
   title: string,
   subtitle: string,
   typeImage: string,
-  viewType: boolean,
+  viewType: number,
 };
 
 export default class ProductHero extends Component<Props> {

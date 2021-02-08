@@ -1,3 +1,5 @@
+/* eslint react/jsx-key: 0, react/no-unescaped-entities: 0  */  // --> OFF
+
 // @TODO - Henry Define Product COPY sections
 // - p1 - type score equal or above 16
 // - p2 - type score below 16
@@ -389,7 +391,7 @@ const Copy = {
   },
 };
 
-export default class TypesCopy extends Component {
+export default class TypesCopy extends Component<any> {
   render() {
     const { type, typeResult } = this.props;
     const copy = Copy[type];
