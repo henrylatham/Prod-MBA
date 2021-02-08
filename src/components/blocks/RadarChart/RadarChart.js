@@ -11,7 +11,7 @@ export default class RadarChart extends Component<any> {
     map(scoreData.overal, (score, type) => {
       labels.push(startCase(type));
       scores.push(score);
-    })
+    });
 
     const data = {
       labels,
@@ -26,7 +26,7 @@ export default class RadarChart extends Component<any> {
           borderWidth: 1,
         },
       ],
-    }
+    };
 
     const options = {
       scale: {
@@ -35,25 +35,22 @@ export default class RadarChart extends Component<any> {
           min: 0,
           max: 35,
           stepSize: 7,
-          display: false
+          display: false,
         },
         gridLines: { circular: true },
         pointLabels: {
           fontSize: 12,
           fontStyle: 'bold',
-        }
+        },
       },
       legend: {
-        display: false
+        display: false,
       },
       tooltips: {
-        enabled: true
-      }
-    }
+        enabled: true,
+      },
+    };
 
-
-    return (
-      <Radar data={data} options={options} />
-    );
+    return <Radar data={data} options={options} />;
   }
 }

@@ -18,9 +18,9 @@ const Copy = {
       <p>
         Your mantra is, {"'"}always be shipping{"'"}, and it shows. As someone
         that{"'"}s laser-focused on releasing stable products, your tickets are
-        slick, your acceptance criteria are on point, and you're a stickler for
-        meeting deadlines. You adapt to the ever-changing needs of the market,
-        amd relish a challenge. Good work!{' '}
+        slick, your acceptance criteria are on point, and you{"'"}re a stickler
+        for meeting deadlines. You adapt to the ever-changing needs of the
+        market, amd relish a challenge. Good work!{' '}
       </p>
     ),
   },
@@ -60,9 +60,9 @@ const Copy = {
     tip: (
       <p>
         As The Student, you{"'"}re inquisitive, curious and unstoppable on your
-        path to becoming an incredible product manager. You know what you don't
-        yet know, and that is half the battle. Students have a growth mindset
-        that welcomes new challenges and significant change. Great!
+        path to becoming an incredible product manager. You know what you don
+        {"'"}t yet know, and that is half the battle. Students have a growth
+        mindset that welcomes new challenges and significant change. Great!
       </p>
     ),
   },

@@ -32,7 +32,7 @@ export default class Modal extends Component<any> {
       <div className={classes}>
         <div className="modal">
           <Card cardModal="cardModal">
-            <img src={img} className="modale_image_block" />
+            <img src={img} alt="Product types" className="modale_image_block" />
             <div className="modal__title">{title}</div>
             <div className="modal__text">{description}</div>
             <div className="modal__btnContainer">

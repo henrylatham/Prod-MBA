@@ -26,7 +26,7 @@ const Copy = {
       </p>
     ),
     p1: [
-      <p>
+      <p key="p1">
         Unlike a stand-alone feature or OKR, good product strategy requires
         product mangers to consistently deliver features that build toward a
         coherent roadmap, which in turn enables a company to achieve its overall
@@ -34,12 +34,12 @@ const Copy = {
         <br />
         <br />
         You understand how to align the business needs and strategic goals with
-        an end product that solves your user's problem (whilst also delivering
-        value for the business).
+        an end product that solves your user{"'"}s problem (whilst also
+        delivering value for the business).
         <br />
         <br />
-        The better you understand the 'why' behind the strategic vision, the
-        more your roadmap will tie into the company direction. <br />
+        The better you understand the {"'"}why{"'"} behind the strategic vision,
+        the more your roadmap will tie into the company direction. <br />
         <br />
         Think about the key players at your company: What do they do
         differently? How do they shape the company strategy? What unique
@@ -97,12 +97,12 @@ const Copy = {
       </p>
     ),
     p1: [
-      <p>
+      <p key="p1">
         The foundation of successful product management is the ability to work
         with a cross-functional team to define, build and launch well-designed,
         stable products. <br />
         <br />
-        You've spent time honing your skills so your tickets are easily
+        You{"'"}ve spent time honing your skills so your tickets are easily
         understood, but could you improve the test steps and acceptance criteria
         to further streamline your communication? <br />
         <br />
@@ -157,7 +157,7 @@ const Copy = {
       </p>
     ),
     p1: [
-      <p>
+      <p key="p1">
         The best product managers are able to multiply their impact. They enable
         the people around them to contribute to and own the business impact
         necessary to achieve the company’s strategy. <br />
@@ -168,7 +168,7 @@ const Copy = {
         those objectives are having the right impact, and whether the right
         people are reading them. <br />
         <br />
-        It's great to get buy-in from the people directly around you, now it
+        It{"'"}s great to get buy-in from the people directly around you, now it
         {"'"}s time to think about how you can influence the people outside of
         your direct circle.
         <br />
@@ -234,7 +234,7 @@ const Copy = {
       </p>
     ),
     p1: [
-      <p>
+      <p key="p1">
         To build the best products, it{"'"}s key to empathize with the people
         the product serves. To care about whether that product improves their
         lives. You{"'"}ve already grasped the importance of this, and put a lot
@@ -316,7 +316,7 @@ const Copy = {
       </p>
     ),
     p1: [
-      <p>
+      <p key="p1">
         A Jack (or Jill) of all trades, and a master of many. Adaptability & a
         wide range of skills is one of the most valuable assets for any product
         manager. <br />
@@ -359,7 +359,7 @@ const Copy = {
       </p>
     ),
     p1: [
-      <p>
+      <p key="p1">
         As The Student, you{"'"}re inquisitive, curious and unstoppable on your
         path to becoming an incredible product manager. You know what you don
         {"'"}t yet know, and that is half the battle. <br />

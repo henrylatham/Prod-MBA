@@ -15,13 +15,7 @@ type Props = {
 
 export default class Button extends Component<Props> {
   render() {
-    const {
-      onClick,
-      label,
-      disabled,
-      classOverride,
-      type,
-    } = this.props;
+    const { onClick, label, disabled, classOverride, type } = this.props;
     const buttonType = type || 'primary';
 
     return (
