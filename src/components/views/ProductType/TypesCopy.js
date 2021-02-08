@@ -1,4 +1,4 @@
-/* eslint react/jsx-key: 0, react/no-unescaped-entities: 0  */  // --> OFF
+/* eslint react/jsx-key: 0, react/no-unescaped-entities: 0  */ // --> OFF
 
 // @TODO - Henry Define Product COPY sections
 // - p1 - type score equal or above 16

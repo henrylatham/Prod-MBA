@@ -4,9 +4,9 @@
   @include flex;
   min-height: 48px;
   button {
-  	&.hidden {
-  		display: none;
-  	}
+    &.hidden {
+      display: none;
+    }
   }
 }
 
