@@ -22,6 +22,7 @@ export default class Quiz extends Component<any> {
     super();
     this.quizRef = React.createRef();
     this.state = {
+      isGeneralEnabled: false,
       generalStep: false,
       currentSection: QuestionsDatasetOrder[0],
       answers: questionsConstructor,
@@ -83,13 +84,14 @@ export default class Quiz extends Component<any> {
 
     if (!canGoNext) {
       // It is Final
-      this.calculateFinalResults(results);
+      const final = this.calculateFinalResults(results);
+      this.submitResults(final);
     }
   };
 
   // @TODO - comment out
-  calculateFinalResults = () => {
-    const { results } = this.state;
+  calculateFinalResults = (results) => {
+    // const { results } = this.state;
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
     // const results = {
     //   customerInsight: 10,
@@ -157,9 +159,8 @@ export default class Quiz extends Component<any> {
     return finalData;
   };
 
-  submitResults = () => {
+  submitResults = (finalData) => {
     const { userData } = this.state;
-    const finalData = this.calculateFinalResults();
     const uniqParam = window.btoa(
       `${JSON.stringify(finalData)}$-$${JSON.stringify(userData)}$-$1`
     );
@@ -184,7 +185,7 @@ export default class Quiz extends Component<any> {
   };
 
   render() {
-    const { currentSection, answers, generalStep, userData } = this.state;
+    const { currentSection, answers, generalStep, userData, isGeneralEnabled } = this.state;
     const dataset = QuestionsDataset[currentSection];
     const numberOfSections = QuestionsDatasetOrder.length;
 
@@ -216,7 +217,7 @@ export default class Quiz extends Component<any> {
             <div className="progress" style={{ width: progress }} />
           </div>
           <div className="questions" key={`${currentSection}`}>
-            {generalStep && (
+            {(generalStep && isGeneralEnabled) && (
               <div>
                 <Input
                   className="general"
@@ -234,7 +235,7 @@ export default class Quiz extends Component<any> {
                 />
               </div>
             )}
-            {!generalStep &&
+            {(!generalStep || !isGeneralEnabled) &&
               map(dataset.questions, (question, key) => (
                 <div
                   className="question"
@@ -273,7 +274,7 @@ export default class Quiz extends Component<any> {
                   </div>
                 </div>
               ))}
-            {generalStep ? (
+            {(generalStep && isGeneralEnabled) ? (
               <Button
                 label="Calculate Results"
                 disabled={!userData.location || !userData.email}

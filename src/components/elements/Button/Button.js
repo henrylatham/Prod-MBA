@@ -11,12 +11,13 @@ type Props = {
   disabled?: boolean,
   classOverride: string,
   type?: string,
+  isHidden?: boolean,
 };
 
 export default class Button extends Component<Props> {
   render() {
-    const { onClick, label, disabled, classOverride, type } = this.props;
-    const buttonType = type || 'primary';
+    const { onClick, label, disabled, classOverride, type, isHidden } = this.props;
+    const buttonType = isHidden ? 'hidden' : '' || type || 'primary';
 
     return (
       <div onClick={onClick} className="btnContainer" role="presentation">

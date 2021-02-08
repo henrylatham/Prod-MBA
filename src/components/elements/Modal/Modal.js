@@ -12,11 +12,12 @@ export default class Modal extends Component<any> {
   };
   render() {
     const {
-      onDecline,
+      onClose,
       img,
       title,
       description,
       isOpen,
+      isEmailSent,
     } = this.props;
     const ACTIVE_CAMPAIGN_FORM_ACTION_URL =
       'https://productmastery.activehosted.com/proc.php?';
@@ -54,21 +55,23 @@ export default class Modal extends Component<any> {
                 <div className="activeCampaign__form_content">
                   <div className="_activeCampaign-fields">
                     <div className="_field-wrapper">
+                      {isEmailSent &&
+                        <p className="successMessage">Thanks for signing up!</p>
+                      }
                       <input
-                        type="text"
+                        type={isEmailSent ? "hidden" : "text"}
                         name="email"
                         placeholder="Enter email"
                         required
-                        // value={email}
                       />
                     </div>
                   </div>
                   <div className="_button-wrapper">
                     <Button
                       key="cancelButton"
-                      type="tertiary"
-                      label="No Thanks"
-                      onClick={onDecline}
+                      type={isEmailSent ? "primary" : "tertiary"}
+                      label={isEmailSent ? "Close" : "No Thanks"}
+                      onClick={onClose}
                     />
                     <Button
                       id="_form_newsletter_submit"
@@ -77,6 +80,7 @@ export default class Modal extends Component<any> {
                       type="primary"
                       label="Yes, please!"
                       onClick={this.onClick.bind(this)}
+                      isHidden={isEmailSent}
                     />
                   </div>
                   <p className="modal__terms">

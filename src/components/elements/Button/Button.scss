@@ -3,6 +3,11 @@
 .btnContainer {
   @include flex;
   min-height: 48px;
+  button {
+  	&.hidden {
+  		display: none;
+  	}
+  }
 }
 
 .primary {

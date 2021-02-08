@@ -24,6 +24,7 @@ export default class ProductType extends Component<any> {
     super();
     this.state = {
       isModalOpen: false,
+      isEmailSent: false,
     };
   }
 
@@ -47,16 +48,16 @@ export default class ProductType extends Component<any> {
   };
 
   handleAcceptEmailSend = () => {
-    this.setState({ isModalOpen: false });
+    this.setState({ isEmailSent: true });
   };
 
-  handleDeclineEmailSend = e => {
+  handleCloseEmailModal = e => {
     e.preventDefault();
     this.setState({ isModalOpen: false });
   };
 
   render() {
-    const { isModalOpen } = this.state;
+    const { isModalOpen, isEmailSent } = this.state;
 
     // Get URL params
     const urlParams = this.props.match.params.typeId;
@@ -149,9 +150,10 @@ export default class ProductType extends Component<any> {
             title={modalTitle}
             description="Join our free 7-day mini MBA to level-up your product skills:"
             onAccept={this.handleAcceptEmailSend.bind(this)}
-            onDecline={this.handleDeclineEmailSend.bind(this)}
+            onClose={this.handleCloseEmailModal.bind(this)}
             // productType={scoreType}
             isOpen={isModalOpen}
+            isEmailSent={isEmailSent}
             email={userData.email}
           />
         </div>
