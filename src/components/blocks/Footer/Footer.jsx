@@ -14,11 +14,11 @@ import './Footer.scss';
 
 class Footer extends Component {
   render() {
-    const { title } = this.props;
+    const { title, type } = this.props;
 
     const emailTitle = `Check out my product leadership type: ${title}`;
-    const shareUrl = window.location.href;
-    const quote = `Skill Assessment - ${title}`;
+    const shareUrl = `${window.location.host}/product-type/${type}`;
+    const quote = `I got ${title} as my product leadership style!`;
     return (
       <div className="footer">
         <h3>Share your product type with your team:</h3>

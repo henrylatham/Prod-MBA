@@ -111,9 +111,21 @@ export default class ProductType extends Component<any> {
       <div>
         <Helmet>
           <title>{TITLES[scoreType]} | Product Skills Test</title>
+          <meta property="og:title" content="Product Skills Test" />
+          <meta
+            property="og:description"
+            content="Try the Prod MBA Product Skills Test for Product Managers or Owners"
+          />
           <meta property="og:image" content={TYPEIMAGES[scoreType]} />
+          <meta property="og:url" content="/thumbnail.jpg" />
+          <meta name="twitter:title" content="Product Skills Test" />
+          <meta
+            name="twitter:description"
+            content="Try the Prod MBA Product Skills Test for Product Managers or Owners"
+          />
           <meta name="twitter:image" content={TYPEIMAGES[scoreType]} />
           <meta name="twitter:card" content={TYPEIMAGES[scoreType]} />
+          <meta name="twitter:image:alt" content="What is your product type?" />
         </Helmet>
         <div ref={this.typeRef}></div>
         <div className="homePageWrapper">
@@ -190,7 +202,11 @@ export default class ProductType extends Component<any> {
               )}
             </div>
           </div>
-          <Footer page="PRODUCT_TYPE" title={TITLES[scoreType]} />
+          <Footer
+            page="PRODUCT_TYPE"
+            title={TITLES[scoreType]}
+            type={kebabCase(scoreType)}
+          />
           <div className="modalWrapper">
             <Modal
               img={modalImg}
