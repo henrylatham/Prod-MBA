@@ -17,7 +17,7 @@ class Footer extends Component {
     const { title, type } = this.props;
 
     const emailTitle = `Check out my product leadership type: ${title}`;
-    const shareUrl = `${window.location.host}/product-type/${type}`;
+    const shareUrl = `https://test.prod.mba/product-type/${type}`;
     const quote = `I got ${title} as my product leadership style!`;
     return (
       <div className="footer">
