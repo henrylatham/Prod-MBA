@@ -13,6 +13,19 @@
     @include padding(bottom, 5);
   }
 
+  &__featuredBlocksPosition {
+    bottom: -64px;
+    position: relative;
+
+    @media (min-width: $screen-sm-min) {
+      bottom: -40px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      bottom: -120px;
+    }
+  }
+
   &__featuredBlocks {
     width: 100%;
     max-width: 720px;
@@ -20,17 +33,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 64px;
     flex-direction: column;
-    bottom: -248px;
-
-    @media (min-width: $screen-lg-min) {
-      margin-top: 120px;
-    }
 
     @media (min-width: $screen-md-min) {
       flex-direction: row;
-      bottom: reset;
     }
 
     &_container {
