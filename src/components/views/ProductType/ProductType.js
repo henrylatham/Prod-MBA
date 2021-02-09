@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
+import { Helmet } from 'react-helmet';
 import { Button, Modal } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
 import { Header, ProductHero, Footer, RadarChart } from '../../blocks';
@@ -108,6 +109,12 @@ export default class ProductType extends Component<any> {
 
     return (
       <div>
+        <Helmet>
+          <title>{TITLES[scoreType]} | Product Skills Test</title>
+          <meta property="og:image" content={TYPEIMAGES[scoreType]} />
+          <meta name="twitter:image" content={TYPEIMAGES[scoreType]} />
+          <meta name="twitter:card" content={TYPEIMAGES[scoreType]} />
+        </Helmet>
         <div ref={this.typeRef}></div>
         <div className="homePageWrapper">
           <Header
