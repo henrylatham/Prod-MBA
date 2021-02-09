@@ -55,11 +55,14 @@ export default class Modal extends Component<any> {
                 <div className="activeCampaign__form_content">
                   <div className="_activeCampaign-fields">
                     <div className="_field-wrapper">
-                      {isEmailSent &&
-                        <p className="successMessage">Thanks for signing up!</p>
-                      }
+                      {isEmailSent && (
+                        <p className="successMessage">
+                          You{"'"}re registered! Check your inbox for Day 1 of
+                          our Mini MBA
+                        </p>
+                      )}
                       <input
-                        type={isEmailSent ? "hidden" : "text"}
+                        type={isEmailSent ? 'hidden' : 'text'}
                         name="email"
                         placeholder="Enter email"
                         required
@@ -69,8 +72,8 @@ export default class Modal extends Component<any> {
                   <div className="_button-wrapper">
                     <Button
                       key="cancelButton"
-                      type={isEmailSent ? "primary" : "tertiary"}
-                      label={isEmailSent ? "Close" : "No Thanks"}
+                      type={isEmailSent ? 'primary' : 'tertiary'}
+                      label={isEmailSent ? 'Close Popup' : 'No Thanks'}
                       onClick={onClose}
                     />
                     <Button

@@ -11,8 +11,14 @@
 
 .modal {
   @include confirmation-modal;
+  cursor: default;
+
   .cardModal {
     border-radius: 6px;
+
+    @media (max-width: $screen-sm-min) {
+      @include margin(left right, 0);
+    }
 
     .modal__text {
       color: $grey;
@@ -22,18 +28,27 @@
       margin: auto;
       padding-top: 0;
     }
+
     .modale_image_block {
-      margin: 16px auto 24px;
+      @include padding(top bottom, 1);
       background-color: #f7f7f7;
+      border-radius: 10px 10px 0;
       height: 100%;
-      width: 70%;
-      margin: 20px auto;
+      width: 100%;
       background-color: $light-grey;
+      margin-bottom: 24px;
     }
     ._activeCampaign-fields {
       // visibility: hidden;
       .successMessage {
         text-align: center;
+      }
+    }
+
+    input {
+      @include padding(left right, 1);
+      @media (min-width: $screen-sm-min) {
+        min-width: 340px;
       }
     }
   }
@@ -44,10 +59,15 @@
     font-size: 10px;
     max-width: 80%;
     margin: 0 auto;
+    text-align: center;
 
     a {
       letter-spacing: 0;
-      font-size: 10px;
+      font-size: 9px;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 9px;
+      }
     }
   }
 
@@ -63,6 +83,10 @@
 
     button {
       margin: 0 10px;
+
+      @media (max-width: $screen-sm-min) {
+        font-size: 9px;
+      }
     }
 
     .tertiary {
@@ -72,4 +96,9 @@
   form {
     width: 100%;
   }
+}
+
+.successMessage {
+  @include padding(left right, 0);
+  color: $primary;
 }

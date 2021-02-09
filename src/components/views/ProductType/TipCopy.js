@@ -1,4 +1,4 @@
-/* eslint react/no-unescaped-entities: 0 */  // --> OFF
+/* eslint react/no-unescaped-entities: 0 */ // --> OFF
 import React, { Component } from 'react';
 
 const Copy = {
