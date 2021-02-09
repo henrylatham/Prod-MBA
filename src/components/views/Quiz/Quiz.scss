@@ -4,7 +4,7 @@
   // padding: 187px 150px 100px 150px;
   background-color: $white;
   border-radius: 10px 8px 10px 10px;
-  margin: 340px 16px 24px;
+  margin: 400px auto 24px;
   max-width: 420px;
 
   @media (min-width: $screen-sm-min) {
@@ -76,8 +76,14 @@
 
     input[type='radio'] {
       display: inline-block;
-      min-width: 32px;
+      min-width: 16px;
+      max-width: 16px;
       min-height: 24px;
+
+      @media (min-width: $screen-xs-min) {
+        min-width: 32px;
+        max-width: reset;
+      }
     }
 
     .inactive {

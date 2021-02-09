@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { map, findIndex, size, omit, kebabCase } from 'lodash';
+import { Helmet } from 'react-helmet';
 import { Header, Hero } from '../../blocks';
 import { Button, Input } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
@@ -212,6 +213,27 @@ export default class Quiz extends Component<any> {
 
     return (
       <div className="quizWrapper">
+        <Helmet>
+          <title>Product Skills Test</title>
+          <meta property="og:title" content="Product Skills Test" />
+          <meta
+            property="og:description"
+            content="Try the Prod MBA Product Skills Test for Product Managers or Owners"
+          />
+          <meta property="og:image" content="/thumbnail.jpg" />
+          <meta property="og:url" content="/thumbnail.jpg" />
+          <meta name="twitter:title" content="Product Skills Test" />
+          <meta
+            name="twitter:description"
+            content="Try the Prod MBA Product Skills Test for Product Managers or Owners"
+          />
+          <meta name="twitter:image" content="/thumbnail.jpg" />
+          <meta name="twitter:card" content="/thumbnail.jpg" />
+          <meta name="twitter:image:alt" content="What is your product type?" />
+
+          <link rel="apple-touch-icon" href="logo192.png" />
+        </Helmet>
+
         <Header
           light
           onDefaultClick={this.scrollIntoView}
