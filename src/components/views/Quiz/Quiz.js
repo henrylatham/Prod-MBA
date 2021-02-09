@@ -119,7 +119,7 @@ export default class Quiz extends Component<any> {
       const newLoopResults = omit(results, key);
       map(newLoopResults, result2 => {
         if (Math.abs(result - result2) < DiffMargin) {
-          allRounderDiff = true;
+          allRounderDiff = false;
         }
       });
     });

@@ -62,10 +62,17 @@ export default class ProductType extends Component<any> {
   handleCloseEmailModal = e => {
     e.preventDefault();
     this.setState({ isModalOpen: false });
+    Mixpanel.track(`1.Skills / Close Modal`);
+  };
+
+  handleBookCall = () => {
+    Mixpanel.track(`1.Skills / Book Call`);
   };
 
   render() {
     const { isModalOpen, isEmailSent } = this.state;
+
+    const calendlyUrl = 'https://calendly.com/henry_latham/prod-mba';
 
     // Get URL params
     const urlParams = this.props.match.params.typeId;
@@ -119,6 +126,29 @@ export default class ProductType extends Component<any> {
           <div className="productContent">
             <div className="left">
               <TypesCopy type={scoreType} typeResult={typeResult} />
+              {personalPage && (
+                <div className="left__cta">
+                  <h3>How To Improve As {TITLES[scoreType]}</h3>
+                  <p>Book your free Career Strategy Session now:</p>
+                  <p>
+                    Henry Latham, founder of{' '}
+                    <a href="https://prod.mba">Prod MBA</a>, will review your
+                    test & help you understand which skills you need to focus on
+                    in order to level up your career:
+                  </p>
+                  <a
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      type="primary"
+                      label="Book A Call"
+                      onClick={this.handleBookCall.bind(this)}
+                    />
+                  </a>
+                </div>
+              )}
             </div>
             <div className="right">
               {mode === 1 || personalPage ? ( // User TIPs

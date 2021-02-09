@@ -35,6 +35,9 @@
     padding: 64px 8px 24px;
     text-align: center;
     @media (min-width: $screen-sm-min) {
+      padding: 140px 64px 100px 64px;
+    }
+    @media (min-width: $screen-md-min) {
       padding: 140px 150px 100px 150px;
     }
   }
