@@ -20,18 +20,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 120px;
+    margin-top: 64px;
+    flex-direction: column;
+    bottom: -248px;
 
-    @media (max-width: $screen-sm-min) {
-      flex-direction: column;
-      bottom: -248px;
+    @media (min-width: $screen-lg-min) {
+      margin-top: 120px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      flex-direction: row;
+      bottom: reset;
     }
 
     &_container {
       @include corner-radius;
       padding: 16px 24px 32px;
       background-color: $white;
-      width: 100%;
       margin: 0 12px;
       min-width: 240px;
       text-align: center;
@@ -44,14 +49,14 @@
         justify-content: flex-start;
         flex-direction: row;
         flex: 0 0 100%;
-        width: 100%;
         min-width: 264px;
+        max-width: 320px;
         margin-bottom: 10px;
         padding: 15px;
         background-color: $white;
         border-radius: 10px;
         position: relative;
-        z-index: 4;
+        z-index: 1;
       }
     }
 
@@ -74,7 +79,7 @@
       font-size: 11px;
       font-weight: bold;
 
-      @media (min-width: $screen-sm-min) {
+      @media (min-width: $screen-md-min) {
         text-align: center;
         font-size: 14px;
       }
@@ -85,9 +90,8 @@
       text-align: left;
       opacity: 0.6;
 
-      @media (min-width: $screen-sm-min) {
+      @media (min-width: $screen-md-min) {
         text-align: center;
-        opacity: 1;
       }
     }
   }
@@ -114,7 +118,7 @@
     p {
       @include padding(top bottom, 2);
       @include padding(left right, 0);
-      font-size: 16px;
+      font-size: 20px;
       text-align: center;
 
       @media (min-width: $screen-sm-min) {

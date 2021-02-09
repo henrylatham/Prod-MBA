@@ -22,8 +22,8 @@
     display: flex;
     width: fit-content;
     position: absolute;
-    z-index: 1;
-    right: 0px;
+    z-index: 2;
+    right: 0;
 
     @media (min-width: $screen-sm-min) {
       right: 20px;
@@ -45,14 +45,14 @@
     .tertiary {
       border: none;
       color: $primary;
-    }
-
-    .btn {
-      margin: 16px 8px;
       /* Override mixin */
       &:hover {
         transform: none;
       }
+    }
+
+    .btn {
+      margin: 16px 8px;
       min-height: 48px;
       position: relative;
 
@@ -63,13 +63,14 @@
         display: none;
         position: absolute;
         width: 100%;
-        left: -64px;
+        left: -20px;
         border-radius: 15px;
         display: block;
         min-width: 180px;
 
         @media (min-width: $screen-sm-min) {
           min-width: 240px;
+          left: -64px;
         }
 
         .menuItem {
@@ -95,7 +96,7 @@
       &.test {
         &:hover {
           background-color: $primary;
-          margin-right: 10px;
+          margin-right: 8px;
         }
       }
 

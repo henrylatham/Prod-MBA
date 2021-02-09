@@ -15,107 +15,132 @@
   @media (min-width: $screen-lg-min) {
     width: 70%;
   }
+}
 
-  .left,
-  .right {
+.left,
+.right {
+  @include col;
+  padding: 80px 60px;
+  text-align: center;
+
+  @media (max-width: $screen-sm-min) {
     @include col;
-    padding: 80px 60px;
-    text-align: center;
+    padding: 40px 16px 32px;
+  }
+}
 
-    @media (max-width: $screen-sm-min) {
-      @include col;
-      padding: 40px 16px 32px;
-    }
+.left {
+  min-width: 288px;
+
+  h3 {
+    font-size: 19px;
+    text-align: left;
+  }
+  p {
+    font-size: 16px;
+    margin-top: 15px;
   }
 
-  .left {
-    min-width: 288px;
+  .intro,
+  .description {
+    margin-bottom: 65px;
+  }
+  .description {
+    margin-bottom: 0;
+    padding-bottom: 0;
 
-    .intro,
-    .description {
+    @media (min-width: $screen-sm-min) {
       margin-bottom: 65px;
-
-      h3 {
-        font-size: 19px;
-        text-align: left;
-      }
-      p {
-        font-size: 16px;
-        margin-top: 15px;
-      }
-    }
-    .description {
-      margin-bottom: 0px;
-      padding-bottom: 0;
-
-      @media (min-width: $screen-sm-min) {
-        margin-bottom: 65px;
-      }
     }
   }
 
-  .right {
-    @media (max-width: $screen-sm-min) {
-      padding-top: 0px;
+  &__cta {
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
-    canvas {
-      width: 100% !important;
-      height: 100% !important;
-      @include padding(top, 4);
-      @include padding(bottom, 4);
-
-      @media (min-width: $screen-md-min) {
-        @include padding(top, 2);
-      }
+    a {
+      @include text;
+      color: $primary;
+      letter-spacing: normal;
+      text-decoration: none;
     }
 
-    .graph {
-      border: 1px solid #000;
-      border-radius: 100%;
-      margin: auto auto 100px;
-    }
-    .tipsBlock {
-      background-color: $white;
-      border: 2px solid #f8f8f8;
-      border-radius: 10px;
-      padding: 40px;
-
-      .label {
-        color: #a5a5a5;
-        font-size: 12px;
-        margin-bottom: 10px;
-      }
-      .description {
-        color: #000;
-        font-size: 16px;
-      }
-    }
-    .newUser {
-      @include padding(all, 2);
-      background-color: $white;
-      border: 2px solid #f8f8f8;
-      border-radius: 10px;
-      margin-bottom: 32px;
-
+    .btnContainer {
       @media (min-width: $screen-sm-min) {
-        @include padding(all, 3);
+        max-width: 184px;
       }
+    }
 
-      &_img {
-        max-width: 100%;
-        max-height: 200px;
-      }
+    button {
+      margin-top: 32px;
+    }
+  }
+}
 
-      &_title {
-        @include padding(top, 1);
-        font-size: 28px;
-        text-align: left;
-      }
+.right {
+  @media (max-width: $screen-sm-min) {
+    padding-top: 0px;
+  }
 
-      p {
-        @include padding(bottom, 2);
-      }
+  canvas {
+    @include padding(top, 4);
+    @include padding(bottom, 4);
+
+    @media (min-width: $screen-md-min) {
+      @include padding(top, 2);
+    }
+  }
+
+  .graph {
+    border: 1px solid #000;
+    border-radius: 100%;
+    margin: auto auto 100px;
+  }
+  .tipsBlock {
+    background-color: $white;
+    border: 2px solid #f8f8f8;
+    border-radius: 10px;
+    padding: 40px;
+
+    .label {
+      color: #a5a5a5;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .description {
+      color: #000;
+      font-size: 16px;
+    }
+  }
+  .newUser {
+    @include padding(all, 2);
+    background-color: $white;
+    border: 2px solid #f8f8f8;
+    border-radius: 10px;
+    margin-bottom: 32px;
+
+    @media (min-width: $screen-sm-min) {
+      @include padding(all, 3);
+    }
+
+    &_img {
+      max-width: 100%;
+      max-height: 200px;
+    }
+
+    &_title {
+      @include padding(top, 1);
+      font-size: 28px;
+      text-align: left;
+    }
+
+    p {
+      @include padding(bottom, 2);
     }
   }
 }
