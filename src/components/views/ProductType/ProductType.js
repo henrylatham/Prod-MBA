@@ -68,7 +68,7 @@ export default class ProductType extends Component<any> {
   render() {
     const { isModalOpen, isEmailSent } = this.state;
 
-    const calendlyUrl = 'https://calendly.com/henry_latham/prod-mba';
+    const calendlyUrl = 'https://calendly.com/henry_latham/skills-assessment';
 
     // Get URL params
     const urlParams = this.props.match.params.typeId;
