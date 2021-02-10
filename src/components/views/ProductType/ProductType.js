@@ -7,6 +7,7 @@ import { Header, ProductHero, Footer, RadarChart } from '../../blocks';
 import { TITLES, TYPEIMAGES } from '../Quiz/Questions';
 import TypesCopy from './TypesCopy';
 import TipCopy from './TipCopy';
+import ImproveCopy from './ImproveCopy';
 import graphExample from '../../../assets/images/graph_example.png';
 import modalImg from '../../../assets/images/modal_img.png';
 import './ProductType.scss';
@@ -23,16 +24,11 @@ const KNOWN_TYPES = [
 export default class ProductType extends Component<any> {
   constructor() {
     super();
-    this.typeRef = React.createRef();
     this.state = {
       isModalOpen: false,
       isEmailSent: false,
     };
   }
-
-  scrollIntoView = () => {
-    return this.typeRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
 
   componentDidMount() {
     const urlParams = this.props.match.params.typeId;
@@ -41,9 +37,8 @@ export default class ProductType extends Component<any> {
     if (personalPage) {
       setTimeout(() => this.setState({ isModalOpen: true }), 9000);
     }
-    this.scrollIntoView();
 
-    Mixpanel.track(`1.Skills / ${urlParams} / ${this.state.isModalOpen}`);
+    Mixpanel.track(`Skills / ${urlParams} / ${this.state.isModalOpen}`);
   }
 
   takeQuiz = () => {
@@ -52,22 +47,21 @@ export default class ProductType extends Component<any> {
 
   handleGoTo = strategy => {
     this.props.history.push(`/product-type/${kebabCase(strategy)}`);
-    this.scrollIntoView();
   };
 
   handleAcceptEmailSend = () => {
     this.setState({ isEmailSent: true });
-    Mixpanel.track(`1.Skills / Signup`);
+    Mixpanel.track(`Skills / Signup`);
   };
 
   handleCloseEmailModal = e => {
     e.preventDefault();
     this.setState({ isModalOpen: false });
-    Mixpanel.track(`1.Skills / Close Modal`);
+    Mixpanel.track(`Skills / Close Modal`);
   };
 
   handleBookCall = () => {
-    Mixpanel.track(`1.Skills / Book Call`);
+    Mixpanel.track(`Skills / Book Call`);
   };
 
   render() {
@@ -127,7 +121,6 @@ export default class ProductType extends Component<any> {
           <meta name="twitter:card" content={TYPEIMAGES[scoreType]} />
           <meta name="twitter:image:alt" content="What is your product type?" />
         </Helmet>
-        <div ref={this.typeRef}></div>
         <div className="homePageWrapper">
           <Header
             light
@@ -145,15 +138,12 @@ export default class ProductType extends Component<any> {
           <div className="productContent">
             <div className="left">
               <TypesCopy type={scoreType} typeResult={typeResult} />
-              {personalPage && (
-                <div className="left__cta">
-                  <h3>How To Improve As {TITLES[scoreType]}</h3>
-                  <p>Book your free Career Strategy Session now:</p>
-                  <p>
-                    Henry Latham, founder of{' '}
-                    <a href="https://prod.mba">Prod MBA</a>, will review your
-                    test & help you understand which skills you need to focus on
-                    in order to level up your career:
+              <div className="left__cta">
+                <h3>How To Improve As {TITLES[scoreType]}</h3>
+                <ImproveCopy type={scoreType} typeResult={typeResult} />
+                <div>
+                  <p className="left__cta_bold">
+                    Book your free Career Strategy Session now:
                   </p>
                   <a
                     href={calendlyUrl}
@@ -167,7 +157,7 @@ export default class ProductType extends Component<any> {
                     />
                   </a>
                 </div>
-              )}
+              </div>
             </div>
             <div className="right">
               {mode === 1 || personalPage ? ( // User TIPs
@@ -195,7 +185,7 @@ export default class ProductType extends Component<any> {
                     <Button label="Start Test" onClick={this.takeQuiz} />
                   </div>
                   <div className="tipsBlock">
-                    <p className="label">{`Tip for "${TITLES[scoreType]}"`}</p>
+                    <p className="label">{`Overview of "${TITLES[scoreType]}"`}</p>
                     <TipCopy type={scoreType} typeResult={typeResult} />
                   </div>
                 </div>

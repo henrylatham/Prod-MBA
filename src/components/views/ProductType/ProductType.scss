@@ -20,7 +20,7 @@
 .left,
 .right {
   @include col;
-  padding: 80px 60px;
+  padding: 80px 30px;
   text-align: center;
 
   @media (max-width: $screen-sm-min) {
@@ -61,6 +61,10 @@
     @media (min-width: $screen-sm-min) {
       margin-top: 0;
       margin-bottom: 0;
+    }
+
+    &_bold {
+      color: $dark;
     }
 
     a {
@@ -143,4 +147,9 @@
       @include padding(bottom, 2);
     }
   }
+}
+
+i {
+  padding: 0;
+  color: $grey;
 }

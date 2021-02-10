@@ -36,12 +36,12 @@ export default class Quiz extends Component<any> {
   }
 
   componentDidMount() {
-    Mixpanel.track(`1.Skills / Home`);
+    Mixpanel.track(`Skills / Home`);
 
     const isTake = this.props.match.params.take;
     if (isTake) {
       this.scrollIntoView();
-      Mixpanel.track(`1.Skills / Take Quiz`);
+      Mixpanel.track(`Skills / Take Quiz`);
     }
   }
 
@@ -71,7 +71,7 @@ export default class Quiz extends Component<any> {
     if (currentSectionIndex < QuestionsDatasetOrder.length) {
       canGoNext = true;
       this.scrollIntoView();
-      Mixpanel.track(`1.Skills / Next Section`);
+      Mixpanel.track(`Skills / Next Section`);
     }
 
     const results = {
@@ -169,7 +169,6 @@ export default class Quiz extends Component<any> {
       `${JSON.stringify(finalData)}$-$${JSON.stringify(userData)}$-$1`
     );
     this.props.history.push(`/product-type/${uniqParam}`);
-    this.scrollIntoView();
   };
 
   onInputChange = (type, e) => {
@@ -220,20 +219,28 @@ export default class Quiz extends Component<any> {
             property="og:description"
             content="Try the Prod MBA Product Skills Test for Product Managers or Owners"
           />
-          <meta property="og:image" content="/thumbnail.jpg" />
-          <meta property="og:url" content="/thumbnail.jpg" />
+          <meta
+            property="og:image"
+            content="../../../../public/thumbnail.jpg"
+          />
+          <meta property="og:url" content="../../../../public/thumbnail.jpg" />
           <meta name="twitter:title" content="Product Skills Test" />
           <meta
             name="twitter:description"
             content="Try the Prod MBA Product Skills Test for Product Managers or Owners"
           />
-          <meta name="twitter:image" content="/thumbnail.jpg" />
-          <meta name="twitter:card" content="/thumbnail.jpg" />
+          <meta
+            name="twitter:image"
+            content="../../../../public/thumbnail.jpg"
+          />
+          <meta
+            name="twitter:card"
+            content="../../../../public/thumbnail.jpg"
+          />
           <meta name="twitter:image:alt" content="What is your product type?" />
 
           <link rel="apple-touch-icon" href="logo192.png" />
         </Helmet>
-
         <Header
           light
           onDefaultClick={this.scrollIntoView}
@@ -242,7 +249,8 @@ export default class Quiz extends Component<any> {
         />
         <Hero
           title="Product Skills Test"
-          subtitle="Assess your product skills to learn how to level-up your product career"
+          subtitle="Assess your product skills below to learn how to level-up your product career:"
+          onClick={this.scrollIntoView}
         />
         <div className="quizQuestionsWrapper" ref={this.quizRef}>
           <div className="statusBar">
