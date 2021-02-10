@@ -1,33 +1,91 @@
 @import '../../../styles/main';
 
 .hero {
-  @include background-image;
   @include col;
-  @include padding(top, 6);
-  @include padding(left right, reset);
-  @include padding(bottom, 4);
-  position: relative;
-  height: 300px;
 
-  @media (min-width: $screen-sm-min) {
+  &__header {
+    @include background-image;
+    @include col;
+    @include padding(top, 6);
+    @include padding(left right, reset);
     @include padding(bottom, 5);
-  }
 
-  &__featuredBlocksPosition {
-    bottom: -180px;
-    position: relative;
+    &_bg {
+      max-width: 720px;
 
-    @media (min-width: $screen-sm-min) {
-      bottom: -40px;
+      @media (min-width: $screen-sm-min) {
+        @include padding(bottom, 5);
+      }
+
+      @media (min-width: $screen-sm-min) {
+        @include center-block(horizontal);
+      }
     }
 
-    @media (min-width: $screen-lg-min) {
-      bottom: -120px;
+    h1,
+    p {
+      color: $white;
+    }
+
+    h1 {
+      @include padding(all, 0);
+      @include padding(top, reset);
+    }
+
+    p {
+      @include padding(top bottom, 2);
+      @include padding(left right, 0);
+      font-size: 20px;
+      text-align: center;
+
+      @media (min-width: $screen-sm-min) {
+        @include padding(top, 0);
+        @include padding(bottom, 4);
+      }
+    }
+
+    &_cta {
+      @include circular-radius;
+      @include button-primary-elevation-flat;
+      background-color: $secondary;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      height: 64px;
+      align-items: center;
+      max-width: 220px;
+      outline: 0;
+      cursor: pointer;
+
+      &:hover {
+        @include button-primary-elevation-raised;
+
+        transform: translateY(-2px);
+      }
+
+      p {
+        @include padding(top bottom, reset);
+        @include padding(left, 1);
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+      }
+    }
+
+    i {
+      color: $white;
+      margin-top: 1px;
+    }
+
+    .icon-container {
+      display: flex;
     }
   }
 
   &__featuredBlocks {
-    width: 100%;
+    @include padding(top, 3);
     max-width: 720px;
     margin: 0 auto;
     display: flex;
@@ -42,7 +100,6 @@
     &_container {
       @include corner-radius;
       padding: 16px 24px 32px;
-      background-color: $white;
       margin: 0 12px;
       min-width: 240px;
       text-align: center;
@@ -98,38 +155,6 @@
 
       @media (min-width: $screen-md-min) {
         text-align: center;
-      }
-    }
-  }
-
-  &__header {
-    @include col;
-    color: $white;
-    max-width: 720px;
-
-    @media (min-width: $screen-sm-min) {
-      @include center-block(horizontal);
-    }
-
-    h1,
-    p {
-      color: $white;
-    }
-
-    h1 {
-      @include padding(all, 0);
-      @include padding(top, reset);
-    }
-
-    p {
-      @include padding(top bottom, 2);
-      @include padding(left right, 0);
-      font-size: 20px;
-      text-align: center;
-
-      @media (min-width: $screen-sm-min) {
-        @include padding(top, 0);
-        @include padding(bottom, 4);
       }
     }
   }

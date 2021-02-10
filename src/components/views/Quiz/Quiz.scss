@@ -4,17 +4,17 @@
   // padding: 187px 150px 100px 150px;
   background-color: $white;
   border-radius: 10px 8px 10px 10px;
-  margin: 400px auto 24px;
+  margin: 80px auto 24px;
   max-width: 420px;
 
   @media (min-width: $screen-sm-min) {
-    margin: 254px auto 140px;
+    margin: 80px auto 140px;
     max-width: 1187px;
     width: 70%;
   }
 
   @media (min-width: $screen-sm-min) {
-    margin-top: 320px;
+    margin-top: 80px;
   }
 
   .statusBar {

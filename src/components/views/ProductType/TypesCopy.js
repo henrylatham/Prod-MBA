@@ -1,15 +1,3 @@
-/* eslint react/jsx-key: 0, react/no-unescaped-entities: 0  */ // --> OFF
-
-// @TODO - Henry Define Product COPY sections
-// - p1 - type score equal or above 16
-// - p2 - type score below 16
-// - default - preview mode - without user results
-// Default copy is shown when result is equal to "0" which means that product screen is in preview mode or if type is "student" or "all-rounder"
-// Default routes (preview routes) are same as object keys but not in camel case.
-// E.g. "productStrategy" => http://localhost:3000/product-type/product-strategy
-//      "allROunder"      => http://localhost:3000/product-type/all-rounder
-//      "execution"       => http://localhost:3000/product-type/execution
-
 import React, { Component } from 'react';
 import './TypesCopy.scss';
 
