@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { map, findIndex, size, omit, kebabCase } from 'lodash';
+import { map, findIndex, size, kebabCase } from 'lodash';
 import { Helmet } from 'react-helmet';
 import { Header, Hero } from '../../blocks';
 import { Button, Input } from '../../elements';
@@ -94,36 +94,31 @@ export default class Quiz extends Component<any> {
   };
 
   // @TODO - comment out
-  calculateFinalResults = results => {
-    // const { results } = this.state;
+  calculateFinalResults = (results) => {
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
     // const results = {
-    //   customerInsight: 10,
-    //   execution: 10,
-    //   influencer: 10,
-    //   productStrategy: 30,
+    //   customerInsight: 22,
+    //   execution: 23,
+    //   influencer: 28,
+    //   productStrategy: 20,
     // };
 
     let total = 0;
-    let allRounderDiff = false;
     let highestScore = 0;
     let highestResult = null;
+    const sortedArray = map(results, res => res).sort();
     map(results, (result, key) => {
       total += result;
+
       // Get highest score and map result as key. e.g. productStrategy
       if (result > highestScore) {
         highestScore = result;
         highestResult = key;
       }
-
-      // compare each with others to get possible "All Rounder"
-      const newLoopResults = omit(results, key);
-      map(newLoopResults, result2 => {
-        if (Math.abs(result - result2) < DiffMargin) {
-          allRounderDiff = false;
-        }
-      });
     });
+
+    const pastHighScore = sortedArray[sortedArray.length - 2];
+    const allRounderDiff = (highestScore - pastHighScore) < DiffMargin;
 
     const isStrategist =
       total >= TotalOutcomeLimit && highestResult === 'productStrategy'

@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/no-static-element-interactions: 0 */ // --> OFF
 // @flow
 import React, { Component } from 'react';
 import { Icon } from '../../elements';
@@ -22,7 +23,7 @@ export default class Hero extends Component<Props> {
           <div className="hero__header_bg">
             <h1>{title}</h1>
             <p>{subtitle}</p>
-            <div className="hero__header_cta" onClick={onClick}>
+            <div role="presentation" className="hero__header_cta" onClick={onClick}>
               <p>Start Test</p>
               <Icon
                 className="dropdownIcon"
@@ -34,7 +35,7 @@ export default class Hero extends Component<Props> {
         </div>
         <div className="hero__featuredBlocksPosition">
           <div className="hero__featuredBlocks">
-            <div className="hero__featuredBlocks_container" onClick={onClick}>
+            <div role="presentation" className="hero__featuredBlocks_container" onClick={onClick}>
               <img
                 alt="influencer"
                 src={strategist}

@@ -31,6 +31,7 @@ export default class ProductType extends Component<any> {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const urlParams = this.props.match.params.typeId;
     const isKnownDefaultRoute = includes(KNOWN_TYPES, urlParams);
     const personalPage = urlParams && !isKnownDefaultRoute;
