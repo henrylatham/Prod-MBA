@@ -2,16 +2,22 @@
 
 .header {
   &__logo {
+    @media (max-width: $screen-xs-min) {
+      display: none;
+    }
+
+    display: flex;
     @include padding(all, 1);
+    @include padding(top, 3);
     @include opacity(1);
-    max-width: 80px; // default logo width: 140px;
+    max-width: 60px; // default logo width: 140px;
     position: absolute;
     top: 0;
     z-index: 1;
 
     @media (min-width: $screen-sm-min) {
       @include padding(all, 2);
-      max-width: 98px; // default logo width: 140px;
+      max-width: 120px; // default logo width: 140px;
     }
 
     &:hover {
