@@ -124,7 +124,7 @@ export default class ProductType extends Component<any> {
         </Helmet>
         <div className="homePageWrapper">
           <Header
-            light
+            dark
             onDefaultClick={this.takeQuiz}
             onGoTo={this.handleGoTo}
             showQuiz={!personalPage}
