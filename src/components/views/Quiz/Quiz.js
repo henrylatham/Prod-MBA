@@ -94,7 +94,7 @@ export default class Quiz extends Component<any> {
   };
 
   // @TODO - comment out
-  calculateFinalResults = (results) => {
+  calculateFinalResults = results => {
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
     // const results = {
     //   customerInsight: 22,
@@ -118,7 +118,7 @@ export default class Quiz extends Component<any> {
     });
 
     const pastHighScore = sortedArray[sortedArray.length - 2];
-    const allRounderDiff = (highestScore - pastHighScore) < DiffMargin;
+    const allRounderDiff = highestScore - pastHighScore < DiffMargin;
 
     const isStrategist =
       total >= TotalOutcomeLimit && highestResult === 'productStrategy'
@@ -279,20 +279,10 @@ export default class Quiz extends Component<any> {
                 >
                   <p>{question}</p>
                   <div className="question_answer">
-                    <span>Agree</span>
+                    <span>Disag.</span>
                     <input
                       /* disabled */ type="radio"
-                      value="5"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="4"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="3"
+                      value="1"
                       name={`${currentSection}-Q${key + 1}`}
                     />
                     <input
@@ -302,10 +292,20 @@ export default class Quiz extends Component<any> {
                     />
                     <input
                       type="radio"
-                      value="1"
+                      value="3"
                       name={`${currentSection}-Q${key + 1}`}
                     />
-                    <span>Disag.</span>
+                    <input
+                      type="radio"
+                      value="4"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <input
+                      type="radio"
+                      value="5"
+                      name={`${currentSection}-Q${key + 1}`}
+                    />
+                    <span>Agree</span>
                   </div>
                 </div>
               ))}

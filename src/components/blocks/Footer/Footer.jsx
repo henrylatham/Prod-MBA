@@ -9,6 +9,7 @@ import {
   EmailShareButton,
   EmailIcon,
 } from 'react-share';
+import { Mixpanel } from '../../../Mixpanel';
 
 import './Footer.scss';
 
@@ -29,13 +30,18 @@ class Footer extends Component {
               url={shareUrl}
               quote={quote}
               className="facebookShare"
+              onClick={this.handleClickFB}
             >
               <FacebookIcon size={32} round />
             </FacebookShareButton>
           </div>
 
           <div className="LinkedinWrapper share__icons">
-            <LinkedinShareButton url={shareUrl} className="LinkedinShare">
+            <LinkedinShareButton
+              url={shareUrl}
+              className="LinkedinShare"
+              onClick={this.handleClickLI}
+            >
               <LinkedinIcon size={32} round />
             </LinkedinShareButton>
           </div>
@@ -46,6 +52,7 @@ class Footer extends Component {
               title={quote}
               separator=":: "
               className="WhatsappShare"
+              onClick={this.handleClickWhatsApp}
             >
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
@@ -57,6 +64,7 @@ class Footer extends Component {
               subject={emailTitle}
               body="I just completed the Prod MBA Product Skills Assessment. Check out my product type: "
               className="emailShare"
+              onClick={this.handleClickEmailShare}
             >
               <EmailIcon size={32} round />
             </EmailShareButton>
@@ -65,6 +73,22 @@ class Footer extends Component {
       </div>
     );
   }
+
+  handleClickFB = () => {
+    Mixpanel.track(`Skills / Share / FB`);
+  };
+
+  handleClickLI = () => {
+    Mixpanel.track(`Skills / Share / LI`);
+  };
+
+  handleClickWhatsApp = () => {
+    Mixpanel.track(`Skills / Share / Whatsapp`);
+  };
+
+  handleClickEmailShare = () => {
+    Mixpanel.track(`Skills / Share / Email`);
+  };
 }
 
 export default Footer;

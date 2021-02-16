@@ -69,6 +69,7 @@ export default class ProductType extends Component<any> {
     const { isModalOpen, isEmailSent } = this.state;
 
     const calendlyUrl = 'https://calendly.com/henry_latham/skills-assessment';
+    const mvoVideo = 'https://share.vidyard.com/watch/DobRxYeKq2UiHKGsAAEua5?';
 
     // Get URL params
     const urlParams = this.props.match.params.typeId;
@@ -143,17 +144,10 @@ export default class ProductType extends Component<any> {
                 <h3>How To Improve As {TITLES[scoreType]}</h3>
                 <ImproveCopy type={scoreType} typeResult={typeResult} />
                 <div>
-                  <p className="left__cta_bold">
-                    Book your free Career Strategy Session now:
-                  </p>
-                  <a
-                    href={calendlyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={mvoVideo} target="_blank" rel="noopener noreferrer">
                     <Button
                       type="primary"
-                      label="Book A Call"
+                      label="Join Free Workshop"
                       onClick={this.handleBookCall.bind(this)}
                     />
                   </a>
