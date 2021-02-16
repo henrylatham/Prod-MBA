@@ -52,11 +52,13 @@ const Copy = {
         this strategy further.
         <br />
         <br />
-        Want to actually put this into practice?
         <p className="left__cta_bold">
-          Henry Latham, founder of <a href="https://prod.mba">Prod MBA</a>, will
-          review your test score, your MVO & help you understand which skills
-          you need to focus on in order to level up your career:
+          Want to actually put ideas like this into practice?
+        </p>
+        <p className="left__cta_bold">
+          You're invited to our hands-on <a href="https://prod.mba">Prod MBA</a>{' '}
+          workshop to learn how to define a compelling product strategy - the
+          most essential element of a successful product - in just 5 minutes:
         </p>
       </p>
     ),
@@ -97,11 +99,13 @@ const Copy = {
         direct your team & organisation.
         <br />
         <br />
-        Want to actually put this into practice?
         <p className="left__cta_bold">
-          Henry Latham, founder of <a href="https://prod.mba">Prod MBA</a>, will
-          review your test score, the exercise above & help you understand which
-          skills you need to focus on in order to level up your career:
+          Want to actually put ideas like this into practice?
+        </p>
+        <p className="left__cta_bold">
+          You're invited to our hands-on <a href="https://prod.mba">Prod MBA</a>{' '}
+          workshop to learn how to define a compelling product strategy - the
+          most essential element of a successful product - in just 5 minutes:
         </p>
       </p>
     ),
@@ -134,12 +138,13 @@ const Copy = {
         organisation's decisions.
         <br />
         <br />
-        Want to actually put this into practice?
         <p className="left__cta_bold">
-          Henry Latham, founder of <a href="https://prod.mba">Prod MBA</a>, will
-          review your test score, your current workshopping experience & help
-          you understand which skills you need to focus on in order to level up
-          your career:
+          Want to actually put ideas like this into practice?
+        </p>
+        <p className="left__cta_bold">
+          You're invited to our hands-on <a href="https://prod.mba">Prod MBA</a>{' '}
+          workshop to learn how to define a compelling product strategy - the
+          most essential element of a successful product - in just 5 minutes:
         </p>
       </p>
     ),
@@ -194,11 +199,13 @@ const Copy = {
         solve it
         <br />
         <br />
-        Want to actually put this into practice?
         <p className="left__cta_bold">
-          Henry Latham, founder of <a href="https://prod.mba">Prod MBA</a>, will
-          review your test score, your MVO & help you understand which skills
-          you need to focus on in order to level up your career:
+          Want to actually put ideas like this into practice?
+        </p>
+        <p className="left__cta_bold">
+          You're invited to our hands-on <a href="https://prod.mba">Prod MBA</a>{' '}
+          workshop to learn how to define a compelling product strategy - the
+          most essential element of a successful product - in just 5 minutes:
         </p>
       </p>
     ),
@@ -247,11 +254,13 @@ const Copy = {
         direct your team & organisation.
         <br />
         <br />
-        Want to actually put this into practice?
         <p className="left__cta_bold">
-          Henry Latham, founder of <a href="https://prod.mba">Prod MBA</a>, will
-          review your test score, the exercise above & help you understand which
-          skills you need to focus on in order to level up your career:
+          Want to actually put ideas like this into practice?
+        </p>
+        <p className="left__cta_bold">
+          You're invited to our hands-on <a href="https://prod.mba">Prod MBA</a>{' '}
+          workshop to learn how to define a compelling product strategy - the
+          most essential element of a successful product - in just 5 minutes:
         </p>
       </p>
     ),
@@ -286,11 +295,13 @@ const Copy = {
         from great product leaders.
         <br />
         <br />
-        Want specific suggestions to put into practice?
         <p className="left__cta_bold">
-          Henry Latham, founder of <a href="https://prod.mba">Prod MBA</a>, will
-          review your test score, experience so far & help you understand which
-          skills you need to focus on in order to level up your career:
+          Want to actually put ideas like this into practice?
+        </p>
+        <p className="left__cta_bold">
+          You're invited to our hands-on <a href="https://prod.mba">Prod MBA</a>{' '}
+          workshop to learn how to define a compelling product strategy - the
+          most essential element of a successful product - in just 5 minutes:
         </p>
       </p>
     ),
