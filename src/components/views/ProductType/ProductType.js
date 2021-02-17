@@ -38,8 +38,6 @@ export default class ProductType extends Component<any> {
     if (personalPage) {
       setTimeout(() => this.setState({ isModalOpen: true }), 9000);
     }
-
-    Mixpanel.track(`Skills / ${urlParams} / ${this.state.isModalOpen}`);
   }
 
   takeQuiz = () => {
@@ -62,13 +60,13 @@ export default class ProductType extends Component<any> {
   };
 
   handleBookCall = () => {
-    Mixpanel.track(`Skills / Book Call`);
+    Mixpanel.track(`Skills / Watch Video`);
   };
 
   render() {
     const { isModalOpen, isEmailSent } = this.state;
 
-    const calendlyUrl = 'https://calendly.com/henry_latham/skills-assessment';
+    // const calendlyUrl = 'https://calendly.com/henry_latham/skills-assessment';
     const mvoVideo = 'https://share.vidyard.com/watch/DobRxYeKq2UiHKGsAAEua5?';
 
     // Get URL params
@@ -94,11 +92,15 @@ export default class ProductType extends Component<any> {
       const { overal } = scoreData;
       scoreType = scoreData.type;
       typeResult = overal ? overal[scoreType] : 0;
+      // HENRY - HERE (1) - for URL: "/product-type/dgasuifguaisgfiuasgfiugasiufgsauigf"
+      Mixpanel.track(`Skills / Result / ${scoreType}`);
     } else {
       // Default Product Routr
       mode = 0; // viewer mode
       typeResult = 0; // default type e.g instead copy P1 or P2, default is used
       scoreType = camelCase(urlParams); // e.g. allRounder
+      // HENRY - HERE (2) - for URL: "/product-type/allRounder"
+      Mixpanel.track(`Skills / ${urlParams}`);
     }
 
     const modalTitle = `Want tips for ${TITLES[scoreType]}?`;
