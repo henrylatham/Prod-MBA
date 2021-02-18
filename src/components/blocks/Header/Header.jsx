@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { map, size } from 'lodash';
 import { Icon } from '../../elements';
 import { TITLES } from '../../views/Quiz/Questions';
