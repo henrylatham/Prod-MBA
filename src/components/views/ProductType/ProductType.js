@@ -108,19 +108,19 @@ export default class ProductType extends Component<any> {
     const shareLink = `https://test.prod.mba/product-type/${kebabCase(
       scoreType
     )}`;
-    const shareTitle = `${TITLES[scoreType]} | Product Skills Test`;
+    // const shareTitle = `${TITLES[scoreType]} | Product Skills Test`;
 
     return (
       <div>
         <Helmet>
-          <title>{shareTitle}</title>
+          <title>Product Skills Test</title>
           <meta
             property="og:description"
             content="Try the Prod MBA Product Skills Test for Product Managers or Owners"
           />
           <meta property="og:image" content={TYPEIMAGES[scoreType]} />
           <meta property="og:url" content={shareLink} />
-          <meta name="twitter:title" content={TITLES[scoreType]} />
+          <meta name="twitter:title" content="Product Skills Test" />
           <meta name="twitter:image" content={TYPEIMAGES[scoreType]} />
           <meta name="twitter:card" content={TYPEIMAGES[scoreType]} />
           <meta name="twitter:image:alt" content="What is your product type?" />
