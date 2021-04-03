@@ -278,36 +278,63 @@ export default class Quiz extends Component<any> {
                   onChange={this.onChangeValue.bind(this, key)}
                 >
                   <p>{question}</p>
-                  <div className="question_answer">
-                    <span>Disag.</span>
-                    <input
-                      /* disabled */ type="radio"
-                      value="1"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="2"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="3"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="4"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="5"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <span>Agree</span>
+                  <div className="inputGroup">
+                    <input id="option1" name="option1" type="checkbox" />
+                    <label for="option1">Affiliate Model</label>
+                  </div>
+
+                  <div className="inputGroup">
+                    <input id="option2" name="option2" type="checkbox" />
+                    <label for="option2">Cast and Return Model</label>
+                  </div>
+
+                  <div className="inputGroup">
+                    <input id="option3" name="option3" type="checkbox" />
+                    <label for="option3">Leasing Model</label>
+                  </div>
+
+                  <div className="inputGroup">
+                    <input id="option4" name="option4" type="checkbox" />
+                    <label for="option4">Substantive Model</label>
                   </div>
                 </div>
+
+                // <div
+                //   className="question"
+                //   key={`${currentSection}-${key}`}
+                //   onChange={this.onChangeValue.bind(this, key)}
+                // >
+                //   <p>{question}</p>
+                //   <div className="question_answer">
+                //     <span>Disag.</span>
+                //     <input
+                //       /* disabled */ type="radio"
+                //       value="1"
+                //       name={`${currentSection}-Q${key + 1}`}
+                //     />
+                //     <input
+                //       type="radio"
+                //       value="2"
+                //       name={`${currentSection}-Q${key + 1}`}
+                //     />
+                //     <input
+                //       type="radio"
+                //       value="3"
+                //       name={`${currentSection}-Q${key + 1}`}
+                //     />
+                //     <input
+                //       type="radio"
+                //       value="4"
+                //       name={`${currentSection}-Q${key + 1}`}
+                //     />
+                //     <input
+                //       type="radio"
+                //       value="5"
+                //       name={`${currentSection}-Q${key + 1}`}
+                //     />
+                //     <span>Agree</span>
+                //   </div>
+                // </div>
               ))}
             {generalStep && isGeneralEnabled ? (
               <Button
