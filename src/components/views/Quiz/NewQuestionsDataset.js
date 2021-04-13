@@ -1,11 +1,12 @@
 // @TODO - Henry to Define Quiestions and Questions sections
 
-export const NewQuestionsDataset = {
+export const NewQuestionsDataset = [
   {
     question: 'Which of the following is not a revenue model:',
     order: 1, // You can change question appeareance by changing order number
     type: 'productStrategy', // One of productStrategy, execution, influencer, customerInsight
-    answers: [ // You can put as much you want. Just one or 999 answers. Pay attention that all fields are populated ( answer and points )
+    answers: [
+      // You can put as much you want. Just one or 999 answers. Pay attention that all fields are populated ( answer and points )
       {
         answer: 'Affiliate model',
         points: 1,
@@ -23,5 +24,5 @@ export const NewQuestionsDataset = {
         points: 5,
       },
     ],
-  }
-};
+  },
+];
