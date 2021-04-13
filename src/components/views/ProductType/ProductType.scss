@@ -91,6 +91,20 @@
     padding-top: 0px;
   }
 
+  &__top10 {
+    @include caption-center;
+    @include padding(top bottom, 0);
+    @include padding(left right, 2);
+    @include card-elevation;
+    display: block;
+    background-color: $success;
+    color: $white;
+    border: 2px solid $white;
+    border-radius: 3px;
+    width: 50%;
+    margin: 0 auto;
+  }
+
   canvas {
     @include padding(top, 4);
     @include padding(bottom, 4);

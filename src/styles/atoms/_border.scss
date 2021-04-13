@@ -30,7 +30,7 @@
 @mixin border-success {
   @extend %border-base;
   @include circular-radius;
-  border-color: $success-color;
+  border-color: $success;
 }
 
 @mixin border-card {

@@ -157,6 +157,7 @@ export default class ProductType extends Component<any> {
               </div>
             </div>
             <div className="right">
+              <p className="right__top10">You are in the top 10%</p>
               {mode === 1 || personalPage ? ( // User TIPs
                 <Fragment>
                   <RadarChart scoreData={scoreData} />
