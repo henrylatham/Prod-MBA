@@ -17,6 +17,7 @@ import './ProductHero.scss';
 
 type Props = {
   title: string,
+  type: Object,
   subtitle: string,
   typeImage: string,
   viewType: number,
@@ -90,4 +91,20 @@ export default class ProductHero extends Component<Props> {
       </div>
     );
   }
+
+  handleClickFB = () => {
+    Mixpanel.track(`Skills / HeroShare / FB`);
+  };
+
+  handleClickLI = () => {
+    Mixpanel.track(`Skills / HeroShare / LI`);
+  };
+
+  handleClickWhatsApp = () => {
+    Mixpanel.track(`Skills / HeroShare / Whatsapp`);
+  };
+
+  handleClickEmailShare = () => {
+    Mixpanel.track(`Skills / HeroShare / Email`);
+  };
 }
