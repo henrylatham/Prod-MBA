@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-import { Icon } from '../';
+import { Icon } from '..';
 
 import './Chip.scss';
 

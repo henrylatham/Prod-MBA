@@ -140,7 +140,6 @@ export default class ProductHero extends Component<Props> {
 
   handleBookStrategySession = () => {
     Mixpanel.track(`Skills / Bottom / Book Strategy Session`);
-    console.log(`Skills / Bottom / Book Strategy Session`);
     window.open('https://calendly.com/henry_latham/prod-mba');
   };
 }
