@@ -40,6 +40,20 @@
     @media (min-width: $screen-md-min) {
       padding: 140px 150px 100px 150px;
     }
+
+    .prvNextActions {
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      margin: 0 10px;
+      .btnContainer {
+        margin: 0 10px;
+        button {
+          width: 160px;
+          justify-content: center;
+        }
+      }
+    }
   }
   .question {
     max-width: 550px;
