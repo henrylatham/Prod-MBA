@@ -62,14 +62,9 @@ export default class Quiz extends Component<any> {
     });
   };
 
-  onSelectAnswer = (data) => {
+  onSelectAnswer = data => {
     const { currentDatasetIndex, newResults } = this.state;
-    const {
-      questionIndex,
-      answerScore,
-      answerIndex,
-      questionType,
-    } = data;
+    const { questionIndex, answerScore, answerIndex, questionType } = data;
 
     /**
       ### Data Example ###
@@ -97,8 +92,8 @@ export default class Quiz extends Component<any> {
           questionType,
           answerScore,
           answerIndex,
-        }
-      }
+        },
+      },
     });
 
     const isLast = NewQuestionsDataset.length - 1 === currentDatasetIndex;
@@ -107,22 +102,22 @@ export default class Quiz extends Component<any> {
       setTimeout(() => {
         this.setState({
           currentDatasetIndex: currentDatasetIndex + 1,
-        })
+        });
       }, 1000);
     }
-  }
+  };
 
   goToNextQuestion = () => {
     this.setState({
       currentDatasetIndex: this.state.currentDatasetIndex + 1,
-    })
-  }
+    });
+  };
 
   goToPrevQuestion = () => {
     this.setState({
       currentDatasetIndex: this.state.currentDatasetIndex - 1,
-    })
-  }
+    });
+  };
 
   calculateSectionResults = () => {
     const { answers, currentSection } = this.state;
@@ -138,7 +133,7 @@ export default class Quiz extends Component<any> {
     if (currentSectionIndex < QuestionsDatasetOrder.length) {
       canGoNext = true;
       this.scrollIntoView();
-      Mixpanel.track(`Skills / Next Section`);
+      Mixpanel.track(`Skills / Next`);
     }
 
     const results = {
@@ -187,13 +182,13 @@ export default class Quiz extends Component<any> {
     map(groupedResults, (group, key) => {
       let groupScore = results[key];
       map(group, groupAnswer => {
-        groupScore = groupScore + groupAnswer.answerScore
-      })
+        groupScore = groupScore + groupAnswer.answerScore;
+      });
       results = {
         ...results,
-        [key]: groupScore
-      }
-    })
+        [key]: groupScore,
+      };
+    });
 
     let total = 0;
     let highestScore = 0;
@@ -246,7 +241,7 @@ export default class Quiz extends Component<any> {
       overal: results,
     };
 
-    console.debug('>>> finalData: ', finalData)
+    console.debug('>>> finalData: ', finalData);
 
     if (isGeneralEnabled) {
       this.setState({ generalStep: true });
@@ -304,7 +299,7 @@ export default class Quiz extends Component<any> {
     const currentDatasetAnswerIndex = get(currentDatasetResult, 'answerIndex');
     const isLast = newDataset.length - 1 === currentDatasetIndex;
     const isFirst = currentDatasetIndex === 0;
-    const canSubmit = isLast && size(newResults) === newDataset.length
+    const canSubmit = isLast && size(newResults) === newDataset.length;
 
     return (
       <div className="quizWrapper">
@@ -371,11 +366,8 @@ export default class Quiz extends Component<any> {
                 />
               </div>
             )}
-            {(!generalStep || !isGeneralEnabled) &&
-              <div
-                className="question"
-                key={currentDataset.question}
-              >
+            {(!generalStep || !isGeneralEnabled) && (
+              <div className="question" key={currentDataset.question}>
                 <p>{currentDataset.question}</p>
                 {map(currentDataset.answers, (answerObj, index) => {
                   return (
@@ -387,7 +379,8 @@ export default class Quiz extends Component<any> {
                         answerScore: answerObj.points,
                         answerIndex: index,
                         questionType: currentDataset.type,
-                      })}>
+                      })}
+                    >
                       <input
                         key={index}
                         type="radio"
@@ -395,22 +388,24 @@ export default class Quiz extends Component<any> {
                         name={`option-${currentDataset.order}`}
                         defaultChecked={index === currentDatasetAnswerIndex}
                       />
-                      <label htmlFor={`option${index}`}>{answerObj.answer}</label>
+                      <label htmlFor={`option${index}`}>
+                        {answerObj.answer}
+                      </label>
                     </div>
                   );
                 })}
               </div>
-            }
+            )}
 
-            {(isLast && canSubmit) ? (
+            {isLast && canSubmit ? (
               <Button
-                label='Finish & View Product Type'
+                label="Finish & View Product Type"
                 onClick={this.calculateFinalResults}
               />
             ) : (
-              <div className='prvNextActions'>
+              <div className="prvNextActions">
                 <Button
-                  label='Previous'
+                  label="Previous"
                   disabled={isFirst}
                   onClick={this.goToPrevQuestion}
                 />

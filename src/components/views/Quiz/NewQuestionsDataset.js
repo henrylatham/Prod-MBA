@@ -9,7 +9,7 @@ export const NewQuestionsDataset = [
       // You can put as much you want. Just one or 999 answers. Pay attention that all fields are populated ( answer and points )
       {
         answer: 'Affiliate model 1',
-        points: 1,
+        points: 20,
       },
       {
         answer: 'Cast and return model 0',
