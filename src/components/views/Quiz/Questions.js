@@ -10,6 +10,7 @@ import imageStudent from '../../../assets/images/type_student.png';
 export const QuestionsDataset = {
   productStrategy: {
     questions: [
+      'Which of the following is not a revenue model:',
       'My decisions result in significant strategic impact within organisations I work with',
       'I am an expert at balancing user and business needs',
       'I understand why trends are occurring in my product data and what they mean',
