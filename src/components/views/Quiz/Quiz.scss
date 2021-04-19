@@ -137,11 +137,13 @@
   }
 
   label {
-    padding: 12px;
+    padding: 12px 56px 12px 12px;
+    font-size: 10px;
     width: 100%;
     display: block;
     text-align: left;
     color: $dark;
+    line-height: 2;
     cursor: pointer;
     position: relative;
     z-index: 2;
@@ -149,7 +151,7 @@
     overflow: hidden;
 
     @media (min-width: $screen-sm-min) {
-      padding: 12px 30px;
+      padding: 12px 64px 12px 24px;
     }
 
     &:before {
@@ -186,7 +188,7 @@
       transition: all 200ms ease-in;
 
       @media (min-width: $screen-sm-min) {
-        right: 30px;
+        right: 20px;
       }
     }
   }
