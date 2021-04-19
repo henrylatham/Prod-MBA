@@ -103,7 +103,7 @@ export default class Quiz extends Component<any> {
         this.setState({
           currentDatasetIndex: currentDatasetIndex + 1,
         });
-      }, 1000);
+      }, 600);
     }
   };
 
