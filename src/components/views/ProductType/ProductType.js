@@ -198,7 +198,7 @@ export default class ProductType extends Component<any> {
             <Modal
               img={modalImg}
               title={modalTitle}
-              description="Join our free 7-day mini MBA to level-up your product skills:"
+              description="Join our free 7-day Mini MBA:"
               onAccept={this.handleAcceptEmailSend.bind(this)}
               onClose={this.handleCloseEmailModal.bind(this)}
               // productType={scoreType}
