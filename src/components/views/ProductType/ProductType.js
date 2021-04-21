@@ -59,7 +59,7 @@ export default class ProductType extends Component<any> {
     Mixpanel.track(`Skills / Close Modal`);
   };
 
-  handleBookCall = () => {
+  handleWatchTraining = () => {
     Mixpanel.track(`Skills / Watch Video`);
   };
 
@@ -150,7 +150,7 @@ export default class ProductType extends Component<any> {
                     <Button
                       type="primary"
                       label="Join Free Workshop"
-                      onClick={this.handleBookCall.bind(this)}
+                      onClick={this.handleWatchTraining.bind(this)}
                     />
                   </a>
                 </div>
