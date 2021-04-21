@@ -3,7 +3,6 @@
 
 # But not the following folders
 !src/
-!storybook/
 
 # Now we ignore all files
 *.*
