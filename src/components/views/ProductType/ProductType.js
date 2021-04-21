@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
 import { Helmet } from 'react-helmet';
-import { Button, Modal } from '../../elements';
+import { Button, Chip, Modal } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
 import { Header, ProductHero, Footer, RadarChart } from '../../blocks';
 import { TITLES, TYPEIMAGES } from '../Quiz/Questions';
@@ -103,12 +103,20 @@ export default class ProductType extends Component<any> {
       Mixpanel.track(`Skills / ${urlParams}`);
     }
 
-    const modalTitle = `Want tips for ${TITLES[scoreType]}?`;
+    const modalTitle = 'Become A World-Class Product Leader'; // `Want tips for ${TITLES[scoreType]}?`;
 
     const shareLink = `https://test.prod.mba/product-type/${kebabCase(
       scoreType
     )}`;
     // const shareTitle = `${TITLES[scoreType]} | Product Skills Test`;
+
+    // @TODO - Tomi
+    // if (top) {
+    //   Mixpanel.track(`Skills / Top`);
+    // }
+    // if (!top) {
+    //   Mixpanel.track(`Skills / Bottom`);
+    // }
 
     return (
       <div>
@@ -138,6 +146,8 @@ export default class ProductType extends Component<any> {
             title={TITLES[scoreType]}
             typeImage={TYPEIMAGES[scoreType]}
             subtitle="Your Product Type is:"
+            top={false} // @TODO
+            score="10%" // @TODO
           />
           <div className="productContent">
             <div className="left">
@@ -157,6 +167,10 @@ export default class ProductType extends Component<any> {
               </div>
             </div>
             <div className="right">
+              <Chip
+                top={false} // @TODO
+                score="10%" // @TODO
+              />
               {mode === 1 || personalPage ? ( // User TIPs
                 <Fragment>
                   <RadarChart scoreData={scoreData} />
