@@ -317,6 +317,7 @@ export default class Quiz extends Component<any> {
 
     console.debug('>>> TEST: ', currentDatasetIndex + 1, newDataset.length);
     const progress = `${(currentDatasetIndex + 1 / newDataset.length) * 100}%`;
+    console.debug('>>> PROGRESS: ', progress)
 
     return (
       <div className="quizWrapper">
