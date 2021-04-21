@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { map, findIndex, size, kebabCase } from 'lodash';
+import { map, findIndex, size, kebabCase, orderBy, get, groupBy } from 'lodash';
 import { Helmet } from 'react-helmet';
 import { Header, Hero } from '../../blocks';
 import { Button, Input } from '../../elements';
@@ -12,6 +12,10 @@ import {
   TotalOutcomeLimit,
   DiffMargin,
 } from './Questions';
+
+import { NewQuestionsDataset } from './NewQuestionsDataset';
+
+const facebookEvent = 'StartTrial';
 
 export default class Quiz extends Component<any> {
   constructor() {
@@ -33,6 +37,9 @@ export default class Quiz extends Component<any> {
         email: null,
         location: null,
       },
+      // New Logic
+      currentDatasetIndex: 0,
+      newResults: {},
     };
   }
 
@@ -42,7 +49,7 @@ export default class Quiz extends Component<any> {
     const isTake = this.props.match.params.take;
     if (isTake) {
       this.scrollIntoView();
-      Mixpanel.track(`Skills / Take Quiz`);
+      Mixpanel.track(`Skills / Start`);
     }
   }
 
@@ -55,6 +62,74 @@ export default class Quiz extends Component<any> {
           [`Q-${questionNo}`]: parseInt(e.target.value, 10),
         },
       },
+    });
+  };
+
+  onSelectAnswer = data => {
+    const { currentDatasetIndex, newResults } = this.state;
+    const { questionIndex, answerScore, answerIndex, questionType } = data;
+    // Events for Mixpanel progress checking...
+    const isFirstQuestion = currentDatasetIndex === 0;
+    const isThirdQuestion = currentDatasetIndex === 2;
+    /**
+      ### Data Example ###
+      {
+        0: {
+          questionIndex: 0,
+          questionType: 'productStrategy',
+          score: 1,
+          answerIndex: 3,
+        },
+        1. {
+          questionIndex: 1,
+          questionType: 'execution',
+          score: 0,
+          answerIndex: 2
+        }
+      }
+      */
+
+    this.setState({
+      newResults: {
+        ...newResults,
+        [questionIndex]: {
+          questionIndex,
+          questionType,
+          answerScore,
+          answerIndex,
+        },
+      },
+    });
+
+    const isLast = NewQuestionsDataset.length - 1 === currentDatasetIndex;
+
+    if (!isLast) {
+      setTimeout(() => {
+        this.setState({
+          currentDatasetIndex: currentDatasetIndex + 1,
+        });
+      }, 600);
+    }
+
+    if (isFirstQuestion) {
+      Mixpanel.track(`Skills / First Question`);
+    }
+    if (isThirdQuestion) {
+      Mixpanel.track(`Skills / Third Question`);
+      FacebookPixel.track(facebookEvent);
+      console.log(facebookEvent);
+    }
+  };
+
+  goToNextQuestion = () => {
+    this.setState({
+      currentDatasetIndex: this.state.currentDatasetIndex + 1,
+    });
+  };
+
+  goToPrevQuestion = () => {
+    this.setState({
+      currentDatasetIndex: this.state.currentDatasetIndex - 1,
     });
   };
 
@@ -72,7 +147,7 @@ export default class Quiz extends Component<any> {
     if (currentSectionIndex < QuestionsDatasetOrder.length) {
       canGoNext = true;
       this.scrollIntoView();
-      Mixpanel.track(`Skills / Next Section`);
+      Mixpanel.track(`Skills / Next`);
     }
 
     const results = {
@@ -95,7 +170,8 @@ export default class Quiz extends Component<any> {
   };
 
   // @TODO - comment out
-  calculateFinalResults = results => {
+  calculateFinalResults = () => {
+    const { newResults, isGeneralEnabled } = this.state;
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
     // const results = {
     //   customerInsight: 22,
@@ -103,6 +179,30 @@ export default class Quiz extends Component<any> {
     //   influencer: 28,
     //   productStrategy: 20,
     // };
+
+    // Transform Results
+    let results = {
+      customerInsight: 0,
+      execution: 0,
+      influencer: 0,
+      productStrategy: 0,
+    };
+
+    // 1. Group By product type
+    const groupedResults = groupBy(newResults, function(res) {
+      return res.questionType;
+    });
+
+    map(groupedResults, (group, key) => {
+      let groupScore = results[key];
+      map(group, groupAnswer => {
+        groupScore = groupScore + groupAnswer.answerScore;
+      });
+      results = {
+        ...results,
+        [key]: groupScore,
+      };
+    });
 
     let total = 0;
     let highestScore = 0;
@@ -155,8 +255,13 @@ export default class Quiz extends Component<any> {
       overal: results,
     };
 
-    this.setState({ generalStep: true });
-    return finalData;
+    console.debug('>>> finalData: ', finalData);
+
+    if (isGeneralEnabled) {
+      this.setState({ generalStep: true });
+    } else {
+      this.submitResults(finalData);
+    }
   };
 
   submitResults = finalData => {
@@ -187,24 +292,28 @@ export default class Quiz extends Component<any> {
   render() {
     const {
       currentSection,
-      answers,
       generalStep,
       userData,
       isGeneralEnabled,
+      currentDatasetIndex,
+      newResults,
     } = this.state;
-    const dataset = QuestionsDataset[currentSection];
     const numberOfSections = QuestionsDatasetOrder.length;
 
     const currentSectionIndex =
       findIndex(QuestionsDatasetOrder, o => o === currentSection) + 1;
     const progress = `${(currentSectionIndex / numberOfSections) * 100}%`;
 
-    const buttonLabel =
-      currentSectionIndex === QuestionsDatasetOrder.length
-        ? 'Finish & View Product Type'
-        : 'Next Section';
-    const isButtonDisabled =
-      dataset.questions.length !== size(answers[currentSection]);
+    // NEW LOGIC
+    const newDataset = NewQuestionsDataset;
+    const orderedDataset = orderBy(newDataset, ['order'], ['asc']);
+    const currentDataset = orderedDataset[currentDatasetIndex];
+
+    const currentDatasetResult = newResults[currentDatasetIndex];
+    const currentDatasetAnswerIndex = get(currentDatasetResult, 'answerIndex');
+    const isLast = newDataset.length - 1 === currentDatasetIndex;
+    const isFirst = currentDatasetIndex === 0;
+    const canSubmit = isLast && size(newResults) === newDataset.length;
 
     return (
       <div className="quizWrapper">
@@ -271,57 +380,55 @@ export default class Quiz extends Component<any> {
                 />
               </div>
             )}
-            {(!generalStep || !isGeneralEnabled) &&
-              map(dataset.questions, (question, key) => (
-                <div
-                  className="question"
-                  key={`${currentSection}-${key}`}
-                  onChange={this.onChangeValue.bind(this, key)}
-                >
-                  <p>{question}</p>
-                  <div className="question_answer">
-                    <span>Disag.</span>
-                    <input
-                      /* disabled */ type="radio"
-                      value="1"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="2"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="3"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="4"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <input
-                      type="radio"
-                      value="5"
-                      name={`${currentSection}-Q${key + 1}`}
-                    />
-                    <span>Agree</span>
-                  </div>
-                </div>
-              ))}
-            {generalStep && isGeneralEnabled ? (
+            {(!generalStep || !isGeneralEnabled) && (
+              <div className="question" key={currentDataset.question}>
+                <p>{currentDataset.question}</p>
+                {map(currentDataset.answers, (answerObj, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="inputGroup"
+                      onChange={this.onSelectAnswer.bind(this, {
+                        questionIndex: currentDatasetIndex,
+                        answerScore: answerObj.points,
+                        answerIndex: index,
+                        questionType: currentDataset.type,
+                      })}
+                    >
+                      <input
+                        key={index}
+                        type="radio"
+                        id={`option${index}`}
+                        name={`option-${currentDataset.order}`}
+                        defaultChecked={index === currentDatasetAnswerIndex}
+                      />
+                      <label htmlFor={`option${index}`}>
+                        {answerObj.answer}
+                      </label>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {isLast && canSubmit ? (
               <Button
-                label="Calculate Results"
-                disabled={!userData.location || !userData.email}
-                onClick={this.submitResults}
+                label="Finish & View Product Type"
+                onClick={this.calculateFinalResults}
               />
             ) : (
-              <Button
-                label={buttonLabel}
-                disabled={isButtonDisabled}
-                onClick={this.calculateSectionResults}
-              />
+              <div className="prvNextActions">
+                <Button
+                  label="Previous"
+                  disabled={isFirst}
+                  onClick={this.goToPrevQuestion}
+                />
+                <Button
+                  label="Next"
+                  disabled={isLast}
+                  onClick={this.goToNextQuestion}
+                />
+              </div>
             )}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import ReactPixel from '@zsajjad/react-facebook-pixel';
+import ReactPixel from 'react-facebook-pixel';
 
 const options = {
   autoConfig: true, // set pixel's autoConfig
