@@ -146,7 +146,7 @@ export default class ProductType extends Component<any> {
             title={TITLES[scoreType]}
             typeImage={TYPEIMAGES[scoreType]}
             subtitle="Your Product Type is:"
-            top={false} // @TODO
+            top // @TODO
             score="10%" // @TODO
           />
           <div className="productContent">
@@ -168,7 +168,7 @@ export default class ProductType extends Component<any> {
             </div>
             <div className="right">
               <Chip
-                top={false} // @TODO
+                top // @TODO
                 score="10%" // @TODO
               />
               {mode === 1 || personalPage ? ( // User TIPs

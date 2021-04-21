@@ -37,15 +37,24 @@ export default class Header extends Component {
           <div className="tertiary btn personalities">
             Product Types
             <Icon
+              key="icon"
               className="dropdownIcon"
               icon="arrow_drop_down"
               inactive24="inactive24"
               classOverride="icon"
             />
-            <div className="menuItems" style={{ bottom: `-${position}px` }}>
-              <div className="menu" />
+            <div
+              key="menuItems"
+              className="menuItems"
+              style={{ bottom: `-${position}px` }}
+            >
+              <div key="menu" className="menu" />
               {map(TITLES, (title, key) => (
-                <div className="menuItem" onClick={this.onGoTo.bind(this, key)}>
+                <div
+                  key={key}
+                  className="menuItem"
+                  onClick={this.onGoTo.bind(this, key)}
+                >
                   {title}
                 </div>
               ))}

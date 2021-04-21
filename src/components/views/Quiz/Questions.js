@@ -10,6 +10,7 @@ import imageStudent from '../../../assets/images/type_student.png';
 export const QuestionsDataset = {
   productStrategy: {
     questions: [
+      'Which of the following is not a revenue model:',
       'My decisions result in significant strategic impact within organisations I work with',
       'I am an expert at balancing user and business needs',
       'I understand why trends are occurring in my product data and what they mean',
@@ -78,5 +79,5 @@ export const QuestionsDatasetOrder = [
   'influencer',
   'customerInsight',
 ];
-export const TotalOutcomeLimit = 65;
-export const DiffMargin = 5;
+export const TotalOutcomeLimit = 48;
+export const DiffMargin = 1;
