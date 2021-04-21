@@ -78,6 +78,10 @@ export default class ProductType extends Component<any> {
     let scoreType = '';
     let scoreData = [];
     let userData = {};
+    let isBottom = false;
+    let isTop = false;
+    let topBottomMarginRanking = null;
+
     const personalPage = urlParams && !isKnownDefaultRoute;
     // Check if rote has user hash or is default product route
     if (personalPage) {
@@ -89,10 +93,37 @@ export default class ProductType extends Component<any> {
       userData = JSON.parse(data[1]);
       mode = parseInt(data[2], 10); // 0 - view, 1 - personal (score) view
       // Isolated data
-      const { overal } = scoreData;
+      const { overal, score } = scoreData;
       scoreType = scoreData.type;
       typeResult = overal ? overal[scoreType] : 0;
       // HENRY - HERE (1) - for URL: "/product-type/dgasuifguaisgfiuasgfiugasiufgsauigf"
+      if (score < 20) {
+        isBottom = true;
+        topBottomMarginRanking = '10%';
+      } else if (score >= 20 && score < 25) {
+        isBottom = true;
+        topBottomMarginRanking = '25%';
+      } else if (score >= 25 && score < 30) {
+        isBottom = true;
+        topBottomMarginRanking = '50%';
+      } else if (score >= 30 && score < 35) {
+        isTop = true;
+        topBottomMarginRanking = '50%';
+      } else if (score >= 35 && score <= 40) {
+        isTop = true;
+        topBottomMarginRanking = '20%';
+      } else {
+        isTop = true;
+        topBottomMarginRanking = '10%';
+      }
+
+      if (isTop) {
+        Mixpanel.track(`Skills / Top`);
+      }
+      if (isBottom) {
+        Mixpanel.track(`Skills / Bottom`);
+      }
+
       Mixpanel.track(`Skills / Result / ${scoreType}`);
     } else {
       // Default Product Routr
@@ -109,14 +140,6 @@ export default class ProductType extends Component<any> {
       scoreType
     )}`;
     // const shareTitle = `${TITLES[scoreType]} | Product Skills Test`;
-
-    // @TODO - Tomi
-    // if (top) {
-    //   Mixpanel.track(`Skills / Top`);
-    // }
-    // if (!top) {
-    //   Mixpanel.track(`Skills / Bottom`);
-    // }
 
     return (
       <div>
@@ -146,8 +169,8 @@ export default class ProductType extends Component<any> {
             title={TITLES[scoreType]}
             typeImage={TYPEIMAGES[scoreType]}
             subtitle="Your Product Type is:"
-            top={false} // @TODO
-            score="10%" // @TODO
+            top={isTop}
+            score={topBottomMarginRanking}
           />
           <div className="productContent">
             <div className="left">
@@ -167,10 +190,12 @@ export default class ProductType extends Component<any> {
               </div>
             </div>
             <div className="right">
-              <Chip
-                top={false} // @TODO
-                score="10%" // @TODO
-              />
+              {topBottomMarginRanking &&
+                <Chip
+                  top={isTop}
+                  score={topBottomMarginRanking}
+                />
+              }
               {mode === 1 || personalPage ? ( // User TIPs
                 <Fragment>
                   <RadarChart scoreData={scoreData} />

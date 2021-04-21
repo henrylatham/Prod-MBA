@@ -169,7 +169,6 @@ export default class Quiz extends Component<any> {
     }
   };
 
-  // @TODO - comment out
   calculateFinalResults = () => {
     const { newResults, isGeneralEnabled } = this.state;
     // @TODO - Henry - here is dummy data for fast testing. Change this to see outcome you want
@@ -219,7 +218,7 @@ export default class Quiz extends Component<any> {
     });
 
     const pastHighScore = sortedArray[sortedArray.length - 2];
-    const allRounderDiff = highestScore - pastHighScore < DiffMargin;
+    const allRounderDiff = highestScore - pastHighScore <= DiffMargin;
 
     const isStrategist =
       total >= TotalOutcomeLimit && highestResult === 'productStrategy'
@@ -254,8 +253,6 @@ export default class Quiz extends Component<any> {
       score: total,
       overal: results,
     };
-
-    console.debug('>>> finalData: ', finalData);
 
     if (isGeneralEnabled) {
       this.setState({ generalStep: true });
@@ -298,12 +295,6 @@ export default class Quiz extends Component<any> {
       currentDatasetIndex,
       newResults,
     } = this.state;
-    const numberOfSections = QuestionsDatasetOrder.length;
-
-    const currentSectionIndex =
-      findIndex(QuestionsDatasetOrder, o => o === currentSection) + 1;
-    const progress = `${(currentSectionIndex / numberOfSections) * 100}%`;
-
     // NEW LOGIC
     const newDataset = NewQuestionsDataset;
     const orderedDataset = orderBy(newDataset, ['order'], ['asc']);
@@ -314,10 +305,7 @@ export default class Quiz extends Component<any> {
     const isLast = newDataset.length - 1 === currentDatasetIndex;
     const isFirst = currentDatasetIndex === 0;
     const canSubmit = isLast && size(newResults) === newDataset.length;
-
-    console.debug('>>> TEST: ', currentDatasetIndex + 1, newDataset.length);
-    const progress = `${(currentDatasetIndex + 1 / newDataset.length) * 100}%`;
-    console.debug('>>> PROGRESS: ', progress)
+    const progress = `${((currentDatasetIndex + 1) / newDataset.length) * 100}%`;
 
     return (
       <div className="quizWrapper">

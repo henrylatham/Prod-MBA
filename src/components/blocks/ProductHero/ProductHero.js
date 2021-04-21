@@ -48,7 +48,9 @@ export default class ProductHero extends Component<Props> {
           <img alt="logo" src={typeImage} className="productHero__img" />
           {viewType === 1 && <p className="productHero__caption">{subtitle}</p>}
           <h1>{title}</h1>
-          <Chip top={top} score={score} />
+          {score &&
+            <Chip top={top} score={score} />
+          }
           {top && (
             <div className="social">
               <p>Compare with your team & network:</p>
