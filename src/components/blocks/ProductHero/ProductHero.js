@@ -108,8 +108,9 @@ export default class ProductHero extends Component<Props> {
               </p>
               <br />
               <p>
-                Act now to fast-track your path to Head of Product with a free
-                Career Strategy Session:
+                Henry, founder of Prod MBA, will review your scores & help you
+                understand which skills you are missing to fast-track your
+                product career:
               </p>
               <Button
                 label="Book Free Session"
@@ -139,7 +140,7 @@ export default class ProductHero extends Component<Props> {
   };
 
   handleBookStrategySession = () => {
-    Mixpanel.track(`Skills / Bottom / Book Strategy Session`);
+    Mixpanel.track(`Skills / Hero / Book Strategy Session`);
     window.open('https://calendly.com/henry_latham/prod-mba');
   };
 }

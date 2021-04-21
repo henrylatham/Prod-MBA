@@ -110,6 +110,14 @@ export default class ProductType extends Component<any> {
     )}`;
     // const shareTitle = `${TITLES[scoreType]} | Product Skills Test`;
 
+    // @TODO - Tomi
+    // if (top) {
+    //   Mixpanel.track(`Skills / Top`);
+    // }
+    // if (!top) {
+    //   Mixpanel.track(`Skills / Bottom`);
+    // }
+
     return (
       <div>
         <Helmet>
