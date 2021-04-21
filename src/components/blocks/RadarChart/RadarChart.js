@@ -33,7 +33,7 @@ export default class RadarChart extends Component<any> {
         ticks: {
           beginAtZero: true,
           min: 0,
-          max: 35,
+          max: 12,
           stepSize: 7,
           display: false,
         },

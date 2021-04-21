@@ -46,7 +46,7 @@ export default class Quiz extends Component<any> {
     const isTake = this.props.match.params.take;
     if (isTake) {
       this.scrollIntoView();
-      Mixpanel.track(`Skills / Take Quiz`);
+      Mixpanel.track(`Skills / Start`);
     }
   }
 
@@ -65,7 +65,9 @@ export default class Quiz extends Component<any> {
   onSelectAnswer = data => {
     const { currentDatasetIndex, newResults } = this.state;
     const { questionIndex, answerScore, answerIndex, questionType } = data;
-
+    // Events for Mixpanel progress checking...
+    const isFirstQuestion = currentDatasetIndex === 0;
+    const isThirdQuestion = currentDatasetIndex === 2;
     /**
       ### Data Example ###
       {
@@ -104,6 +106,13 @@ export default class Quiz extends Component<any> {
           currentDatasetIndex: currentDatasetIndex + 1,
         });
       }, 600);
+    }
+
+    if (isFirstQuestion) {
+      Mixpanel.track(`Skills / First Question`);
+    }
+    if (isThirdQuestion) {
+      Mixpanel.track(`Skills / Third Question`);
     }
   };
 
