@@ -84,6 +84,10 @@ export default class ProductType extends Component<any> {
     let topBottomMarginRanking = null;
 
     const personalPage = urlParams && !isKnownDefaultRoute;
+
+    if (!personalPage) {
+      isTop = true;
+    }
     // Check if rote has user hash or is default product route
     if (personalPage) {
       // User route
@@ -194,12 +198,9 @@ export default class ProductType extends Component<any> {
               </div>
             </div>
             <div className="right">
-              {topBottomMarginRanking &&
-                <Chip
-                  top={isTop}
-                  score={topBottomMarginRanking}
-                />
-              }
+              {topBottomMarginRanking && (
+                <Chip top={isTop} score={topBottomMarginRanking} />
+              )}
               {mode === 1 || personalPage ? ( // User TIPs
                 <Fragment>
                   <RadarChart scoreData={scoreData} />
@@ -237,6 +238,10 @@ export default class ProductType extends Component<any> {
             title={TITLES[scoreType]}
             type={kebabCase(scoreType)}
           />
+          <p className="footerRavi">
+            Thanks to Ravi Mehta for his work on Peak Product Management, which
+            inspired the product types in this assessment.
+          </p>
           <div className="modalWrapper">
             <Modal
               img={modalImg}

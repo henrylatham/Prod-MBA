@@ -463,25 +463,34 @@ export const NewQuestionsDataset = [
     ],
   },
   {
-    question: 'How would you validate a new product or feature idea?',
+    question:
+      'What might your first step be to validate a new product or feature idea?',
     order: 23,
     type: 'customerInsight',
     answers: [
       {
         answer: 'Speak to people at my company/on my team',
-        points: 1,
+        points: 0,
       },
       {
-        answer: 'Speak to friends & family who I think would use my product',
-        points: 1,
+        answer: 'Speak to people in your target customer group',
+        points: 2,
+      },
+    ],
+  },
+  {
+    question: 'What might you do to differentiate your product offer?',
+    order: 24,
+    type: 'customerInsight',
+    answers: [
+      {
+        answer:
+          'Research competitors in the space to see what value they promise their customers',
+        points: 2,
       },
       {
-        answer: 'Research competitors in the space to see what they are doing',
-        points: 1,
-      },
-      {
-        answer: 'Speak to a customer that uses a competitor',
-        points: 1,
+        answer: 'Come up with a motivational product vision',
+        points: 0,
       },
     ],
   },
