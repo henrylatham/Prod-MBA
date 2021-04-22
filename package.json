@@ -12,10 +12,8 @@
     "start:production": "yarn build && serve -s build",
     "stylelint": "./node_modules/.bin/stylelint \"**/*.scss\"",
     "stylelint:fix": "yarn stylelint --fix",
-    "lint": "eslint --format=node_modules/eslint-formatter-pretty src storybook *.js",
-    "flow:test": "flow; test $? -eq 0 -o $? -eq 2",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "lint": "eslint --format=node_modules/eslint-formatter-pretty src *.js",
+    "flow:test": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.25",
@@ -33,27 +31,14 @@
     "react-dom": "16.11.0",
     "react-facebook-pixel": "^1.0.4",
     "react-helmet": "^6.1.0",
-    "react-loader-spinner": "^3.1.5",
-    "react-magic-slider-dots": "1.1.3",
-    "react-mailchimp-subscribe": "2.1.0",
     "react-redux": "7.1.1",
     "react-router-dom": "5.1.2",
     "react-scripts": "^3.3.1",
     "react-share": "^4.3.1",
-    "react-slick": "0.25.2",
-    "react-typing-animation": "1.6.2",
-    "react-typing-effect": "2.0.2",
-    "redux": "4.0.4",
-    "slick-carousel": "1.8.1",
-    "social-share": "^0.1.0",
-    "write-json-file": "^4.3.0"
+    "redux": "4.0.4"
   },
   "devDependencies": {
     "@babel/core": "7.7.2",
-    "@storybook/addon-actions": "5.2.6",
-    "@storybook/addon-links": "5.2.6",
-    "@storybook/addons": "5.2.6",
-    "@storybook/react": "5.2.6",
     "babel-eslint": "10.0.3",
     "babel-loader": "8.0.6",
     "eslint": "4.19.1",

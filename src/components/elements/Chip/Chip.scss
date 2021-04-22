@@ -1,0 +1,40 @@
+@import '../../../styles/main';
+
+.chip {
+  @include caption-center;
+  @include padding(top bottom, 0);
+  @include padding(left right, 2);
+  @include card-elevation;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  max-width: 220px;
+  font-size: 9px;
+  margin: 0 auto;
+  border: 2px solid $white;
+
+  @media (min-width: $screen-sm-min) {
+    max-width: 288px;
+  }
+
+  &__top {
+    background-color: $success;
+    color: $white;
+  }
+
+  &__bottom {
+    background-color: $error;
+    color: $white;
+  }
+
+  &__icon {
+    color: $white;
+  }
+
+  i {
+    padding-right: 12px;
+    padding-top: 2px;
+    color: $white;
+  }
+}

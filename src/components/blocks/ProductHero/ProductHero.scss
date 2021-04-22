@@ -16,7 +16,7 @@
     }
 
     h1 {
-      @include padding(bottom, 5);
+      @include padding(bottom, 0);
       @include padding(top, reset);
     }
 
@@ -40,6 +40,20 @@
       max-width: 400px; // default logo width: 140px;
     }
   }
+
+  &__caption {
+    @include caption-center;
+    @include padding(bottom, 0);
+  }
+
+  &__bottom {
+    @include padding(top, 3);
+
+    .btnContainer {
+      @include padding(top, 3);
+      @include padding(bottom, 4);
+    }
+  }
 }
 
 iframe {
@@ -49,4 +63,99 @@ iframe {
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.social {
+  @include padding(left right, 1);
+  @include padding(top, 3);
+  @include padding(bottom, 5);
+  @include col;
+
+  @media (min-width: $screen-sm-min) {
+    @include padding(top, 3);
+    @include padding(bottom, 4);
+    @include padding(left right, 3);
+    justify-content: center;
+  }
+
+  .share {
+    @include row;
+    max-width: 400px;
+    margin: 32px auto;
+
+    &__icons {
+      margin: 0 10px;
+    }
+  }
+
+  &__logo {
+    @include col;
+    align-items: flex-end;
+    max-width: 288px;
+
+    &_imglogo {
+      @include padding(top, 3);
+      @include padding(bottom, 0);
+      max-width: 80px;
+
+      @media (min-width: $screen-sm-min) {
+        @include padding(top, reset);
+        max-width: 108px;
+      }
+    }
+
+    &_book {
+      @include col;
+      @include padding(top, 5);
+      align-items: flex-end;
+
+      @media (min-width: $screen-sm-min) {
+        @include padding(top, 2);
+      }
+    }
+
+    &_bookimg {
+      @include padding(bottom, 2);
+      max-width: 100px;
+    }
+
+    p {
+      @include small;
+      color: $white;
+      max-width: 200px;
+      text-align: right;
+    }
+  }
+
+  &__list {
+    @include padding(top bottom, 2);
+    list-style: none;
+    text-align: left;
+    width: 70%;
+
+    @media (min-width: $screen-sm-min) {
+      text-align: center;
+    }
+
+    &_item {
+      @include padding(left, 2);
+      @include padding(top bottom, 2);
+      @include link;
+      text-align: left;
+    }
+
+    .active {
+      color: $white;
+    }
+  }
+
+  a {
+    @include opacity(2);
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      @include opacity(1);
+    }
+  }
 }

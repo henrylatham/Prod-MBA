@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { includes, camelCase, kebabCase } from 'lodash';
 import { Helmet } from 'react-helmet';
-import { Button, Modal } from '../../elements';
+import { Button, Chip, Modal } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
 import { Header, ProductHero, Footer, RadarChart } from '../../blocks';
 import { TITLES, TYPEIMAGES } from '../Quiz/Questions';
@@ -78,7 +78,15 @@ export default class ProductType extends Component<any> {
     let scoreType = '';
     let scoreData = [];
     let userData = {};
+    let isBottom = false;
+    let isTop = false;
+    let topBottomMarginRanking = null;
+
     const personalPage = urlParams && !isKnownDefaultRoute;
+
+    if (!personalPage) {
+      isTop = true;
+    }
     // Check if rote has user hash or is default product route
     if (personalPage) {
       // User route
@@ -89,10 +97,37 @@ export default class ProductType extends Component<any> {
       userData = JSON.parse(data[1]);
       mode = parseInt(data[2], 10); // 0 - view, 1 - personal (score) view
       // Isolated data
-      const { overal } = scoreData;
+      const { overal, score } = scoreData;
       scoreType = scoreData.type;
       typeResult = overal ? overal[scoreType] : 0;
       // HENRY - HERE (1) - for URL: "/product-type/dgasuifguaisgfiuasgfiugasiufgsauigf"
+      if (score < 20) {
+        isBottom = true;
+        topBottomMarginRanking = '10%';
+      } else if (score >= 20 && score < 25) {
+        isBottom = true;
+        topBottomMarginRanking = '25%';
+      } else if (score >= 25 && score < 30) {
+        isBottom = true;
+        topBottomMarginRanking = '50%';
+      } else if (score >= 30 && score < 35) {
+        isTop = true;
+        topBottomMarginRanking = '50%';
+      } else if (score >= 35 && score <= 40) {
+        isTop = true;
+        topBottomMarginRanking = '20%';
+      } else {
+        isTop = true;
+        topBottomMarginRanking = '10%';
+      }
+
+      if (isTop) {
+        Mixpanel.track(`Skills / Top`);
+      }
+      if (isBottom) {
+        Mixpanel.track(`Skills / Bottom`);
+      }
+
       Mixpanel.track(`Skills / Result / ${scoreType}`);
     } else {
       // Default Product Routr
@@ -103,7 +138,7 @@ export default class ProductType extends Component<any> {
       Mixpanel.track(`Skills / ${urlParams}`);
     }
 
-    const modalTitle = `Want tips for ${TITLES[scoreType]}?`;
+    const modalTitle = 'Become A World-Class Product Leader'; // `Want tips for ${TITLES[scoreType]}?`;
 
     const shareLink = `https://test.prod.mba/product-type/${kebabCase(
       scoreType
@@ -138,6 +173,8 @@ export default class ProductType extends Component<any> {
             title={TITLES[scoreType]}
             typeImage={TYPEIMAGES[scoreType]}
             subtitle="Your Product Type is:"
+            top={isTop}
+            score={topBottomMarginRanking}
           />
           <div className="productContent">
             <div className="left">
@@ -157,6 +194,9 @@ export default class ProductType extends Component<any> {
               </div>
             </div>
             <div className="right">
+              {topBottomMarginRanking && (
+                <Chip top={isTop} score={topBottomMarginRanking} />
+              )}
               {mode === 1 || personalPage ? ( // User TIPs
                 <Fragment>
                   <RadarChart scoreData={scoreData} />
@@ -194,6 +234,10 @@ export default class ProductType extends Component<any> {
             title={TITLES[scoreType]}
             type={kebabCase(scoreType)}
           />
+          <p className="footerRavi">
+            Thanks to Ravi Mehta for his work on Peak Product Management, which
+            inspired the product types in this assessment.
+          </p>
           <div className="modalWrapper">
             <Modal
               img={modalImg}
