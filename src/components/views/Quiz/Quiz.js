@@ -117,7 +117,6 @@ export default class Quiz extends Component<any> {
     if (isThirdQuestion) {
       Mixpanel.track(`Skills / Third Question`);
       FacebookPixel.track(facebookEvent);
-      console.log(facebookEvent);
     }
   };
 
@@ -305,7 +304,8 @@ export default class Quiz extends Component<any> {
     const isLast = newDataset.length - 1 === currentDatasetIndex;
     const isFirst = currentDatasetIndex === 0;
     const canSubmit = isLast && size(newResults) === newDataset.length;
-    const progress = `${((currentDatasetIndex + 1) / newDataset.length) * 100}%`;
+    const progress = `${((currentDatasetIndex + 1) / newDataset.length) *
+      100}%`;
 
     return (
       <div className="quizWrapper">

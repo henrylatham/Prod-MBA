@@ -149,6 +149,15 @@
   }
 }
 
+.footerRavi {
+  color: $smoke-white;
+  text-align: center;
+  font-size: 10px;
+  @include background-dark;
+  @include padding(top bottom, 3);
+  @include padding(left right, 2);
+}
+
 i {
   padding: 0;
   color: $grey;

@@ -79,6 +79,5 @@ export const QuestionsDatasetOrder = [
   'influencer',
   'customerInsight',
 ];
-// TODO HENRY to define limit under which we should show "Student" type
-export const TotalOutcomeLimit = 10;
+export const TotalOutcomeLimit = 15;
 export const DiffMargin = 1;
