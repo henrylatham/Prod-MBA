@@ -15,7 +15,7 @@ import {
 
 import { NewQuestionsDataset } from './NewQuestionsDataset';
 
-const facebookEvent = 'StartTrial';
+const facebookEvent = 'Search';
 
 export default class Quiz extends Component<any> {
   constructor() {
@@ -108,7 +108,7 @@ export default class Quiz extends Component<any> {
         this.setState({
           currentDatasetIndex: currentDatasetIndex + 1,
         });
-      }, 600);
+      }, 400);
     }
 
     if (isFirstQuestion) {
