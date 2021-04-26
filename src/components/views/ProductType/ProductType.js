@@ -37,7 +37,10 @@ export default class ProductType extends Component<any> {
     const isKnownDefaultRoute = includes(KNOWN_TYPES, urlParams);
     const personalPage = urlParams && !isKnownDefaultRoute;
     if (personalPage) {
-      setTimeout(() => this.setState({ skillsTracked: true, isModalOpen: true }), 9000);
+      setTimeout(
+        () => this.setState({ skillsTracked: true, isModalOpen: true }),
+        9000
+      );
     }
   }
 
@@ -102,19 +105,19 @@ export default class ProductType extends Component<any> {
       scoreType = scoreData.type;
       typeResult = overal ? overal[scoreType] : 0;
       // HENRY - HERE (1) - for URL: "/product-type/dgasuifguaisgfiuasgfiugasiufgsauigf"
-      if (score < 20) {
+      if (score < 25) {
         isBottom = true;
         topBottomMarginRanking = '10%';
-      } else if (score >= 20 && score < 25) {
-        isBottom = true;
-        topBottomMarginRanking = '25%';
       } else if (score >= 25 && score < 30) {
         isBottom = true;
+        topBottomMarginRanking = '25%';
+      } else if (score >= 30 && score < 34) {
+        isBottom = true;
         topBottomMarginRanking = '50%';
-      } else if (score >= 30 && score < 35) {
+      } else if (score >= 35 && score < 37) {
         isTop = true;
         topBottomMarginRanking = '50%';
-      } else if (score >= 35 && score <= 40) {
+      } else if (score >= 37 && score <= 39) {
         isTop = true;
         topBottomMarginRanking = '20%';
       } else {

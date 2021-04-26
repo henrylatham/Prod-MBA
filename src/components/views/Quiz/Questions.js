@@ -79,5 +79,5 @@ export const QuestionsDatasetOrder = [
   'influencer',
   'customerInsight',
 ];
-export const TotalOutcomeLimit = 15;
+export const TotalOutcomeLimit = 20;
 export const DiffMargin = 1;
