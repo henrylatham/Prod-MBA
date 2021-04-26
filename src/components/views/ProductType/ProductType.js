@@ -27,6 +27,7 @@ export default class ProductType extends Component<any> {
     this.state = {
       isModalOpen: false,
       isEmailSent: false,
+      skillsTracked: false,
     };
   }
 
@@ -36,7 +37,7 @@ export default class ProductType extends Component<any> {
     const isKnownDefaultRoute = includes(KNOWN_TYPES, urlParams);
     const personalPage = urlParams && !isKnownDefaultRoute;
     if (personalPage) {
-      setTimeout(() => this.setState({ isModalOpen: true }), 9000);
+      setTimeout(() => this.setState({ skillsTracked: true, isModalOpen: true }), 9000);
     }
   }
 
@@ -49,13 +50,13 @@ export default class ProductType extends Component<any> {
   };
 
   handleAcceptEmailSend = () => {
-    this.setState({ isEmailSent: true });
+    this.setState({ skillsTracked: true, isEmailSent: true });
     Mixpanel.track(`Skills / Signup`);
   };
 
   handleCloseEmailModal = e => {
     e.preventDefault();
-    this.setState({ isModalOpen: false });
+    this.setState({ skillsTracked: true, isModalOpen: false });
     Mixpanel.track(`Skills / Close Modal`);
   };
 
@@ -64,7 +65,7 @@ export default class ProductType extends Component<any> {
   };
 
   render() {
-    const { isModalOpen, isEmailSent } = this.state;
+    const { isModalOpen, isEmailSent, skillsTracked } = this.state;
 
     // const calendlyUrl = 'https://calendly.com/henry_latham/skills-assessment';
     const mvoVideo = 'https://share.vidyard.com/watch/DobRxYeKq2UiHKGsAAEua5?';
@@ -121,21 +122,24 @@ export default class ProductType extends Component<any> {
         topBottomMarginRanking = '10%';
       }
 
-      if (isTop) {
-        Mixpanel.track(`Skills / Top`);
+      if (!skillsTracked) {
+        if (isTop) {
+          Mixpanel.track(`Skills / Top`);
+        }
+        if (isBottom) {
+          Mixpanel.track(`Skills / Bottom`);
+        }
+        Mixpanel.track(`Skills / Result / ${scoreType}`);
       }
-      if (isBottom) {
-        Mixpanel.track(`Skills / Bottom`);
-      }
-
-      Mixpanel.track(`Skills / Result / ${scoreType}`);
     } else {
       // Default Product Routr
       mode = 0; // viewer mode
       typeResult = 0; // default type e.g instead copy P1 or P2, default is used
       scoreType = camelCase(urlParams); // e.g. allRounder
       // HENRY - HERE (2) - for URL: "/product-type/allRounder"
-      Mixpanel.track(`Skills / ${urlParams}`);
+      if (!skillsTracked) {
+        Mixpanel.track(`Skills / ${urlParams}`);
+      }
     }
 
     const modalTitle = 'Become A World-Class Product Leader'; // `Want tips for ${TITLES[scoreType]}?`;
