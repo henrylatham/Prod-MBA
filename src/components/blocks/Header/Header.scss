@@ -2,21 +2,22 @@
 
 .header {
   &__logo {
-    @media (max-width: $screen-xs-min) {
+    @media (max-width: 376px) {
       display: none;
     }
 
     display: flex;
     @include padding(all, 1);
-    @include padding(top, 3);
     @include opacity(1);
+    padding-top: 132px;
     max-width: 60px; // default logo width: 140px;
     position: absolute;
     top: 0;
     z-index: 1;
 
     @media (min-width: $screen-sm-min) {
-      @include padding(all, 2);
+      @include padding(bottom right left, 2);
+      padding-top: 126px;
       max-width: 120px; // default logo width: 140px;
     }
 

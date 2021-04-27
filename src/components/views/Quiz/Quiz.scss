@@ -1,5 +1,15 @@
 @import '../../../styles/main';
 
+.header {
+  padding-top: 112px;
+
+  @media (min-width: 374px) {
+    padding-top: 99px;
+  }
+}
+
+// Main Section
+
 .quizQuestionsWrapper {
   // padding: 187px 150px 100px 150px;
   background-color: $white;
@@ -32,13 +42,13 @@
     }
   }
   .questions {
-    padding: 64px 8px 24px;
+    padding: 40px 8px 24px;
     text-align: center;
     @media (min-width: $screen-sm-min) {
-      padding: 140px 64px 100px 64px;
+      padding: 80px 64px 60px 64px;
     }
     @media (min-width: $screen-md-min) {
-      padding: 140px 150px 100px 150px;
+      padding: 80px 150px 60px 150px;
     }
 
     .prvNextActions {
@@ -72,7 +82,7 @@
 
     @media (min-width: $screen-sm-min) {
       padding: 0 16px;
-      margin-bottom: 140px;
+      margin-bottom: 80px;
     }
 
     &_answer {

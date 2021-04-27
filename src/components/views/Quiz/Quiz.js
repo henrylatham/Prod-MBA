@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { map, findIndex, size, kebabCase, orderBy, get, groupBy } from 'lodash';
 import { Helmet } from 'react-helmet';
 import { Header, Hero } from '../../blocks';
-import { Button, Input } from '../../elements';
+import { Banner, Button, Input } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
 import { FacebookPixel } from '../../../FacebookPixel';
 import './Quiz.scss';
@@ -338,6 +338,7 @@ export default class Quiz extends Component<any> {
 
           <link rel="apple-touch-icon" href="logo192.png" />
         </Helmet>
+        <Banner />
         <Header
           light
           onDefaultClick={this.scrollIntoView}

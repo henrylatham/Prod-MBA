@@ -1,0 +1,19 @@
+@import '../../../styles/main';
+
+.banner {
+  @include background-dark;
+  @include padding(top, 2);
+  @include padding(bottom, 0);
+  @include padding(left right, 1);
+  position: fixed;
+  z-index: 1000;
+
+  @media (min-width: 374px) {
+    width: 100%;
+  }
+
+  p {
+    @include small;
+    color: $white;
+  }
+}
