@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { map, findIndex, size, kebabCase, orderBy, get, groupBy } from 'lodash';
 import { Helmet } from 'react-helmet';
 import { Header, Hero } from '../../blocks';
-import { Button, Input } from '../../elements';
+import { Banner, Button, Input } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
 import { FacebookPixel } from '../../../FacebookPixel';
 import './Quiz.scss';
@@ -70,7 +70,7 @@ export default class Quiz extends Component<any> {
     const { questionIndex, answerScore, answerIndex, questionType } = data;
     // Events for Mixpanel progress checking...
     const isFirstQuestion = currentDatasetIndex === 0;
-    const isThirdQuestion = currentDatasetIndex === 2;
+    const isSixthQuestion = currentDatasetIndex === 5;
     /**
       ### Data Example ###
       {
@@ -114,8 +114,8 @@ export default class Quiz extends Component<any> {
     if (isFirstQuestion) {
       Mixpanel.track(`Skills / First Question`);
     }
-    if (isThirdQuestion) {
-      Mixpanel.track(`Skills / Third Question`);
+    if (isSixthQuestion) {
+      Mixpanel.track(`Skills / Sixth Question`);
       FacebookPixel.track(facebookEvent);
     }
   };
@@ -338,6 +338,7 @@ export default class Quiz extends Component<any> {
 
           <link rel="apple-touch-icon" href="logo192.png" />
         </Helmet>
+        <Banner />
         <Header
           light
           onDefaultClick={this.scrollIntoView}

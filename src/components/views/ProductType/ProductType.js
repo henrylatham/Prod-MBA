@@ -111,10 +111,10 @@ export default class ProductType extends Component<any> {
       } else if (score >= 25 && score < 30) {
         isBottom = true;
         topBottomMarginRanking = '25%';
-      } else if (score >= 30 && score < 34) {
+      } else if (score >= 30 && score < 36) {
         isBottom = true;
         topBottomMarginRanking = '50%';
-      } else if (score >= 35 && score < 37) {
+      } else if (score >= 36 && score < 37) {
         isTop = true;
         topBottomMarginRanking = '50%';
       } else if (score >= 37 && score <= 39) {
