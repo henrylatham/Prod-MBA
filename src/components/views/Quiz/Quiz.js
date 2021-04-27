@@ -70,7 +70,7 @@ export default class Quiz extends Component<any> {
     const { questionIndex, answerScore, answerIndex, questionType } = data;
     // Events for Mixpanel progress checking...
     const isFirstQuestion = currentDatasetIndex === 0;
-    const isThirdQuestion = currentDatasetIndex === 2;
+    const isSixthQuestion = currentDatasetIndex === 5;
     /**
       ### Data Example ###
       {
@@ -114,8 +114,8 @@ export default class Quiz extends Component<any> {
     if (isFirstQuestion) {
       Mixpanel.track(`Skills / First Question`);
     }
-    if (isThirdQuestion) {
-      Mixpanel.track(`Skills / Third Question`);
+    if (isSixthQuestion) {
+      Mixpanel.track(`Skills / Sixth Question`);
       FacebookPixel.track(facebookEvent);
     }
   };
