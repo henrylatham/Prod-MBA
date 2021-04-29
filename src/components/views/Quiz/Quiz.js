@@ -410,17 +410,23 @@ export default class Quiz extends Component<any> {
                 onClick={this.calculateFinalResults}
               />
             ) : (
-              <div className="prvNextActions">
-                <Button
-                  label="Previous"
-                  disabled={isFirst}
-                  onClick={this.goToPrevQuestion}
-                />
-                <Button
-                  label="Next"
-                  disabled={isLast}
-                  onClick={this.goToNextQuestion}
-                />
+              <div>
+                <div className="prvNextActions">
+                  <Button
+                    label="Previous"
+                    disabled={isFirst}
+                    onClick={this.goToPrevQuestion}
+                  />
+                  <Button
+                    label="Next"
+                    disabled={isLast}
+                    onClick={this.goToNextQuestion}
+                  />
+                </div>
+                <p className="prvNextActions__warning">
+                  (If you cannot see your results, it means you skipped a
+                  question. Go back & check which one you missed!)
+                </p>
               </div>
             )}
           </div>
