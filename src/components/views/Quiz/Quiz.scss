@@ -57,6 +57,14 @@
       justify-content: center;
       margin: 0 10px;
 
+      &__warning {
+        @include small;
+        opacity: 0.4;
+        @include padding(top, 3);
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
       .btnContainer {
         margin: 0 10px;
 
