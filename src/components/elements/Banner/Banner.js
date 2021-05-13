@@ -20,7 +20,7 @@ export default class Banner extends Component<Props> {
           <p>Start fast-tracking your product career with our free Mini MBA:</p>
           <Button
             type="secondary"
-            label="Sign Up"
+            label="Join Free Mini MBA"
             onClick={this.handleMiniMbaSignUp}
           />
         </div>
