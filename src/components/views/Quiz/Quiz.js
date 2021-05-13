@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Header, Hero } from '../../blocks';
 import { Banner, Button, Input } from '../../elements';
 import { Mixpanel } from '../../../Mixpanel';
-import { FacebookPixel } from '../../../FacebookPixel';
+// import { FacebookPixel } from '../../../FacebookPixel';
 import './Quiz.scss';
 import {
   QuestionsDataset,
@@ -15,7 +15,7 @@ import {
 
 import { NewQuestionsDataset } from './NewQuestionsDataset';
 
-const facebookEvent = 'Search';
+// const facebookEvent = 'Search';
 
 export default class Quiz extends Component<any> {
   constructor() {
@@ -116,7 +116,7 @@ export default class Quiz extends Component<any> {
     }
     if (isSixthQuestion) {
       Mixpanel.track(`Skills / Sixth Question`);
-      FacebookPixel.track(facebookEvent);
+      // FacebookPixel.track(facebookEvent);
     }
   };
 
